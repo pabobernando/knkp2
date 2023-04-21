@@ -1,70 +1,87 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar'
+import Koni from '../assets/satosi.jpg'
 
 function Pengurus() {
 
-  const PengurusKoni = [
-    {
-      id: 1,
-      name: 'KUSDIRA BA',
-      title: 'KETUA UMUM',
-      image: 'https://randomuser.me/api/portraits/men/1.jpg',
-      children: [
-        {
-          id: 2,
-          name: 'REMBO UNDERTAKER',
-          title: 'WAKIL KETUA',
-          image: 'https://randomuser.me/api/portraits/women/2.jpg',
-        }],
-      }
-  ];
-
-  const OrgChart = ({ data }) => {
-    const [showChildren, setShowChildren] = useState(true);
   
-    const toggleChildren = () => {
-      setShowChildren((prevState) => !prevState);
-    };
-
-  return (
-    <div className="relative">
-    <div className="flex items-center space-x-4">
-      <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
-        <img src={data.image} alt={data.name} className="w-full h-full object-cover" />
-      </div>
-      <div>
-        <h2 className="text-lg font-semibold">{data.name}</h2>
-        <p className="text-sm text-gray-600">{data.title}</p>
-      </div>
-    </div>
-    {data.children && (
-      <button
-        className="absolute top-0 right-0 p-2 rounded-full bg-red-500 text-white text-sm font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-        onClick={toggleChildren}
-      >
-        {showChildren ? 'Hide' : 'Show'}
-      </button>
-    )}
-    {showChildren && data.children && (
-      <div className="ml-16 mt-2">
-        {data.children.map((child) => (
-          <OrgChart key={child.id} data={child} />
-        ))}
-      </div>
-    )}
-  </div>
-)
-}
 
 return (
 <>
 <Navbar />
-<div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-<h1 className="text-3xl font-semibold mb-6">Struktur Organisasi KONI</h1>
-<div className="mx-auto">
-<OrgChart data={PengurusKoni[0]} />
+
+<div className="p-4">
+    <p className="text-3xl font-bold text-center text-gray-800">
+        Pengurus Koni
+    </p>
+    <p className="mb-32 text-xl font-normal text-center text-gray-500">
+        KULON PROGO
+    </p>
+    <div className="flex flex-col items-center justify-center space-y-24 md:space-y-0 md:flex-row">
+        <div className="relative p-4">
+            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
+                <a href="#" className="relative block">
+                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
+                </a>
+            </div>
+            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
+                <div className="text-center">
+                    <p className="text-2xl text-gray-800 dark:text-white">
+                        Hendri Sulistya
+                    </p>
+                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
+                        Pengendali Ledis
+                    </p>
+                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
+                        Kepek, Pengasih, Kulon Progo
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="relative p-4">
+            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
+                <a href="#" className="relative block">
+                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
+                </a>
+            </div>
+            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
+                <div className="text-center">
+                    <p className="text-2xl text-gray-800 dark:text-white">
+                        Hendri Sulistya
+                    </p>
+                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
+                        Duck Fans
+                    </p>
+                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
+                    Kepek, Pengasih, Kulon Progo
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        <div className="relative p-4">
+            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
+                <a href="#" className="relative block">
+                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
+                </a>
+            </div>
+            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
+                <div className="text-center">
+                    <p className="text-2xl text-gray-800 dark:text-white">
+                        Hendri Sulistya
+                    </p>
+                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
+                        Milk Fans
+                    </p>
+                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
+                    Kepek, Pengasih, Kulon Progo
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+
 </>
 );
 }

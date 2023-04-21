@@ -3,7 +3,10 @@ import Home from './pages/Home'
 import Pengurus from './pages/Pengurus'
 import Berita from './pages/Berita'
 import LoginPage from './pages/LoginPage'
-import Dashboard from './pages/Dashboard'
+import DataPelatih from './pages/DataPelatih'
+import DataAtlit from './pages/DataAtlit'
+import DataWasit from './pages/DataWasit'
+import DataSarpras from './pages/DataSarpras'
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
         <Route path='/Pengurus' element={<Pengurus />}></Route>
         <Route path='/Berita' element={<Berita />}></Route>
         <Route path='/LoginPage' element={<LoginPage />}></Route>
-        <Route path='/Dashboard' element={<Dashboard />}></Route>
+        <Route path='/DataAtlit' element={<DataAtlit />}></Route>
+        <Route path='/DataPelatih' element={<DataPelatih />}></Route>
+        <Route path='/DataWasit' element={<DataWasit />}></Route>
+        <Route path='/DataSarpras' element={<DataSarpras />}></Route>
       </Routes>
     </Router>
   )

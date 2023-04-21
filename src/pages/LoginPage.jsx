@@ -21,7 +21,7 @@ function LoginPage() {
     if (response.ok && response.status === 200) {
       const json = await response.json()
       window.localStorage.setItem('token', json.token)
-      navigate('/Dashboard')
+      navigate('/DataAtlit')
     } else {
       alert("email atau password salah !");
     }
