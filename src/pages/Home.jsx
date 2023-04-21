@@ -1,9 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Navbar from '../components/Navbar'
 import LogoKoni from '../assets/koni.png'
 import Footer from '../components/Footer'
+import Carousel from '../components/Carousel'
+import CaborName from '../components/CaborName'
 
 function Home() {
+
+
+  
   return (
     <>
     <Navbar />
@@ -21,7 +26,7 @@ function Home() {
   Komite Olahraga Nasional Indonesia (KONI) adalah satu-satunya organisasi yang berwenang dan bertanggung jawab mengelola, membina, mengembangkan & mengkoordinasikan seluruh pelaksanaan kegiatan olahraga prestasi setiap anggota di Indonesia.
 </p>
 
-          <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+          <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-3 mb-10">
             <div className="rounded-md shadow">
               <a
                 href="#"
@@ -31,6 +36,41 @@ function Home() {
               </a>
             </div>
           </div>
+        </div>
+        <div className='grid grid-cols-3 text-center px-8 mt-8'>
+        <div class="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg pt-3 pb-3 px-8 mx-8">
+            <div class="flex items-center justify-center sm:justify-start">
+              <svg class="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+           <div class="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
+            <h1 class="text-lg sm:text-xl font-bold text-center sm:text-center">Atlit</h1>
+             <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
+           </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg px-8 pt-3 pb-3 mx-8">
+            <div class="flex items-center justify-center sm:justify-start">
+              <svg class="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+           <div class="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
+            <h1 class="text-lg sm:text-xl font-bold text-center sm:text-center">Atlit</h1>
+             <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
+           </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg pt-3 pb-3 px-8 mx-8">
+            <div class="flex items-center justify-center sm:justify-start">
+              <svg class="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+           <div class="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
+            <h1 class="text-lg sm:text-xl font-bold text-center sm:text-center">Atlit</h1>
+             <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
+           </div>
+        </div>
         </div>
 
         {/* VISI MISI */}
