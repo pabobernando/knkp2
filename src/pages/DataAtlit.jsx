@@ -31,7 +31,7 @@ function DataAtlit() {
       .then(response => {
         if (response.ok) {
           // Jika respons dari server sukses, hapus atlet dari state
-          const updatedAthletes = athletes.filter(a => a.id !== athlete.id);
+          const updatedAthletes = athletes.filter(a => a.id !== atlit.id);
           setAthletes(updatedAthletes);
         } else {
           // Jika respons dari server gagal, tampilkan pesan error
