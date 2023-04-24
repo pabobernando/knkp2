@@ -39,46 +39,56 @@ function Home() {
 </div>
 
 
+<div className="container mx-auto mt-10">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-40">
+  <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
+    <img src={LogoKoni} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
+    <div className="px-4 py-5 sm:p-6">
+        <dl>
+            <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
+                Data Atlit
+            </dt>
+            <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
+                496
+            </dd>
+        </dl>
+    </div>
+</div>
+    <div>
+    <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
+    <img src={LogoKoni} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
+    <div className="px-4 py-5 sm:p-6">
+        <dl>
+            <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
+                Data Atlit
+            </dt>
+            <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
+                496
+            </dd>
+        </dl>
+    </div>
+</div>
 
-        <div className='grid grid-cols-3 text-center px-8 mt-8'>
-        <div className="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg pt-3 pb-3 px-8 mx-8">
-            <div className="flex items-center justify-center sm:justify-start">
-              <svg className="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-              </svg>
-            </div>
-           <div className="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
-            <h1 className="text-lg sm:text-xl font-bold text-center sm:text-center">ATLIT</h1>
-             <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
-           </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg px-8 pt-3 pb-3 mx-8">
-            <div className="flex items-center justify-center sm:justify-start">
-              <svg className="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-              </svg>
-            </div>
-           <div className="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
-            <h1 className="text-lg sm:text-xl font-bold text-center sm:text-center">PELATIH</h1>
-             <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
-           </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 border-2 border-red-600 rounded-lg pt-3 pb-3 px-8 mx-8">
-            <div className="flex items-center justify-center sm:justify-start">
-              <svg className="h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-              </svg>
-            </div>
-           <div className="flex flex-col items-center sm:items-center justify-center px-4 sm:px-0 py-4 sm:py-0">
-            <h1 className="text-lg sm:text-xl font-bold text-center sm:text-center">WASIT</h1>
-             <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-center">246</h1>
-           </div>
-        </div>
-        </div>
+    </div>
+    <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
+    <img src={LogoKoni} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
+    <div className="px-4 py-5 sm:p-6">
+        <dl>
+            <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
+                Data Atlit
+            </dt>
+            <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
+                496
+            </dd>
+        </dl>
+    </div>
+</div>
+  </div>
+</div>
 
         {/* VISI MISI */}
         <div className="container mx-auto mt-10">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-40">
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-5">VISI</h1>
       <h2 className="text-lg">Terwujudnya Prestasi Olahraga Kulon Progo yang unggul di Daerah dan Nasional</h2>

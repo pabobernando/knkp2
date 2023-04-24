@@ -29,7 +29,7 @@ function Navbar() {
       </a>
     </div>
     <div>
-      <a onClick={() => navigate('/Dashboard')} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0 hover:cursor-pointer">Dashboard</a>
+      <a onClick={() => navigate('/DataAtlit')} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0 hover:cursor-pointer">Dashboard</a>
     </div>
   </div>
 </nav>

@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom'
 
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('http://103.54.170.133:3000/api/v1/login', {
+    const response = await fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ userName, password })
     });
     
     
@@ -23,7 +23,7 @@ function LoginPage() {
       window.localStorage.setItem('token', json.token)
       navigate('/DataAtlit')
     } else {
-      alert("email atau password salah !");
+      alert("Username atau password salah !");
     }
   };
 
@@ -37,17 +37,17 @@ function LoginPage() {
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="email-address" className="sr-only">Email address</label>
+              <label htmlFor="text" className="sr-only">Username</label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
+                id="username"
+                name="username"
+                type="text"
+                autoComplete="username"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder="Username"
               />
             </div>
             <div>

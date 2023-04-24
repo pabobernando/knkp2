@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^1.4.2",
+    "file-saver": "^2.0.5",
     "postcss-cli": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "react-slick": "^0.29.0"
+    "react-slick": "^0.29.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
