@@ -16,17 +16,18 @@ function DataAtlit() {
     useEffect(() => {
       fetch('http://localhost:3000/api/v1/atlit')
         .then(response => response.json())
-        .then(data => setAthletes(data))
+        .then(data => {
+          setAthletes(data) 
+        })
         .catch(error => console.error(error));
     }, []);
 
     const handleDelete = (atlit) => {
-      fetch('http://localhost:3000/api/v1/atlit', {
+      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id: atlit.id})
       })
       .then(response => {
         if (response.ok) {
