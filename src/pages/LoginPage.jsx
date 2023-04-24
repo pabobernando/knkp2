@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,12 +14,12 @@ function LoginPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
     });
-    if (response.ok) {
-      // login successful, redirect to dashboard
-      window.location.href = '/DataAtlit';
+    if (response.ok && response.status === 200) {
+      const json = await response.json()
+      window.localStorage.setItem('token', json.token)
+      navigate('/DataAtlit')
     } else {
-      // login failed, display error message
-      setErrorMessage('Invalid username or password');
+      alert("Username atau password salah !");
     }
   };
 
