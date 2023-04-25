@@ -64,30 +64,14 @@ function DataAtlit() {
       .catch(error => console.error(error));
     }
 
-    const handleAdd = (event) => {
-      event.preventDefault()
-      fetch('http://localhost:3000/api/v1/atlit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(response => {
-        if(response.ok){
-          setIsOpenAdd(false)
-        }else{
-          throw new Error('Gagal menambahkan data atlet');
-        }
-      })
-      .catch(error => console.error(error));
-    }
+    
     
 
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
     <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedAthele?.nama} />
-    <ModalAdd onClose={closeModal} onOk={handleAdd} isOpen={isOpenAdd} />
+    <ModalAdd onClose={closeModal} isOpen={isOpenAdd} />
     <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
             <NavbarSide />
