@@ -11,8 +11,10 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
     })
 
     useEffect(() => {
-        setFormValue(initialValue)
-    }, [initialValue])
+      if (initialValue) {
+          setFormValue(initialValue)
+      }
+  }, [initialValue])
 
     function updateForm(field, value) {
         const cForm = Object.assign({}, formValue)
