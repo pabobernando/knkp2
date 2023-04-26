@@ -1,44 +1,31 @@
 import React, { useState } from "react";
-import CaborData from "../config/caborData";
+import { useEffect } from "react";
 
-function ModalAdd() {
-const CaborId = CaborData
+function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
+    const [formValue, setFormValue] = useState({
+        nik: '',
+        name: '',
+        alamat_lengkap: '',
+        ttl: '',
+        telephone: '',
+    })
 
-    const handleAdd = (event) => {
-        event.preventDefault();
-      
-        const formData = {
-          nik: event.target.nik.value,
-          nama: event.target.nama.value,
-          alamat: event.target.alamat.value,
-          ttl: event.target.ttl.value,
-          telephone: event.target.telephone.value,
-          gender: event.target.gender.value,
-          prestasi: event.target.prestasi.value,
-          caborId: parseInt(event.target.cabor_id.value)
-        };
-   
-        fetch('http://localhost:3000/api/v1/atlit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
+    useEffect(() => {
+        setFormValue(initialValue)
+    }, [initialValue])
+
+    function updateForm(field, value) {
+        const cForm = Object.assign({}, formValue)
+        setFormValue({
+            ...cForm,
+            [field]: value
         })
-        .then(response => {
-          if (response.ok) {
-            setIsOpenAdd(false);
-          } else {
-            throw new Error('Gagal menambahkan data atlet');
-          }
-        })
-        .catch(error => console.error(error));
-      }
-      
+    }
 
-  return (
-    <div className="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
-      <form onSubmit={handleAdd}>
+  return isOpen && (
+    <div>
+        <div className="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
+      <form onSubmit={onOk}>
         <div className="px-4 py-8 sm:px-10">
           <div className="relative mt-6">
             <div className="absolute inset-0 flex items-center">
@@ -55,12 +42,14 @@ const CaborId = CaborData
               <div className="w-full">
                 <div className=" relative ">
                   <input
+                    value={formValue.nik}
                     type="number"
                     name="nik"
                     id="nik"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Nomor Indentitas Kependudukan"
                     required
+                    onChange={(event) => updateForm('nik', event.target.value)}
                   />
                 </div>
               </div>
@@ -69,9 +58,11 @@ const CaborId = CaborData
                   <input
                     type="text"
                     name="nama"
+                    value={formValue.nama}
                     id="nama"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Nama Lengkap"
+                    onChange={(event) => updateForm('nama', event.target.value)}
                     required
                   ></input>
                 </div>
@@ -139,24 +130,16 @@ const CaborId = CaborData
               </div>
               <div className="w-full">
   <div className="relative">
-    <select
-      name="cabor_id"
-      id="cabor_id"
-      className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-      required
-    >
-      <option value="">Cabor</option>
-      {CaborId.map((cabor) => (
-        <option key={cabor.id} value={cabor.id}>
-          {cabor.nama}
-        </option>
-      ))}
-    </select>
+    
   </div>
 </div>
               <div>
                 <span className="block w-full rounded-md shadow-sm">
                   <button
+                    onClick={(event) => {
+                        event.preventDefault() 
+                        onOk(formValue) 
+                    }}
                     type="submit"
                     className="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   >
@@ -171,8 +154,11 @@ const CaborId = CaborData
           <p className="text-xs leading-5 text-gray-500">
             - Koni Kulon Progo -
           </p>
+          
         </div>
       </form>
+      <button onClick={onClose} className="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">Close</button>
+    </div>
     </div>
   );
 }
