@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import caborData from '../config/caborData'
 
 function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
     const [formValue, setFormValue] = useState({
         nik: '',
-        name: '',
-        alamat_lengkap: '',
+        nama: '',
+        alamat: '',
         ttl: '',
         telephone: '',
+        caborId: 0
     })
 
+    const CaborId = caborData
     useEffect(() => {
       if (initialValue) {
           setFormValue(initialValue)
@@ -74,10 +77,12 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                   <input
                     type="text"
                     name="alamat"
+                    value={formValue.alamat}
                     id="alamat"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Alamat Lengkap"
                     required
+                    onChange={(event) => updateForm('alamat', event.target.value)}
                   />
                 </div>
               </div>
@@ -86,10 +91,12 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                   <input
                     type="text"
                     name="ttl"
+                    value={formValue.ttl}
                     id="ttl"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="TTL"
                     required
+                    onChange={(event) => updateForm('ttl', event.target.value)}
                   />
                 </div>
               </div>
@@ -98,10 +105,12 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                   <input
                     type="text"
                     name="telephone"
+                    value={formValue.telephone}
                     id="telephone"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Telephone"
                     required
+                    onChange={(event) => updateForm('telephone', event.target.value)}
                   />
                 </div>
               </div>
@@ -109,9 +118,11 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                 <div className="relative">
                   <select
                     name="gender"
+                    value={formValue.gender}
                     id="gender"
                     className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     required
+                    onChange={(event) => updateForm('gender', event.target.value)}
                   >
                     <option value="">Jenis Kelamain</option>
                     <option value="MALE">Laki-laki</option>
@@ -124,17 +135,33 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                   <input
                     type="text"
                     name="prestasi"
+                    value={formValue.prestasi}
                     id="prestasi"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Prestasi"
+                    onChange={(event) => updateForm('prestasi', event.target.value)}
                   />
                 </div>
               </div>
               <div className="w-full">
-  <div className="relative">
-    
-  </div>
-</div>
+                <div className="relative">
+                  <select
+                    name="caborId"
+                    value={formValue.caborId}
+                    id="caborId"
+                    className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    required
+                    onChange={(event) => updateForm('caborId', parseInt(event.target.value))}
+                  >
+                    <option value="">Cabang Olahraga</option>
+                    {CaborId.map((item) => (
+        <option key={item.id} value={item.id}>
+          {item.nama}
+        </option>
+      ))}
+                  </select>
+                </div>
+              </div>
               <div>
                 <span className="block w-full rounded-md shadow-sm">
                   <button
