@@ -58,7 +58,7 @@ function NavbarSide() {
                                 Data Sarpras
                             </span>
                         </a>
-                        <a className="flex items-center justify-start w-full p-2 pl-6 my-2 text-white transition-colors duration-200 border-l-4 border-white hover:text-gray-800" href="#">
+                        <a onClick={() => navigate('/')} className="flex items-center justify-start w-full p-2 pl-6 my-2 text-white transition-colors duration-200 border-l-4 border-white hover:text-gray-800" href="#">
                             <span className="text-left">
                             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />

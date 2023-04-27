@@ -32,6 +32,10 @@ function DataAtlit() {
       setIsOpenAdd(false)
       console.log("modal nutup")
     }
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
   
     const token = window.localStorage.getItem('token')
     if (!token) {
@@ -88,6 +92,25 @@ function DataAtlit() {
       .catch(error => console.error(error));
     }
     
+    const handleEdit = (form) => {
+      const atlit = selectedAthele;
+      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form)
+      })
+      .then(response => {
+        if (response.ok) {
+          setIsOpenAdd(false);
+          refreshPage()
+        } else {
+          throw new Error('Gagal edit data atlet');
+        }
+      })
+      .catch(error => console.error(error))
+    }
     
     
 
@@ -95,7 +118,7 @@ function DataAtlit() {
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
     <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedAthele?.nama} />
-    <ModalAdd onClose={closeModalAdd} onOk={handleAdd} isOpen={isOpenAdd} initialValue={selectedAthele} />
+    <ModalAdd onClose={closeModalAdd} onOk={handleEdit} isOpen={isOpenAdd} initialValue={selectedAthele} />
     <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
             <NavbarSide />
