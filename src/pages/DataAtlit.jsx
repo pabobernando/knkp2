@@ -18,6 +18,15 @@ function DataAtlit() {
       setIsOpen(true);
     };
 
+    const getDataAtlit = () => {
+      fetch('http://localhost:3000/api/v1/atlit')
+        .then(response => response.json())
+        .then(data => {
+          setAthletes(data) 
+        })
+        .catch(error => console.error(error));
+    }
+
     const openModalAdd = () => {
       setIsOpenAdd(true)
       console.log("modal bukak")
@@ -43,12 +52,7 @@ function DataAtlit() {
     }
   
     useEffect(() => {
-      fetch('http://localhost:3000/api/v1/atlit')
-        .then(response => response.json())
-        .then(data => {
-          setAthletes(data) 
-        })
-        .catch(error => console.error(error));
+      getDataAtlit()
     }, []);
 
     const handleDelete = () => {
@@ -85,6 +89,7 @@ function DataAtlit() {
       .then(response => {
         if (response.ok) {
           setIsOpenAdd(false);
+          getDataAtlit()
         } else {
           throw new Error('Gagal menambahkan data atlet');
         }
@@ -104,7 +109,7 @@ function DataAtlit() {
       .then(response => {
         if (response.ok) {
           setIsOpenAdd(false);
-          refreshPage()
+          getDataAtlit()
         } else {
           throw new Error('Gagal edit data atlet');
         }
@@ -112,13 +117,20 @@ function DataAtlit() {
       .catch(error => console.error(error))
     }
     
+    const handleOk = (form) => {
+      if (form.id) {
+        handleEdit(form);
+      } else {
+        handleAdd(form);
+      }
+    }
     
 
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
     <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedAthele?.nama} />
-    <ModalAdd onClose={closeModalAdd} onOk={handleEdit} isOpen={isOpenAdd} initialValue={selectedAthele} />
+    <ModalAdd onClose={closeModalAdd} onOk={handleOk} isOpen={isOpenAdd} initialValue={selectedAthele} />
     <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
             <NavbarSide />

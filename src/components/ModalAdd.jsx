@@ -30,6 +30,9 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
   return isOpen && (
     <div>
         <div className="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
+          <div className="w-full text-end">
+          <button onClick={onClose} className="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-1/7 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full mt-2 mr-2">X</button>
+          </div>
       <form onSubmit={onOk}>
         <div className="px-4 py-8 sm:px-10">
           <div className="relative mt-6">
@@ -186,7 +189,6 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
           
         </div>
       </form>
-      <button onClick={onClose} className="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">Close</button>
     </div>
     </div>
   );
