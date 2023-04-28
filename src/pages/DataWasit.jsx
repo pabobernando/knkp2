@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavbarSide from '../components/NavbarSide'
-import ModalDelete from '../components/ModalDelete';
-import ModalAdd from '../components/ModalAdd';
+import ModalDelete from '../components/ModalDeleteWasit';
+import ModalAdd from '../components/ModalAddWasit';
 
 function DataWasit() {
 
@@ -90,7 +90,6 @@ function DataWasit() {
         if (response.ok) {
           setIsOpenAdd(false);
           getDataWasit()
-          console.log("add", DataWasit)
         } else {
           throw new Error('Gagal menambahkan data wasit');
         }
