@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Navbar from '../components/Navbar'
 import LogoKoni from '../assets/koni.png'
 import Footer from '../components/Footer'
@@ -7,6 +7,42 @@ import CaborName from '../components/CaborName'
 
 function Home() {
 
+  const [jumlahAtlit, setJumlahAtlit] = useState()
+  const [jumlahPelatih, setJumlahPelatih] = useState()
+  const [jumlahWasit, setJumlahWasit] = useState()
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/v1/atlit/count')
+  .then(response => response.json())
+  .then(data => {
+    setJumlahAtlit(data.total)
+    
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  fetch('http://localhost:3000/api/v1/pelatih/count')
+  .then(response => response.json())
+  .then(data => {
+    setJumlahPelatih(data.total)
+    
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  fetch('http://localhost:3000/api/v1/wasit/count')
+  .then(response => response.json())
+  .then(data => {
+    setJumlahWasit(data.total)
+    
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  }, []);
 
   
   return (
@@ -49,7 +85,7 @@ function Home() {
                 Data Atlit
             </dt>
             <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
-                496
+                {jumlahAtlit}
             </dd>
         </dl>
     </div>
@@ -60,10 +96,10 @@ function Home() {
     <div className="px-4 py-5 sm:p-6">
         <dl>
             <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
-                Data Atlit
+                Data Pelatih
             </dt>
             <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
-                496
+                {jumlahPelatih}
             </dd>
         </dl>
     </div>
@@ -75,10 +111,10 @@ function Home() {
     <div className="px-4 py-5 sm:p-6">
         <dl>
             <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
-                Data Atlit
+                Data Wasit
             </dt>
             <dd className="mt-1 text-3xl font-semibold leading-9 text-gray-900">
-                496
+                {jumlahWasit}
             </dd>
         </dl>
     </div>
