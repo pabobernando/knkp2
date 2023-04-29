@@ -13,7 +13,7 @@ function DataSarpras() {
     }
   
     useEffect(() => {
-      fetch('http://103.54.170.133:3000/api/v1/atlit')
+      fetch('http://localhost:3000/api/v1/sarpras')
         .then(response => response.json())
         .then(data => setAthletes(data))
         .catch(error => console.error(error));
