@@ -19,12 +19,93 @@ function DataAtlit() {
     };
 
     const getDataAtlit = () => {
-      fetch('http://localhost:3000/api/v1/atlit')
+      const token = localStorage.getItem('token');
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  };
+      fetch('http://localhost:3000/api/v1/atlit', {headers})
         .then(response => response.json())
         .then(data => {
           setAthletes(data) 
         })
         .catch(error => console.error(error));
+    }
+
+    const handleDelete = () => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      const atlit = selectedAthele
+      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          ...headers
+        },
+      })
+      .then(response => {
+        if (response.ok) {
+          // nek lancar 
+          const updatedAthletes = athletes.filter(a => a.id !== atlit.id);
+          setAthletes(updatedAthletes);
+          setIsOpen(false)
+        } else {
+          // nek semisal err
+          throw new Error('Gagal menghapus data atlet');
+        }
+      })
+      .catch(error => console.error(error));
+    }
+    
+
+    const handleAdd = (form) => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      fetch('http://localhost:3000/api/v1/atlit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...headers
+        },
+        body: JSON.stringify(form)
+      })
+      .then(response => {
+        if (response.ok) {
+          setIsOpenAdd(false);
+          getDataAtlit()
+        } else {
+          throw new Error('Gagal menambahkan data atlet');
+        }
+      })
+      .catch(error => console.error(error));
+    }
+    
+    const handleEdit = (form) => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      const atlit = selectedAthele;
+      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...headers
+        },
+        body: JSON.stringify(form)
+      })
+      .then(response => {
+        if (response.ok) {
+          setIsOpenAdd(false);
+          getDataAtlit()
+        } else {
+          throw new Error('Gagal edit data atlet');
+        }
+      })
+      .catch(error => console.error(error))
     }
 
     const openModalAdd = () => {
@@ -55,67 +136,7 @@ function DataAtlit() {
       getDataAtlit()
     }, []);
 
-    const handleDelete = () => {
-      const atlit = selectedAthele
-      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(response => {
-        if (response.ok) {
-          // nek lancar 
-          const updatedAthletes = athletes.filter(a => a.id !== atlit.id);
-          setAthletes(updatedAthletes);
-          setIsOpen(false)
-        } else {
-          // nek semisal err
-          throw new Error('Gagal menghapus data atlet');
-        }
-      })
-      .catch(error => console.error(error));
-    }
-
-    const handleAdd = (form) => {
- 
-      fetch('http://localhost:3000/api/v1/atlit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form)
-      })
-      .then(response => {
-        if (response.ok) {
-          setIsOpenAdd(false);
-          getDataAtlit()
-        } else {
-          throw new Error('Gagal menambahkan data atlet');
-        }
-      })
-      .catch(error => console.error(error));
-    }
     
-    const handleEdit = (form) => {
-      const atlit = selectedAthele;
-      fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form)
-      })
-      .then(response => {
-        if (response.ok) {
-          setIsOpenAdd(false);
-          getDataAtlit()
-        } else {
-          throw new Error('Gagal edit data atlet');
-        }
-      })
-      .catch(error => console.error(error))
-    }
     
     const handleOk = (form) => {
       if (form.id) {
@@ -124,6 +145,26 @@ function DataAtlit() {
         handleAdd(form);
       }
     }
+
+    const downloadFile = async () => {
+      console.log("tes donlot");
+      try {
+        const response = await fetch('/atlit/download', {
+          method: 'GET',
+        });
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Athletes.xlsx');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } catch (err) {
+        console.error('Error downloading file:', err);
+      }
+    }
+    
     
 
   return (
@@ -152,7 +193,7 @@ function DataAtlit() {
                 </div>
                 <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                     <div className="relative flex items-center justify-end w-full p-1 space-x-4">
-                        <button className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
+                        <button onClick={downloadFile} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
 </svg>

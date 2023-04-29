@@ -18,14 +18,6 @@ function DataPelatih() {
       setIsOpen(true);
     };
 
-    const getDataPelatih = () => {
-      fetch('http://localhost:3000/api/v1/pelatih')
-        .then(response => response.json())
-        .then(data => {
-          setPelatihs(data) 
-        })
-        .catch(error => console.error(error));
-    }
 
     const openModalAdd = () => {
       setIsOpenAdd(true)
@@ -50,17 +42,31 @@ function DataPelatih() {
     if (!token) {
       navigate('/LoginPage2')
     }
-  
-    useEffect(() => {
-      getDataPelatih()
-    }, []);
+
+    const getDataPelatih = () => {
+       const token = localStorage.getItem('token');
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  };
+      fetch('http://localhost:3000/api/v1/pelatih',{headers})
+        .then(response => response.json())
+        .then(data => {
+          setPelatihs(data) 
+        })
+        .catch(error => console.error(error));
+    }
 
     const handleDelete = () => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       const pelatih = selectedPelatih
       fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          ...headers
         },
       })
       .then(response => {
@@ -78,11 +84,15 @@ function DataPelatih() {
     }
 
     const handleAdd = (form) => {
- 
+ const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       fetch('http://localhost:3000/api/v1/pelatih', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...headers
         },
         body: JSON.stringify(form)
       })
@@ -98,11 +108,16 @@ function DataPelatih() {
     }
     
     const handleEdit = (form) => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       const pelatih = selectedPelatih;
       fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          ...headers
         },
         body: JSON.stringify(form)
       })
@@ -124,6 +139,12 @@ function DataPelatih() {
         handleAdd(form);
       }
     }
+  
+    useEffect(() => {
+      getDataPelatih()
+    }, []);
+
+    
     
 
   return (

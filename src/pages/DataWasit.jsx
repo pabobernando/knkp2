@@ -19,7 +19,11 @@ function DataWasit() {
     };
 
     const getDataWasit = () => {
-      fetch('http://localhost:3000/api/v1/wasit')
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      fetch('http://localhost:3000/api/v1/wasit', {headers})
         .then(response => response.json())
         .then(data => {
           setWasits(data) 
@@ -56,6 +60,11 @@ function DataWasit() {
     }, []);
 
     const handleDelete = () => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        ...headers
+      };
       const wasit = selectedWasit
       fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
         method: 'DELETE',
@@ -78,11 +87,15 @@ function DataWasit() {
     }
 
     const handleAdd = (form) => {
- 
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       fetch('http://localhost:3000/api/v1/wasit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...headers
         },
         body: JSON.stringify(form)
       })
@@ -98,11 +111,16 @@ function DataWasit() {
     }
     
     const handleEdit = (form) => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       const wasit = selectedWasit;
       fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          ...headers
         },
         body: JSON.stringify(form)
       })
