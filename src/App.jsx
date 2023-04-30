@@ -9,6 +9,7 @@ import DataWasit from './pages/DataWasit'
 import DataSarpras from './pages/DataSarpras'
 import LoginPage2 from './pages/LoginPage2'
 import Table from './components/TableNew'
+import CMS from './pages/Cms'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/DataSarpras' element={<DataSarpras />}></Route>
         <Route path='/LoginPage2' element={<LoginPage2 />}></Route>
         <Route path='/TableNew' element={<Table />}></Route>
+        <Route path='/CMS' element={<CMS />}></Route>
       </Routes>
     </Router>
   )
