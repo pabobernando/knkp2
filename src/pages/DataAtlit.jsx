@@ -153,10 +153,18 @@ function DataAtlit() {
     }
 
     const downloadFile = async () => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
       console.log("tes donlot");
       try {
-        const response = await fetch('/atlit/download', {
+        const response = await fetch('http://localhost:3000/api/v1/atlit/download', {
           method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          ...headers
+          }
         });
         const blob = await response.blob();
         const url = window.URL.createObjectURL(new Blob([blob]));

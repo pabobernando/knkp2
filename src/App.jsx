@@ -23,7 +23,7 @@ function App() {
         <Route path='/DataPelatih' element={<DataPelatih />}></Route>
         <Route path='/DataWasit' element={<DataWasit />}></Route>
         <Route path='/DataSarpras' element={<DataSarpras />}></Route>
-        <Route path='/LoginPage2' element={<LoginPage2 />}></Route>
+        <Route path='/LoginPage' element={<LoginPage2 />}></Route>
         <Route path='/TableNew' element={<Table />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
       </Routes>
