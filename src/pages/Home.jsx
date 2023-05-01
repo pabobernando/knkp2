@@ -12,30 +12,30 @@ function Home() {
   const [jumlahWasit, setJumlahWasit] = useState()
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/atlit/count')
+    fetch('http://localhost:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
-    setJumlahAtlit(data.total)
+    setJumlahAtlit(data.atlit)
     
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   });
 
-  fetch('http://localhost:3000/api/v1/pelatih/count')
+  fetch('http://localhost:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
-    setJumlahPelatih(data.total)
+    setJumlahPelatih(data.pelatih)
     
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   });
 
-  fetch('http://localhost:3000/api/v1/wasit/count')
+  fetch('http://localhost:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
-    setJumlahWasit(data.total)
+    setJumlahWasit(data.wasit)
     
   })
   .catch(error => {
