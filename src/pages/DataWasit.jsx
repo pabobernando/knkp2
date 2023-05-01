@@ -11,6 +11,7 @@ function DataWasit() {
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenAdd, setIsOpenAdd] = useState(false)
     const [selectedWasit, setSelectedWasit] = useState()
+    const [page, setPage] = useState(0)
 
     const openModal = (wasit) => {
       console.log(wasit);
@@ -18,17 +19,22 @@ function DataWasit() {
       setIsOpen(true);
     };
 
-    const getDataWasit = () => {
+    const getDataWasit = (page = 0, limit = 5) => {
       const token = localStorage.getItem('token');
       const headers = {
         'Authorization': `Bearer ${token}`
       };
-      fetch('http://localhost:3000/api/v1/wasit', {headers})
+      fetch(`http://localhost:3000/api/v1/wasit?page=${page}&limit=${limit}`, {headers})
         .then(response => response.json())
         .then(data => {
           setWasits(data) 
         })
         .catch(error => console.error(error));
+    }
+
+    const nextPage =  (page) => {
+      setPage(page)
+       getDataWasit(page, 5)
     }
 
     const openModalAdd = () => {
@@ -187,7 +193,7 @@ function DataWasit() {
             </header>
                 <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-2 lg:grid-cols-1">
                     <div className="w-full">
-                    <table className="table-auto">
+                    <table className="table-auto w-full">
         <thead>
           <tr>
             <th className=" border-2 solid bg-red-800 text-white px-4 py-2 rounded-tl-lg">#</th>
@@ -238,6 +244,17 @@ function DataWasit() {
           ))}
         </tbody>
       </table>
+      <div className='grid grid-cols-2 mt-5'>
+            <div className='text-center'><button className='text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full' onClick={() => nextPage(page - 1)}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+</button></div>
+            <div className='text-center'><button className='bg-white hover:border border-red-700 text-gray-700 font-bold py-2 px-4 rounded-full' onClick={() => nextPage(page + 1)}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg></button></div>
+      </div>
                     </div>
                 </div>
             </div>
