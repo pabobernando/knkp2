@@ -13,7 +13,7 @@ function Berita() {
         <div className=''>
           <img src={Anggar} className="w-10/12 h-8/12 mx-auto"/>
           <h1 className='text-center text-3xl font-bold py-4 px-6'>IKASI KULONPROGO PERTAHANKAN JUARA UMUM DI PORDA 2022</h1>
-          <p className='text-justify px-12'>Tim anggar Kulonprogo berhasil mempertahankan gelar juara umum Pekan Olahraga Daerah (PORDA) DIY XVI 2022 untuk keempat kalinya secara berturut-turut dengan meraih 8 medali emas, 3 perak dan 5 perunggu.
+          <p className='text-justify px-12 text-gray-500'>Tim anggar Kulonprogo berhasil mempertahankan gelar juara umum Pekan Olahraga Daerah (PORDA) DIY XVI 2022 untuk keempat kalinya secara berturut-turut dengan meraih 8 medali emas, 3 perak dan 5 perunggu.
 
 Ketua Pengurus Kabupaten (Pengkab) Ikatan Anggar Seluruh Indonesia (IKASI) Kulonprogo,Rohedy Goenoeng Poerwohandoko, S.Sos didampingi Sekum Pengkab Ikasi Kulonprogo Krisnawan Indriarto, S.Or mengatakan:”Cabor anggar di PORDA DIY 2022 melombakan 12 nomor pertandingan.
 
@@ -22,7 +22,7 @@ Kulonprogo di PORDA tahun ini sukses merebut 8 emas, diraih Kasi Fuji Rohmanta d
         <div>
         <img src={TaliAsih} className="w-12/12 h-12/12 mx-auto "/>
         <h1 className='text-center font-bold text-4xl py-4'>KEJURKAB KARATE PELAJAR KULONPROGO 2022</h1>
-        <p className='text-justify'>Minggu tanggal 31 Juli 2022 bertempat di Aula SMKN 2 Pengasih, Pengurus Institut Karate-Do Indonesia (Inkai) Kulonprogo menggelar Kejuaraan Karate Pelajar se Kabupaten Kulonprogo. Sebanyak 211 atlet karate Kulonprogo mengikuti event tersebut. Event dibukaoleh Kepala Bidang Pemuda dan Olahraga Dinas Pendidikan Pemuda dan Olahraga Kulonprogo Akhid Nur Hartono, S.Pt.,MM, serta dihadiri Ketua KONI Kabupaten Kulonprogo Kusdira, BA.
+        <p className='text-justify text-gray-500'>Minggu tanggal 31 Juli 2022 bertempat di Aula SMKN 2 Pengasih, Pengurus Institut Karate-Do Indonesia (Inkai) Kulonprogo menggelar Kejuaraan Karate Pelajar se Kabupaten Kulonprogo. Sebanyak 211 atlet karate Kulonprogo mengikuti event tersebut. Event dibukaoleh Kepala Bidang Pemuda dan Olahraga Dinas Pendidikan Pemuda dan Olahraga Kulonprogo Akhid Nur Hartono, S.Pt.,MM, serta dihadiri Ketua KONI Kabupaten Kulonprogo Kusdira, BA.
 
 Fadli Nur Affandi selakuketua panitia penyelenggara, mengatakan bahwa kejurkab ini diselenggarakan bertujuan untuk mencari regenerasi atlet karate di Kabupaten Kulonprogo serta untuk menambah point atau nilai di sekolah bagi para juara.
 
@@ -36,7 +36,7 @@ Download Best WordPress Themes Free DownloadDownload WordPress Themes FreeDownlo
         <div className=''>
           <img src={Dayung} className="w-10/12 h-8/12 mx-auto "/>
           <h1 className='text-center font-bold text-3xl py-4 px-6'>DAYUNG KULONPROGO LAMPAUI TARGET PORDA 2022</h1>
-          <p className='text-justify px-12'>Prestasi membanggakan diraih oleh Pengurus Kabupaten (Pengkab) Persatuan Olahraga Dayung Seluruh Indonesia (PODSI) Kulonprogo di event Pekan Olahraga Daerah (PORDA) DIY XVI tahun 2022. Dengan merebut 6 medali emas, 3 perak dan 4 perunggu Dayung melampaui target yang dicanangkan.
+          <p className='text-justify px-12 text-gray-500'>Prestasi membanggakan diraih oleh Pengurus Kabupaten (Pengkab) Persatuan Olahraga Dayung Seluruh Indonesia (PODSI) Kulonprogo di event Pekan Olahraga Daerah (PORDA) DIY XVI tahun 2022. Dengan merebut 6 medali emas, 3 perak dan 4 perunggu Dayung melampaui target yang dicanangkan.
 
 Ketua Pengkab PODSI Kulonprogo, Rochmad Nur Kholis mengatakan, sejak awal dimulai Pemusatan Latihan Kabupaten (Pelatkab), tim PODSI Kulonprogo menargetkan 5 medali emas.
 
@@ -47,20 +47,21 @@ Enam medali emas dipersembahkan oleh Yuan Tri Budi Prasetyo di nomor kayak 1 jar
 “Dengan persiapan yang maksimal sekitar satu tahun hasilnya bisa melebihi target yang dicanangkan. Keberhasilan ini tidak lepas dari semangat dan kedisiplinan para atlet yang telah menjalani latihan rutin setiap hari”. Jelasnya.</p>
         </div>
       </div>
-      <div className='grid grid-cols-1'>
-      <h1 className='text-center'>tes123</h1>  
+      <div className='grid grid-cols-1'>  
       </div>
       <div className='grid grid-cols-3 px-4 py-4'>
-        <div className='border border-black py-4'>
+        <div className=' py-4'>
           <div className='grid grid-cols-1 bg-white py-4 px-10'>
-          <h1 className='text-center py-4 px-4 border-t-4'>-------</h1>
+          <h1 className='text-center py-4 px-4 border-t-4 font-semibold text-1xl'>DAYUNG KULONPROGO LAMPAUI TARGET <br /> PORDA 2022</h1>
+          <p className='text-justify text-gray-500'>Prestasi membanggakan diraih oleh Pengurus Kabupaten (Pengkab) Persatuan Olahraga Dayung Seluruh Indonesia (PODSI) Kulonprogo di event Pekan Olahraga Daerah (PORDA) DIY XVI tahun 2022. Dengan merebut 6 medali emas, 3 perak dan 4 perunggu Dayung melampaui target yang dicanangkan. Ketua Pengkab PODSI Kulonprogo,</p>
           </div>
         </div>
-        <div className='border border-black py-4'>
+        <div className=' py-4'>
           <div className='grid grid-cols-1 bg-white py-4 px-10'>
           <div className='grid grid-cols-2 border-t-4'>
             <div className='mt-4'>
-              <h1></h1>
+              <h1 className='text-1xl font-semibold'>DAYUNG KULONPROGO LAMPAUI TARGET PORDA 2022</h1>
+              <p className='text-gray-500'>Prestasi membanggakan diraih oleh Pengurus Kabupaten (Pengkab) Persatuan Olahraga Dayung Seluruh Indonesia (PODSI) Kulonprogo </p>
             </div>
             <div className='mt-4'>
               <img src={Dayung} />
@@ -69,9 +70,10 @@ Enam medali emas dipersembahkan oleh Yuan Tri Budi Prasetyo di nomor kayak 1 jar
           </div>
         </div>
         <div>
-        <div className='border border-black py-4'>
+        <div className=' py-4'>
           <div className='grid grid-cols-1 bg-white py-4 px-10'>
-          <h1 className='text-center py-4 px-4 border-t-4'>-------</h1>
+          <h1 className='text-center py-4 px-4 border-t-4 font-semibold text-1xl'>DAYUNG KULONPROGO LAMPAUI TARGET <br /> PORDA 2022</h1>
+          <p className='text-justify text-gray-500'>Prestasi membanggakan diraih oleh Pengurus Kabupaten (Pengkab) Persatuan Olahraga Dayung Seluruh Indonesia (PODSI) Kulonprogo di event Pekan Olahraga Daerah (PORDA) DIY XVI tahun 2022. Dengan merebut 6 medali emas, 3 perak dan 4 perunggu Dayung melampaui target yang dicanangkan. Ketua Pengkab PODSI Kulonprogo,</p>
           </div>
         </div>
         </div>
