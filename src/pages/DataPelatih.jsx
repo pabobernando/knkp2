@@ -38,10 +38,6 @@ function DataPelatih() {
       window.location.reload(false);
     }
   
-    const token = window.localStorage.getItem('token')
-    if (!token) {
-      navigate('/LoginPage')
-    }
 
     const getDataPelatih = () => {
        const token = localStorage.getItem('token');
@@ -142,6 +138,10 @@ function DataPelatih() {
   
     useEffect(() => {
       getDataPelatih()
+      const token = window.localStorage.getItem('token')
+    if (!token) {
+      navigate('/LoginPage')
+    }
     }, []);
 
     

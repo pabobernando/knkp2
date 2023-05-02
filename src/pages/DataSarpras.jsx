@@ -7,16 +7,17 @@ function DataSarpras() {
     const [athletes, setAthletes] = useState([]);
     const navigate = useNavigate()
   
-    const token = window.localStorage.getItem('token')
-    if (!token) {
-      navigate('/LoginPage')
-    }
   
     useEffect(() => {
       fetch('http://localhost:3000/api/v1/sarpras')
         .then(response => response.json())
         .then(data => setAthletes(data))
         .catch(error => console.error(error));
+
+        const token = window.localStorage.getItem('token')
+    if (!token) {
+      navigate('/LoginPage')
+    }
     }, []);
 
   return (

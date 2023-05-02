@@ -56,13 +56,14 @@ function DataWasit() {
       window.location.reload(false);
     }
   
-    const token = window.localStorage.getItem('token')
-    if (!token) {
-      navigate('/LoginPage')
-    }
+    
   
     useEffect(() => {
       getDataWasit()
+      const token = window.localStorage.getItem('token')
+    if (!token) {
+      navigate('/LoginPage')
+    }
     }, []);
 
     const handleDelete = () => {
