@@ -7,7 +7,7 @@ import DataPelatih from './pages/DataPelatih'
 import DataAtlit from './pages/DataAtlit'
 import DataWasit from './pages/DataWasit'
 import DataSarpras from './pages/DataSarpras'
-import LoginPage2 from './pages/LoginPage2'
+import LoginPage from './pages/LoginPage'
 import Table from './components/TableNew'
 import CMS from './pages/Cms'
 
@@ -23,7 +23,7 @@ function App() {
         <Route path='/DataPelatih' element={<DataPelatih />}></Route>
         <Route path='/DataWasit' element={<DataWasit />}></Route>
         <Route path='/DataSarpras' element={<DataSarpras />}></Route>
-        <Route path='/LoginPage' element={<LoginPage2 />}></Route>
+        <Route path='/LoginPage' element={<LoginPage />}></Route>
         <Route path='/TableNew' element={<Table />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
       </Routes>

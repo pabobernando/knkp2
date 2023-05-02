@@ -40,7 +40,7 @@ function DataPelatih() {
   
     const token = window.localStorage.getItem('token')
     if (!token) {
-      navigate('/LoginPage2')
+      navigate('/LoginPage')
     }
 
     const getDataPelatih = () => {
