@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Badminton from '../assets/badminton.jpeg'
+import LogoKoni from '../assets/koni.png'
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -28,8 +29,8 @@ function LoginPage() {
 <div className="flex flex-wrap w-full">
     <div className="flex flex-col w-full md:w-1/2">
         <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
-            <a href="#" className="p-4 text-xl font-bold text-white bg-red-800">
-                Login
+            <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800">
+                <img src={LogoKoni} className="w-12 h-12 cursor-pointer" />
             </a>
         </div>
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
