@@ -12,6 +12,7 @@ function DataAtlit() {
     const [isOpenAdd, setIsOpenAdd] = useState(false)
     const [selectedAthele, setSelectedAthele] = useState()
     const [page, setPage] = useState(0)
+    const [halaman, setHalaman] = useState()
 
     const openModal = (atlit) => {
       console.log(atlit);
@@ -37,12 +38,6 @@ function DataAtlit() {
        getDataAtlit(page, 10)
     }
 
-    const prevPage = () => {
-      if(page === 1) {
-        return
-      }
-      setPage(page)
-    }
 
     const handleDelete = () => {
       const token = localStorage.getItem('token');
@@ -135,12 +130,6 @@ function DataAtlit() {
       setIsOpenAdd(false)
       console.log("modal nutup")
     }
-
-    function refreshPage() {
-      window.location.reload(false);
-    }
-  
-    
   
     useEffect(() => {
       getDataAtlit()
@@ -148,8 +137,20 @@ function DataAtlit() {
     if (!token) {
       navigate('/LoginPage')
     }
+    
     }, []);
 
+    const allAtlit = () => {
+      fetch('http://localhost:3000/api/v1/count')
+        .then(response => response.json())
+        .then(data => {
+          const pembulatanPage = Math.ceil(data.atlit / 5); // membulatkan angka ke atas
+          console.log(pembulatanPage)
+          setHalaman(pembulatanPage);
+        })
+        .catch(error => console.error(error));
+    }
+    
     
     
     const handleOk = (form) => {
@@ -283,17 +284,22 @@ function DataAtlit() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
             </svg>
 </button></div>
-            <div className='text-center'><button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${page === 6 ? 'bg-black cursor-not-allowed' : ''}`} onClick={() => nextPage(page + 1)}  disabled={page === 10}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg></button></div>
+<div className='text-center'>
+  <button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${page === halaman ? 'bg-black cursor-not-allowed' : ''}`} 
+    onClick={() => nextPage(page + 1)}  
+    disabled={page === halaman}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+    </svg>
+  </button>
+</div>
+<button onClick={allAtlit}>klik</button>
       </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> 
 </main>
 
   )

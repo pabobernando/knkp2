@@ -15,7 +15,7 @@ function NavbarSide() {
               }
             })
             localStorage.removeItem('token')
-            navigate('/LoginPage')
+            navigate('/')
           } catch (err) {
             console.error(err)
           }
