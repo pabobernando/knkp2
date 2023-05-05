@@ -36,6 +36,7 @@ function DataAtlit() {
     const nextPage =  (page) => {
       setPage(page)
        getDataAtlit(page, 10)
+       console.log("page", page)
     }
 
 
@@ -144,7 +145,7 @@ function DataAtlit() {
       fetch('http://localhost:3000/api/v1/count')
         .then(response => response.json())
         .then(data => {
-          const pembulatanPage = Math.ceil(data.atlit / 5); // membulatkan angka ke atas
+          const pembulatanPage = Math.ceil(data.atlit / 10); // membulatkan angka ke atas
           console.log(pembulatanPage)
           setHalaman(pembulatanPage);
         })
@@ -188,8 +189,6 @@ function DataAtlit() {
       }
     }
     
-    
-
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
@@ -202,7 +201,7 @@ function DataAtlit() {
         <div className="flex flex-col w-full md:space-y-4">
             
             <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
-                <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
+                <h1 className="text-4xl font-bold text-red-800 dark:text-white border border-red-400">
                     DATA ATLIT
                 </h1>
                 <header className="z-40 flex items-center justify-between w-full h-16">
