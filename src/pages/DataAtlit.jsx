@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import NavbarSide from '../components/NavbarSide'
 import ModalDelete from '../components/ModalDelete';
 import ModalAdd from '../components/ModalAdd';
+import DropdownCabor from '../components/DropdownCabor';
 
 function DataAtlit() {
 
@@ -20,12 +21,12 @@ function DataAtlit() {
       setIsOpen(true);
     };
 
-    const getDataAtlit = (page = 0, limit = 10) => {
+    const getDataAtlit = ({ page = 0, limit = 10, cabor_id = '', }) => {
       const token = localStorage.getItem('token');
   const headers = {
     'Authorization': `Bearer ${token}`
   };
-      fetch(`http://localhost:3000/api/v1/atlit?page=${page}&limit=${limit}`, {headers})
+      fetch(`http://localhost:3000/api/v1/atlit?${new URLSearchParams({ page, limit, cabor_id }).toString()}`, {headers})
         .then(response => response.json())
         .then(data => {
           setAthletes(data) 
@@ -35,7 +36,7 @@ function DataAtlit() {
 
     const nextPage =  (page) => {
       setPage(page)
-       getDataAtlit(page, 10)
+       getDataAtlit({ page, limit: 10 })
        console.log("page", page)
     }
 
@@ -84,7 +85,7 @@ function DataAtlit() {
       .then(response => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataAtlit()
+          getDataAtlit({})
         } else {
           throw new Error('Gagal menambahkan data atlet');
         }
@@ -109,7 +110,7 @@ function DataAtlit() {
       .then(response => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataAtlit()
+          getDataAtlit({})
         } else {
           throw new Error('Gagal edit data atlet');
         }
@@ -133,7 +134,7 @@ function DataAtlit() {
     }
   
     useEffect(() => {
-      getDataAtlit()
+      getDataAtlit({})
       const token = window.localStorage.getItem('token')
     if (!token) {
       navigate('/LoginPage')
@@ -167,7 +168,6 @@ function DataAtlit() {
       const headers = {
         'Authorization': `Bearer ${token}`
       };
-      console.log("tes donlot");
       try {
         const response = await fetch('http://localhost:3000/api/v1/atlit/download', {
           method: 'GET',
@@ -201,9 +201,10 @@ function DataAtlit() {
         <div className="flex flex-col w-full md:space-y-4">
             
             <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
-                <h1 className="text-4xl font-bold text-red-800 dark:text-white border border-red-400">
+                <h1 className="text-4xl font-bold text-red-800 dark:text-white ">
                     DATA ATLIT
                 </h1>
+                <DropdownCabor onChange={(idCabor) =>  getDataAtlit({ cabor_id: idCabor })} />
                 <header className="z-40 flex items-center justify-between w-full h-16">
                 <div className="block ml-6 lg:hidden">
                     <button  className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
@@ -292,7 +293,6 @@ function DataAtlit() {
     </svg>
   </button>
 </div>
-<button onClick={allAtlit}>klik</button>
       </div>
                     </div>
                 </div>
