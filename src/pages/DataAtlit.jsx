@@ -301,7 +301,7 @@ function DataAtlit() {
   </button>
 </div>
       </div>
-      <button onClick={handleButtonClick}>tes console</button>
+      
                     </div>
                 </div>
             </div>
