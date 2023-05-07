@@ -8,7 +8,7 @@ import DataAtlit from './pages/DataAtlit'
 import DataWasit from './pages/DataWasit'
 import DataSarpras from './pages/DataSarpras'
 import LoginPage from './pages/LoginPage'
-import Table from './components/TableNew'
+import Sambutan from './pages/Sambutan'
 import CMS from './pages/Cms'
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path='/DataWasit' element={<DataWasit />}></Route>
         <Route path='/DataSarpras' element={<DataSarpras />}></Route>
         <Route path='/LoginPage' element={<LoginPage />}></Route>
-        <Route path='/TableNew' element={<Table />}></Route>
+        <Route path='/Sambutan' element={<Sambutan />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
       </Routes>
     </Router>

@@ -1,15 +1,17 @@
 import React,{useState, useEffect} from 'react'
 import Navbar from '../components/Navbar'
 import LogoKoni from '../assets/koni.png'
+import LogoAtlit from '../assets/siluetA.jpg'
 import Footer from '../components/Footer'
-import Carousel from '../components/Carousel'
-import CaborName from '../components/CaborName'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
 
   const [jumlahAtlit, setJumlahAtlit] = useState()
   const [jumlahPelatih, setJumlahPelatih] = useState()
   const [jumlahWasit, setJumlahWasit] = useState()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch('http://localhost:3000/api/v1/count')
@@ -65,7 +67,7 @@ function Home() {
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">
             <div className="mt-12 inline-flex rounded-md shadow">
-                <button type="button" className="py-4 px-6  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                <button onClick={() => navigate('/Sambutan')} type="button" className="py-4 px-6  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     Lebih Lanjut
                 </button>
             </div>
@@ -78,7 +80,7 @@ function Home() {
 <div className="container mx-auto mt-10">
   <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-40">
   <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
-    <img src={LogoKoni} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
+    <img src={LogoAtlit} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4 bg-red-600"/>
     <div className="px-4 py-5 sm:p-6">
         <dl>
             <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
@@ -92,7 +94,7 @@ function Home() {
 </div>
     <div>
     <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
-    <img src={LogoKoni} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
+    <img src={LogoAtlit} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4"/>
     <div className="px-4 py-5 sm:p-6">
         <dl>
             <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">
