@@ -29,25 +29,23 @@ function LoginPage() {
 <div className="flex flex-wrap w-full">
     <div className="flex flex-col w-full md:w-1/2">
         <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
-            <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800">
-                <img src={LogoKoni} className="w-12 h-12 cursor-pointer" />
+            <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800 cursor-pointer">
+                Home
             </a>
         </div>
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
-            <p className="text-3xl text-center">
-                KONI KULON PROGO
-            </p>
+            <div className='mx-auto'><img src={LogoKoni} style={{width: "200px" ,height:"200px"}} /></div>
+            <p className='text-center text-gray-500 mt-5 text-2xl'>Selamat datang di halaman login kami. Silakan masukkan informasi login Anda untuk melanjutkan.</p>
             <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
                 <div className="flex flex-col pt-4">
                     <div className="flex relative ">
-                        <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                        <span className=" rounded-tl-lg rounded-bl-lg inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z">
                                 </path>
                             </svg>
                         </span>
-
-                        <input type="text" id="design-login-email" value={username} onChange={(event) => setUsername(event.target.value)} className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Username"/>
+                        <input type="text" id="design-login-email" value={username} onChange={(event) => setUsername(event.target.value)} className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent rounded-tr-lg rounded-br-lg" placeholder="Username"/>
                         </div>
                     </div>
                     <div className="flex flex-col pt-4 mb-12">
@@ -61,7 +59,7 @@ function LoginPage() {
                             <input type="password" id="design-login-password" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} />
                             </div>
                         </div>
-                        <button type="submit" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-800 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2">
+                        <button type="submit" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-800 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2 rounded-tr-lg rounded-lg">
                             <span className="w-full">
                                 Submit
                             </span>
