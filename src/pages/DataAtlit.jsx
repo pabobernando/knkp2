@@ -147,30 +147,30 @@ function DataAtlit() {
     fetchPageCount();
   }, []);
 
-  const fetchPageCount = () => {
-    fetch("http://localhost:3000/api/v1/count")
-      .then((response) => response.json())
-      .then((data) => {
-        const pembulatanPage = Math.ceil(data.atlit / 10); // membulatkan angka ke atas
-        setPageCount(pembulatanPage);
-        console.log(pageCount); // simpan nilai pembulatanPage ke dalam state
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const handleButtonClick = () => {
-    setHalaman(pageCount);
-    // gunakan nilai pageCount pada saat button di klik
-    console.log("Page count:", pageCount);
-  };
-
-  const handleOk = (form) => {
-    if (form.id) {
-      handleEdit(form);
-    } else {
-      handleAdd(form);
+    const fetchPageCount = () => {
+      fetch('http://localhost:3000/api/v1/count')
+        .then(response => response.json())
+        .then(data => {
+          const pembulatanPage = Math.ceil(data.atlit / 10); // membulatkan angka ke atas
+          setPageCount(pembulatanPage);
+          console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
+        })
+        .catch(error => console.error(error));
+    };
+  
+    const handleButtonClick = () => {
+      setHalaman(pageCount)
+      // gunakan nilai pageCount pada saat button di klik
+      console.log('Page count:', pageCount);
+    };
+    
+    const handleOk = (form) => {
+      if (form.id) {
+        handleEdit(form);
+      } else {
+        handleAdd(form);
+      }
     }
-  };
 
   const downloadFile = async () => {
     const token = localStorage.getItem("token");
