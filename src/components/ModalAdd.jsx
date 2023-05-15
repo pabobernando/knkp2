@@ -9,6 +9,7 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
         alamat: '',
         ttl: '',
         telephone: '',
+        prestasi: '',
         caborId: 0
     })
 
@@ -128,8 +129,8 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                     onChange={(event) => updateForm('gender', event.target.value)}
                   >
                     <option value="">Jenis Kelamain</option>
-                    <option value="MALE">PUTRA</option>
-                    <option value="FEMALE">PUTRI</option>
+                    <option value="PUTRA">PUTRA</option>
+                    <option value="PUTRI">PUTRI</option>
                   </select>
                 </div>
               </div>
