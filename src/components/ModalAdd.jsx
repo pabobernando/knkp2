@@ -128,8 +128,8 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                     onChange={(event) => updateForm('gender', event.target.value)}
                   >
                     <option value="">Jenis Kelamain</option>
-                    <option value="MALE">Laki-laki</option>
-                    <option value="FEMALE">Perempuan</option>
+                    <option value="MALE">PUTRA</option>
+                    <option value="FEMALE">PUTRI</option>
                   </select>
                 </div>
               </div>
