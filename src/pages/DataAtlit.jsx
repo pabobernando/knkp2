@@ -249,7 +249,7 @@ function DataAtlit() {
   <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
   <span>Download File</span>
 </button>
-                  <button onClick={openModalAdd} class="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+                  <button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
                   <svg className="h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
   <span className="text-white">Tambah Data Atlit</span>
 </button>
@@ -301,7 +301,7 @@ function DataAtlit() {
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Gender
+                        Jenis Kelamin
                       </th>
                       <th
                         scope="col"
@@ -367,7 +367,7 @@ function DataAtlit() {
                                 width="13"
                                 height="13"
                                 fill="currentColor"
-                                class="bi bi-pencil"
+                                className="bi bi-pencil"
                                 viewBox="0 0 16 16"
                               >
                                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793l1.293-1.293-2.293-2.293-1.293 1.293zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106a.5.5 0 0 1 .325-.468h.5v-.5a.5.5 0 0 1 .5-.5h1v-.5a.5.5 0 0 1 .5-.5h.5v-.293l-2.5-2.5z" />

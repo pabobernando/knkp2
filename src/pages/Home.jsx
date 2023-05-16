@@ -111,7 +111,7 @@ function Home() {
   </div>
   <div className='mx-auto'>
   <div className="relative overflow-hidden bg-white rounded-lg shadow w-60 md:w-72">
-        <img src={Wasit} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4 "/>
+        <img src={LogoAtlit} alt="btc logo" className="absolute w-24 h-24 rounded-full opacity-50 -top-6 -right-6 md:-right-4 "/>
         <div className="px-4 py-5 sm:p-6">
           <dl>
             <dt className="text-sm font-semibold leading-5 text-gray-500 truncate">

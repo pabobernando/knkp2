@@ -22,7 +22,7 @@ function NavbarSide() {
     }
 
   return (
-        <div className="h-full bg-gray-500 dark:bg-gray-700">
+        <div className="h-full bg-red-900 dark:bg-gray-700">
                 <div className="flex items-center justify-start pt-6 ml-8">
                     <p className="text-xl font-bold dark:text-white text-white">
                         KONI KULON PROGO
@@ -79,7 +79,6 @@ function NavbarSide() {
                             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
 </svg>
-
                             </span>
                             <span  className="mx-4 text-sm font-normal">
                                 Home
