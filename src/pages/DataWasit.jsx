@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import NavbarSide from '../components/NavbarSide'
 import ModalDelete from '../components/ModalDeleteWasit';
 import ModalAdd from '../components/ModalAddWasit';
+import DropdownCabor from '../components/DropdownCabor';
 
 function DataWasit() {
 
@@ -12,6 +13,8 @@ function DataWasit() {
     const [isOpenAdd, setIsOpenAdd] = useState(false)
     const [selectedWasit, setSelectedWasit] = useState()
     const [page, setPage] = useState(0)
+    const [halaman, setHalaman] = useState()
+    const [pageCount, setPageCount] = useState(0)
 
     const openModal = (wasit) => {
       console.log(wasit);
@@ -19,12 +22,18 @@ function DataWasit() {
       setIsOpen(true);
     };
 
-    const getDataWasit = (page = 0, limit = 5) => {
+    const getDataWasit = ({page = 0, limit = 10, cabor_id = ''}) => {
       const token = localStorage.getItem('token');
       const headers = {
         'Authorization': `Bearer ${token}`
       };
-      fetch(`http://localhost:3000/api/v1/wasit?page=${page}&limit=${limit}`, {headers})
+      fetch(`http://localhost:3000/api/v1/wasit?${new URLSearchParams({
+        page,
+        limit,
+        cabor_id,
+      }).toString()}`,
+      { headers }
+    )
         .then(response => response.json())
         .then(data => {
           setWasits(data) 
@@ -34,37 +43,9 @@ function DataWasit() {
 
     const nextPage =  (page) => {
       setPage(page)
-       getDataWasit(page, 5)
+       getDataWasit({page, limit: 10})
+       console.log("page", page)
     }
-
-    const openModalAdd = () => {
-      setIsOpenAdd(true)
-      console.log("modal bukak")
-    }
-  
-    const closeModal = () => {
-      setIsOpen(false);
-      setIsOpenAdd(false)
-    };
-
-    const closeModalAdd = () => {
-      setIsOpenAdd(false)
-      console.log("modal nutup")
-    }
-
-    function refreshPage() {
-      window.location.reload(false);
-    }
-  
-    
-  
-    useEffect(() => {
-      getDataWasit()
-      const token = window.localStorage.getItem('token')
-    if (!token) {
-      navigate('/LoginPage')
-    }
-    }, []);
 
     const handleDelete = () => {
       const token = localStorage.getItem('token');
@@ -77,6 +58,7 @@ function DataWasit() {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          ...headers
         },
       })
       .then(response => {
@@ -116,7 +98,7 @@ function DataWasit() {
       })
       .catch(error => console.error(error));
     }
-    
+
     const handleEdit = (form) => {
       const token = localStorage.getItem('token');
       const headers = {
@@ -141,6 +123,47 @@ function DataWasit() {
       })
       .catch(error => console.error(error))
     }
+
+    const openModalAdd = () => {
+      setIsOpenAdd(true)
+      console.log("modal bukak")
+    }
+  
+    const closeModal = () => {
+      setIsOpen(false);
+      setIsOpenAdd(false)
+    };
+
+    const closeModalAdd = () => {
+      setIsOpenAdd(false)
+      console.log("modal nutup")
+    }
+
+    useEffect(() => {
+      getDataWasit({})
+      const token = window.localStorage.getItem('token')
+    if (!token) {
+      navigate('/LoginPage')
+    }
+    fetchPageCount()
+    }, []);
+
+    const fetchPageCount = () => {
+      fetch('http://localhost:3000/api/v1/count')
+        .then(response => response.json())
+        .then(data => {
+          const pembulatanPage = Math.ceil(data.wasit / 10); // membulatkan angka ke atas
+          setPageCount(pembulatanPage);
+          console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
+        })
+        .catch(error => console.error(error));
+    };
+
+    const handleButtonClick = () => {
+      setHalaman(pageCount)
+      // gunakan nilai pageCount pada saat button di klik
+      console.log('Page count:', pageCount);
+    };
     
     const handleOk = (form) => {
       if (form.id) {
@@ -149,8 +172,36 @@ function DataWasit() {
         handleAdd(form);
       }
     }
-    
 
+    const downloadFile = async () => {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/v1/wasit/download",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              ...headers,
+            },
+          }
+        );
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "Data Wasit.xlsx");
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } catch (err) {
+        console.error("Error downloading file:", err);
+      }
+    };
+    
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
@@ -161,97 +212,117 @@ function DataWasit() {
             <NavbarSide />
         </div>
         <div className="flex flex-col w-full md:space-y-4">
-            
             <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
                 <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
                     DATA WASIT
                 </h1>
                 <header className="z-40 flex items-center justify-between w-full h-16">
+                <DropdownCabor 
+                onChange={(idCabor) => getDataWasit({cabor_id: idCabor})}/>
                 <div className="block ml-6 lg:hidden">
-                    <button  className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
-                        <svg width="20" height="20" className="text-gray-400" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
-                            </path>
-                        </svg>
-                    </button>
+                <button className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
+                  <svg
+                    width="20"
+                    height="20"
+                    className="text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 1792 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z"></path>
+                  </svg>
+                </button>
                 </div>
                 <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                     <div className="relative flex items-center justify-end w-full p-1 space-x-4">
-                        <button className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-</svg>
-
-                        </button>
-                        <button onClick={openModalAdd} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-</svg>
-
-                        </button>
+                    <button onClick={downloadFile} className="bg-green-400 hover:bg-gray-400 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+  <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Download File</span>
+</button>
+<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+                  <svg className="h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
+  <span className="text-white">Tambah Data Atlit</span>
+</button>
                     </div>
                 </div>
             </header>
                 <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-2 lg:grid-cols-1">
                     <div className="w-full">
-                    <table className="table-auto w-full">
-        <thead>
+                    <table className="min-w-full divide-y divide-gray-200">
+        <thead className='bg-gray-50'>
           <tr>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2 rounded-tl-lg">#</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Nik</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Nama Lengkap</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Alamat</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">TTL</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Telephone</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Gender</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Keterangan</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Prestasi</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Cabor</th>
-            <th className=' border-2 solid bg-gray-500 text-white px-4 py-2 rounded-tr-lg'>Action</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nik</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alamat</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TTL</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prestasi</th>
+            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cabor</th>
+            <th scope="col" className=' px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='bg-white divide-y divide-gray-200'>
           {wasits.map((wasit, index) => (
             <tr key={index}>
-              <td className="border px-4 py-2 bg-gray-200">{index + 1}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.nik}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.nama}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.alamat}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.ttl}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.telephone}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.gender}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.keterangan}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.prestasi}</td>
-              <td className="border px-4 py-2 bg-gray-200">{wasit.cabor.nama}</td>
-              <td className='border px-4 py-2 bg-gray-200 flex'>
-                
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.nik}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.nama}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.alamat}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.ttl}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.telephone}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.gender}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.keterangan}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.prestasi}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.cabor.nama}</td>
+              <td className='"px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
+                <div className='flex justify-items-end items-center'>
                 <button onClick={() => {
                   setSelectedWasit(wasit)
                   openModalAdd()
-                }} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-red-700 hover:bg-white text-md mx-4">
-              <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-</svg>
-
-                        </button><br /><button onClick={() => openModal(wasit)} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-</svg>
-
-
-                            
-                        </button></td>
+                }} className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="13"
+                    height="13"
+                    fill="currentColor"
+                    className="bi bi-pencil"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793l1.293-1.293-2.293-2.293-1.293 1.293zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106a.5.5 0 0 1 .325-.468h.5v-.5a.5.5 0 0 1 .5-.5h1v-.5a.5.5 0 0 1 .5-.5h.5v-.293l-2.5-2.5z" />
+                  </svg>
+                        </button>
+                        <button
+                              onClick={() => openModal(wasit)}
+                              className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                            >
+                              <svg className="h-4 w-4 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="3 6 5 6 21 6" />  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" /></svg>
+                            </button>
+                </div>
+                </td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className='grid grid-cols-2 mt-5'>
-            <div className='text-center'><button className='text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full' onClick={() => nextPage(page - 1)}>
+            <div className='text-center'>
+              <button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
+                        page === 0 ? "bg-black cursor-not-allowed" : ""
+                      }`}
+               onClick={() => nextPage(page - 1)}
+               disabled={page === 0}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
             </svg>
 </button></div>
-            <div className='text-center'><button className='bg-white hover:border border-red-700 text-gray-700 font-bold py-2 px-4 rounded-full' onClick={() => nextPage(page + 1)}>
+            <div className='text-center'><button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
+                        page === halaman ? "bg-black cursor-not-allowed" : ""
+                      }`}
+             onClick={() => nextPage(page + 1)}
+             disabled={page === pageCount}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg></button></div>

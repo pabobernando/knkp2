@@ -12,6 +12,9 @@ function DataPelatih() {
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenAdd, setIsOpenAdd] = useState(false)
     const [selectedPelatih, setSelectedPelatih] = useState()
+    const [page, setPage] = useState(0)
+    const [halaman, setHalaman] = useState()
+    const [pageCount, setPageCount] = useState(0)
 
     const openModal = (pelatih) => {
       console.log(pelatih);
@@ -19,35 +22,33 @@ function DataPelatih() {
       setIsOpen(true);
     };
 
-
-    const openModalAdd = () => {
-      setIsOpenAdd(true)
-      console.log("modal bukak")
-    }
-  
-    const closeModal = () => {
-      setIsOpen(false);
-      setIsOpenAdd(false)
-    };
-
-    const closeModalAdd = () => {
-      setIsOpenAdd(false)
-      console.log("modal nutup")
-    }
-
-
-    const getDataPelatih = () => {
-       const token = localStorage.getItem('token');
-  const headers = {
-    'Authorization': `Bearer ${token}`
-  };
-      fetch('http://localhost:3000/api/v1/pelatih',{headers})
+    const getDataPelatih = ({ page = 0, limit = 10, cabor_id = '' }) => {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      fetch(`http://localhost:3000/api/v1/pelatih?${new URLSearchParams({
+        page,
+        limit,
+        cabor_id,
+      }).toString()}`, { headers })
         .then(response => response.json())
         .then(data => {
-          setPelatihs(data) 
+          if (Array.isArray(data)) {
+            setPelatihs(data);
+          } else {
+            throw new Error('Invalid data format');
+          }
         })
         .catch(error => console.error(error));
-    }
+    };
+    
+
+      const nextPage =  (page) => {
+        setPage(page)
+         getDataWasit({page, limit: 10})
+         console.log("page", page)
+      }
 
     const handleDelete = () => {
       const token = localStorage.getItem('token');
@@ -77,54 +78,95 @@ function DataPelatih() {
     }
 
     const handleAdd = (form) => {
- const token = localStorage.getItem('token');
-      const headers = {
-        'Authorization': `Bearer ${token}`
-      };
-      fetch('http://localhost:3000/api/v1/pelatih', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...headers
-        },
-        body: JSON.stringify(form)
-      })
-      .then(response => {
-        if (response.ok) {
-          setIsOpenAdd(false);
-          getDataPelatih()
-        } else {
-          throw new Error('Gagal menambahkan data pelatih');
-        }
-      })
-      .catch(error => console.error(error));
-    }
-    
-    const handleEdit = (form) => {
       const token = localStorage.getItem('token');
-      const headers = {
-        'Authorization': `Bearer ${token}`
-      };
-      const pelatih = selectedPelatih;
-      fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          ...headers
-        },
-        body: JSON.stringify(form)
-      })
-      .then(response => {
-        if (response.ok) {
-          setIsOpenAdd(false);
-          getDataPelatih()
-        } else {
-          throw new Error('Gagal edit data pelatih');
+           const headers = {
+             'Authorization': `Bearer ${token}`
+           };
+           fetch('http://localhost:3000/api/v1/pelatih', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               ...headers
+             },
+             body: JSON.stringify(form)
+           })
+           .then(response => {
+             if (response.ok) {
+               setIsOpenAdd(false);
+               getDataPelatih()
+             } else {
+               throw new Error('Gagal menambahkan data pelatih');
+             }
+           })
+           .catch(error => console.error(error));
+         }
+
+         const handleEdit = (form) => {
+          const token = localStorage.getItem('token');
+          const headers = {
+            'Authorization': `Bearer ${token}`
+          };
+          const pelatih = selectedPelatih;
+          fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              ...headers
+            },
+            body: JSON.stringify(form)
+          })
+          .then(response => {
+            if (response.ok) {
+              setIsOpenAdd(false);
+              getDataPelatih()
+            } else {
+              throw new Error('Gagal edit data pelatih');
+            }
+          })
+          .catch(error => console.error(error))
         }
-      })
-      .catch(error => console.error(error))
+    
+    const openModalAdd = () => {
+      setIsOpenAdd(true)
+      console.log("modal bukak")
+    }
+
+    const closeModal = () => {
+      setIsOpen(false);
+      setIsOpenAdd(false)
+    };
+
+    const closeModalAdd = () => {
+      setIsOpenAdd(false)
+      console.log("modal nutup")
     }
     
+    useEffect(() => {
+      getDataPelatih({})
+      const token = window.localStorage.getItem('token')
+    if (!token) {
+      navigate('/LoginPage')
+    }
+    fetchPageCount()
+    }, []);
+
+    const fetchPageCount = () => {
+      fetch('http://localhost:3000/api/v1/count')
+        .then(response => response.json())
+        .then(data => {
+          const pembulatanPage = Math.ceil(data.pelatih / 10); // membulatkan angka ke atas
+          setPageCount(pembulatanPage);
+          console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
+        })
+        .catch(error => console.error(error));
+    };
+
+    const handleButtonClick = () => {
+      setHalaman(pageCount)
+      // gunakan nilai pageCount pada saat button di klik
+      console.log('Page count:', pageCount);
+    };
+
     const handleOk = (form) => {
       if (form.id) {
         handleEdit(form);
@@ -132,18 +174,36 @@ function DataPelatih() {
         handleAdd(form);
       }
     }
+
+    const downloadFile = async () => {
+      const token = localStorage.getItem("token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/v1/wasit/download",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              ...headers,
+            },
+          }
+        );
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "Data Wasit.xlsx");
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      } catch (err) {
+        console.error("Error downloading file:", err);
+      }
+    };
   
-    useEffect(() => {
-      getDataPelatih()
-      const token = window.localStorage.getItem('token')
-    if (!token) {
-      navigate('/LoginPage')
-    }
-    }, []);
-
-    
-    
-
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
@@ -162,63 +222,65 @@ function DataPelatih() {
                 <header className="z-40 flex items-center justify-between w-full h-16">
                 <DropdownCabor onChange={(idCabor) =>  getDataPelatih({ cabor_id: idCabor })} />
                 <div className="block ml-6 lg:hidden">
-                    <button  className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
-                        <svg width="20" height="20" className="text-gray-400" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
-                            </path>
-                        </svg>
-                    </button>
+                <button className="flex items-center p-2 text-gray-500 bg-white rounded-full shadow text-md">
+                  <svg
+                    width="20"
+                    height="20"
+                    className="text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 1792 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z"></path>
+                  </svg>
+                </button>
                 </div>
                 <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                     <div className="relative flex items-center justify-end w-full p-1 space-x-4">
-                        <button className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-</svg>
-
-                        </button>
-                        <button onClick={openModalAdd} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="5 h-5">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-</svg>
-
-                        </button>
+                    <button onClick={downloadFile} className="bg-green-400 hover:bg-gray-400 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+  <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Download File</span>
+</button>
+<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+                  <svg className="h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
+  <span className="text-white">Tambah Data Atlit</span>
+</button>
                     </div>
                 </div>
             </header>
                 <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-2 lg:grid-cols-1">
                     <div className="w-full">
                     <table className="table-auto w-full">
-        <thead>
+        <thead className='bg-gray-50'>
           <tr>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2 rounded-tl-lg">#</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Nik</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Nama Lengkap</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Alamat</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">TTL</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Telephone</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Gender</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Prestasi</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Keterangan</th>
-            <th className=" border-2 solid bg-gray-500 text-white px-4 py-2">Cabor</th>
-            <th className=' border-2 solid bg-gray-500 text-white px-4 py-2 rounded-tr-lg'>Action</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nik</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alamat</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TTL</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prestasi</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keterangan</th>
+            <th scope='col' className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cabor</th>
+            <th scope='col' className=' px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='bg-white divide-y divide-gray-200'>
           {pelatihs.map((pelatih, index) => (
             <tr key={index}>
-              <td className="border px-4 py-2 bg-gray-200">{index + 1}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.nik}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.nama}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.alamat}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.ttl}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.telephone}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.gender}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.prestasi}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.keterangan}</td>
-              <td className="border px-4 py-2 bg-gray-200">{pelatih.cabor.nama}</td>
-              <td className='border px-4 py-2 bg-gray-200 flex'>
-                
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.nik}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.nama}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.alamat}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.ttl}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.telephone}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.gender}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.prestasi}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.keterangan}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pelatih.cabor.nama}</td>
+              <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
+                <div className='flex justify-end items-center'>
                 <button onClick={() => {
                   setSelectedPelatih(pelatih)
                   openModalAdd()
@@ -231,11 +293,33 @@ function DataPelatih() {
                         <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
   <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
 </svg>            
-                        </button></td>
+                        </button>
+                </div>
+                </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className='grid grid-cols-2 mt-5'>
+            <div className='text-center'>
+              <button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
+                        page === 0 ? "bg-black cursor-not-allowed" : ""
+                      }`}
+               onClick={() => nextPage(page - 1)}
+               disabled={page === 0}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+</button></div>
+            <div className='text-center'><button className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
+                        page === halaman ? "bg-black cursor-not-allowed" : ""
+                      }`}
+             onClick={() => nextPage(page + 1)}
+             disabled={page === pageCount}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg></button></div>
+      </div>
                     </div>
                 </div>
             </div>
