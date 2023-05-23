@@ -25,7 +25,7 @@ function DataWasit() {
     const getDataWasit = ({page = 0, limit = 10, cabor_id = ''}) => {
       const token = localStorage.getItem('token');
       const headers = {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       };
       fetch(`http://localhost:3000/api/v1/wasit?${new URLSearchParams({
         page,
@@ -51,7 +51,6 @@ function DataWasit() {
       const token = localStorage.getItem('token');
       const headers = {
         'Authorization': `Bearer ${token}`,
-        ...headers
       };
       const wasit = selectedWasit
       fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
@@ -102,7 +101,7 @@ function DataWasit() {
     const handleEdit = (form) => {
       const token = localStorage.getItem('token');
       const headers = {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       };
       const wasit = selectedWasit;
       fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
@@ -111,12 +110,12 @@ function DataWasit() {
           'Content-Type': 'application/json',
           ...headers
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       })
       .then(response => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataWasit()
+          getDataWasit({})
         } else {
           throw new Error('Gagal edit data wasit');
         }
@@ -205,7 +204,7 @@ function DataWasit() {
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
-    <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedWasit?.wasit} />
+    <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedWasit?.nama} />
     <ModalAdd onClose={closeModalAdd} onOk={handleOk} isOpen={isOpenAdd} initialValue={selectedWasit} />
     <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
