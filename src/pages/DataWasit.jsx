@@ -234,11 +234,11 @@ function DataWasit() {
                 </div>
                 <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                     <div className="relative flex items-center justify-end w-full p-1 space-x-4">
-                    <button onClick={downloadFile} className="bg-green-400 hover:bg-gray-400 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                    <button onClick={downloadFile} className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 px-3 rounded inline-flex items-center">
   <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
   <span>Download File</span>
 </button>
-<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
                   <svg className="h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
   <span className="text-white">Tambah Data Atlit</span>
 </button>
@@ -281,7 +281,7 @@ function DataWasit() {
                 <button onClick={() => {
                   setSelectedWasit(wasit)
                   openModalAdd()
-                }} className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                }} className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -296,7 +296,7 @@ function DataWasit() {
                         </button>
                         <button
                               onClick={() => openModal(wasit)}
-                              className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                              className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                             >
                               <svg className="h-4 w-4 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="3 6 5 6 21 6" />  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" /></svg>
                             </button>

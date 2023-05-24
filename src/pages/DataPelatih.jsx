@@ -6,7 +6,6 @@ import ModalAdd from '../components/ModalAddPelatih';
 import DropdownCabor from '../components/DropdownCabor';
 
 function DataPelatih() {
-
     const [pelatihs, setPelatihs] = useState([]);
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
@@ -25,35 +24,33 @@ function DataPelatih() {
     const getDataPelatih = ({ page = 0, limit = 10, cabor_id = '' }) => {
       const token = localStorage.getItem('token');
       const headers = {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       };
       fetch(`http://localhost:3000/api/v1/pelatih?${new URLSearchParams({
         page,
         limit,
         cabor_id,
-      }).toString()}`, { headers })
-        .then(response => response.json())
-        .then(data => {
-          if (Array.isArray(data)) {
-            setPelatihs(data);
-          } else {
-            throw new Error('Invalid data format');
-          }
-        })
-        .catch(error => console.error(error));
+      }).toString()}`,
+      { headers }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setPelatihs(data);
+      })
+      .catch((error) => console.error(error));
     };
     
 
       const nextPage =  (page) => {
         setPage(page)
-         getDataWasit({page, limit: 10})
+         getDataPelatih({page, limit: 10})
          console.log("page", page)
       }
 
     const handleDelete = () => {
       const token = localStorage.getItem('token');
       const headers = {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       };
       const pelatih = selectedPelatih
       fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
@@ -80,7 +77,7 @@ function DataPelatih() {
     const handleAdd = (form) => {
       const token = localStorage.getItem('token');
            const headers = {
-             'Authorization': `Bearer ${token}`
+             Authorization: `Bearer ${token}`
            };
            fetch('http://localhost:3000/api/v1/pelatih', {
              method: 'POST',
@@ -104,7 +101,7 @@ function DataPelatih() {
          const handleEdit = (form) => {
           const token = localStorage.getItem('token');
           const headers = {
-            'Authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}`
           };
           const pelatih = selectedPelatih;
           fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
@@ -115,15 +112,15 @@ function DataPelatih() {
             },
             body: JSON.stringify(form)
           })
-          .then(response => {
+          .then((response) => {
             if (response.ok) {
               setIsOpenAdd(false);
-              getDataPelatih()
+              getDataPelatih({});
             } else {
-              throw new Error('Gagal edit data pelatih');
+              throw new Error("Gagal edit data atlet");
             }
           })
-          .catch(error => console.error(error))
+          .catch((error) => console.error(error));
         }
     
     const openModalAdd = () => {
@@ -182,7 +179,7 @@ function DataPelatih() {
       };
       try {
         const response = await fetch(
-          "http://localhost:3000/api/v1/wasit/download",
+          "http://localhost:3000/api/v1/pelatih/download",
           {
             method: "GET",
             headers: {
@@ -195,7 +192,7 @@ function DataPelatih() {
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "Data Wasit.xlsx");
+        link.setAttribute("download", "Data Pelatih.xlsx");
         document.body.appendChild(link);
         link.click();
         link.remove();
@@ -237,11 +234,11 @@ function DataPelatih() {
                 </div>
                 <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                     <div className="relative flex items-center justify-end w-full p-1 space-x-4">
-                    <button onClick={downloadFile} className="bg-green-400 hover:bg-gray-400 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                    <button onClick={downloadFile} className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 px-3 rounded inline-flex items-center">
   <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
   <span>Download File</span>
 </button>
-<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
                   <svg className="h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="20" y1="8" x2="20" y2="14" />  <line x1="23" y1="11" x2="17" y2="11" /></svg>
   <span className="text-white">Tambah Data Atlit</span>
 </button>
@@ -284,16 +281,25 @@ function DataPelatih() {
                 <button onClick={() => {
                   setSelectedPelatih(pelatih)
                   openModalAdd()
-                }} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md mx-4">
-              <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-</svg>
+                }} className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="13"
+                    height="13"
+                    fill="currentColor"
+                    className="bi bi-pencil"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793l1.293-1.293-2.293-2.293-1.293 1.293zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106a.5.5 0 0 1 .325-.468h.5v-.5a.5.5 0 0 1 .5-.5h1v-.5a.5.5 0 0 1 .5-.5h.5v-.293l-2.5-2.5z" />
+                  </svg>
 
-                        </button><br /><button onClick={() => openModal(pelatih)} className="flex items-center p-2 text-white bg-red-400 rounded-full shadow hover:text-gray-700 text-md">
-                        <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-</svg>            
                         </button>
+                        <button
+                              onClick={() => openModal(pelatih)}
+                              className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                            >
+                              <svg className="h-4 w-4 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="3 6 5 6 21 6" />  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" /></svg>
+                            </button>
                 </div>
                 </td>
             </tr>
