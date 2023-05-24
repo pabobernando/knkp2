@@ -10,6 +10,7 @@ function ModalAddWasit( {isOpen, onOk, onClose, initialValue = undefined} ) {
         ttl: '',
         telephone: '',
         prestasi: '',
+        keterangan: '',
         caborId: 0
     })
 

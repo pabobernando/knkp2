@@ -76,7 +76,7 @@ function ModalAddSarpras( {isOpen, onOk, onClose, initialValue = undefined} ) {
               <div className="w-full">
                 <div className=" relative ">
                   <input
-                    type="number"
+                    type="text"
                     name="tahun"
                     value={formValue.tahun}
                     id="tahun"

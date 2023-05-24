@@ -9,6 +9,9 @@ function ModalAddPelatih( {isOpen, onOk, onClose, initialValue = undefined} ) {
         alamat: '',
         ttl: '',
         telephone: '',
+        gender: '',
+        prestasi: '',
+        keterangan: '',
         caborId: 0
     })
 
