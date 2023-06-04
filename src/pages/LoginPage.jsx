@@ -28,11 +28,12 @@ function LoginPage() {
 
 <div className="flex flex-wrap w-full">
     <div className="flex flex-col w-full md:w-1/2">
-        <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
-            <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800 cursor-pointer">
-                Home
-            </a>
-        </div>
+    <div className="flex  pt-12 md:justify-start md:pl-12 md:-mb-24">
+  <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800 cursor-pointer">
+    Home
+  </a>
+</div>
+
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
             <div className='mx-auto'><img src={LogoKoni} style={{width: "200px" ,height:"200px"}} /></div>
             <p className='text-center text-gray-500 mt-5 text-2xl'>Selamat datang di halaman login kami. Silakan masukkan informasi login Anda untuk melanjutkan.</p>

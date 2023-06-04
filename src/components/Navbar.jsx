@@ -68,7 +68,7 @@ function Navbar() {
             </a>
           </div>
           <div>
-            <img src={LogoKoni} className="w-11 h-11" alt="KONI Logo" />
+            <img src={LogoKoni} className="w-11 h-11 hidden lg:block " alt="KONI Logo" />
           </div>
         </div>
       </nav>
