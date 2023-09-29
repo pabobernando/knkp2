@@ -16,7 +16,7 @@ function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/count')
+    fetch('http://103.193.176.29:3000:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
     setJumlahAtlit(data.atlit)
@@ -26,7 +26,7 @@ function Home() {
     console.error('Error fetching data:', error);
   });
 
-  fetch('http://localhost:3000/api/v1/count')
+  fetch('http://103.193.176.29:3000:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
     setJumlahPelatih(data.pelatih)
@@ -36,7 +36,7 @@ function Home() {
     console.error('Error fetching data:', error);
   });
 
-  fetch('http://localhost:3000/api/v1/count')
+  fetch('http://103.193.176.29:3000/api/v1/count')
   .then(response => response.json())
   .then(data => {
     setJumlahWasit(data.wasit)

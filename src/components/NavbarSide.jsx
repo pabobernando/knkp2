@@ -7,7 +7,7 @@ function NavbarSide() {
 
     const handleLogout = async () => {
         try {
-            await fetch('http://localhost:3000/api/v1/logout', {
+            await fetch('http://103.193.176.29:3000/api/v1/logout', {
               method: 'POST',
               credentials: 'include',
               headers: {
@@ -22,7 +22,7 @@ function NavbarSide() {
     }
 
   return (
-        <div className="h-full bg-gray-500 dark:bg-gray-700">
+        <div className="h-full bg-gray-900">
                 <div className="flex items-center justify-start pt-6 ml-8">
                     <p className="text-xl font-bold dark:text-white text-white">
                         KONI KULON PROGO

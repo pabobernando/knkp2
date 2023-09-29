@@ -10,7 +10,7 @@ function LoginPage() {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
-      const response = await fetch('http://localhost:3000/api/v1/login', {
+      const response = await fetch('http://103.193.176.29:3000/api/v1/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

@@ -26,7 +26,7 @@ function DataPelatih() {
       const headers = {
         Authorization: `Bearer ${token}`
       };
-      fetch(`http://localhost:3000/api/v1/pelatih?${new URLSearchParams({
+      fetch(`http://103.193.176.29:3000/api/v1/pelatih?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -53,7 +53,7 @@ function DataPelatih() {
         Authorization: `Bearer ${token}`
       };
       const pelatih = selectedPelatih
-      fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+      fetch(`http://103.193.176.29:3000/api/v1/pelatih/${pelatih.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function DataPelatih() {
            const headers = {
              Authorization: `Bearer ${token}`
            };
-           fetch('http://localhost:3000/api/v1/pelatih', {
+           fetch('http://103.193.176.29:3000/api/v1/pelatih', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function DataPelatih() {
             Authorization: `Bearer ${token}`
           };
           const pelatih = selectedPelatih;
-          fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+          fetch(`http://103.193.176.29:3000/api/v1/pelatih/${pelatih.id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ function DataPelatih() {
     }, []);
 
     const fetchPageCount = () => {
-      fetch('http://localhost:3000/api/v1/count')
+      fetch('http://103.193.176.29:3000/api/v1/count')
         .then(response => response.json())
         .then(data => {
           const pembulatanPage = Math.ceil(data.pelatih / 10); // membulatkan angka ke atas
@@ -179,7 +179,7 @@ function DataPelatih() {
       };
       try {
         const response = await fetch(
-          "http://localhost:3000/api/v1/pelatih/download",
+          "http://103.193.176.29:3000/api/v1/pelatih/download",
           {
             method: "GET",
             headers: {
