@@ -6,53 +6,17 @@ import Footer from '../components/Footer'
 import { useNavigate } from 'react-router-dom'
 import Cta from '../components/Cta'
 import VisiMisi from '../components/VisiMisi'
+import Statistic from '../components/Statistic'
 
 function Home() {
 
-  const [jumlahAtlit, setJumlahAtlit] = useState()
-  const [jumlahPelatih, setJumlahPelatih] = useState()
-  const [jumlahWasit, setJumlahWasit] = useState()
-
   const navigate = useNavigate()
-
-  useEffect(() => {
-    fetch('http://103.193.176.29:3000:3000/api/v1/count')
-  .then(response => response.json())
-  .then(data => {
-    setJumlahAtlit(data.atlit)
-    
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-
-  fetch('http://103.193.176.29:3000:3000/api/v1/count')
-  .then(response => response.json())
-  .then(data => {
-    setJumlahPelatih(data.pelatih)
-    
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-
-  fetch('http://103.193.176.29:3000/api/v1/count')
-  .then(response => response.json())
-  .then(data => {
-    setJumlahWasit(data.wasit)
-    
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-
-  }, []);
-
   
   return (
     <>
     <Navbar className="drop-shadow-2xl" />
     <Cta />
+    <Statistic />
     <VisiMisi />
     <Footer />
     </>
