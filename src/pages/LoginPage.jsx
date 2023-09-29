@@ -24,7 +24,7 @@ function LoginPage() {
       }
     };
   return (
-    <div>
+    <div className='bg-gray-900'>
 
 <div className="flex flex-wrap w-full">
     <div className="flex flex-col w-full md:w-1/2">
@@ -36,7 +36,7 @@ function LoginPage() {
 
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
             <div className='mx-auto'><img src={LogoKoni} style={{width: "200px" ,height:"200px"}} /></div>
-            <p className='text-center text-gray-500 mt-5 text-2xl'>Selamat datang di halaman login kami. Silakan masukkan informasi login Anda untuk melanjutkan.</p>
+            <p className='text-center text-gray-300 mt-5 text-2xl'>Selamat datang di halaman login kami. Silakan masukkan informasi login Anda untuk melanjutkan.</p>
             <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
                 <div className="flex flex-col pt-4">
                     <div className="flex relative ">

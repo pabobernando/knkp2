@@ -11,9 +11,9 @@ function Navbar() {
   };
 
   return (
-    <div className="drop-shadow-md bg-gray-200">
-      <nav className="flex items-center justify-between flex-wrap bg-gray-200 p-6">
-        <div className="flex items-center flex-shrink-0 text-red-700 mr-6">
+    <div className="drop-shadow-md bg-gray-900">
+      <nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
+        <div className="flex items-center flex-shrink-0 text-red-500 mr-6">
           <span className="font-bold text-xl tracking-tight">konikulonprogo.com</span>
         </div>
         <div className="block lg:hidden">
@@ -35,7 +35,7 @@ function Navbar() {
                 navigate('/');
                 setIsMobileMenuOpen(false);
               }}
-              className="block mt-4 lg:inline-block lg:mt-0 text-red-500 hover:text-black hover:cursor-pointer mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Beranda
             </a>
@@ -44,7 +44,7 @@ function Navbar() {
                 navigate('/Pengurus');
                 setIsMobileMenuOpen(false);
               }}
-              className="block mt-4 lg:inline-block lg:mt-0 text-red-500 hover:text-black hover:cursor-pointer mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Pengurus
             </a>
@@ -53,7 +53,7 @@ function Navbar() {
                 navigate('/Berita');
                 setIsMobileMenuOpen(false);
               }}
-              className="block mt-4 lg:inline-block lg:mt-0 text-red-500 hover:text-black hover:cursor-pointer mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Berita
             </a>
@@ -62,7 +62,7 @@ function Navbar() {
                 navigate('/DataAtlit');
                 setIsMobileMenuOpen(false);
               }}
-              className="block mt-4 lg:inline-block lg:mt-0 text-red-500 hover:text-black hover:cursor-pointer mr-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Dashboard
             </a>

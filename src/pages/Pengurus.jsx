@@ -1,111 +1,113 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar'
 import Koni from '../assets/polos.png'
+import Uwong from '../assets/polos.png'
 
 function Pengurus() {
+  // Data pengurus (ganti dengan data yang sesuai)
+  const pengurusData = [
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    {
+      name: 'Pabo Bernando',
+      role: 'Web Developer',
+      image: Uwong,
+    },
+    
+    // Tambahkan data pengurus lainnya sesuai kebutuhan
+  ];
 
-  
-
-return (
-<>
-<Navbar />
-
-<div className="p-4">
-    <p className="text-3xl font-bold text-center text-gray-800">
-        Pengurus Koni
-    </p>
-    <p className="mb-32 text-xl font-normal text-center text-gray-500">
-        KULON PROGO
-    </p>
-    <div className="flex flex-col items-center justify-center space-y-24 md:space-y-0 md:flex-row" style={{marginBottom: "70px"}}>
-        <div className="relative p-4">
-            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
-                <a href="#" className="relative block">
-                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
-                </a>
-            </div>
-            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
-                <div className="text-center">
-                    <p className="text-2xl text-gray-800 dark:text-white">
-                        KETUA
-                    </p>
-                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
-                        KUSDIRA, BA
-                    </p>
-                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                        Dayakan, Pengasih, Kulon Progo
-                    </p>
+  return (
+    <>
+      <Navbar />
+      <div className="p-8 bg-gray-900 rounded-lg shadow h-screen">
+        <p className="text-3xl font-bold text-center text-white">
+          Pengurus
+        </p>
+        <p className="mb-12 text-xl font-normal text-center text-gray-300 ">
+          KONI KULON PROGO
+        </p>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {pengurusData.map((pengurus, index) => (
+            <div key={index} className="p-4">
+              <div className="flex-col flex justify-center items-center">
+                <div className="flex-shrink-0">
+                  <a href="#" className="relative block">
+                    <img
+                      alt="profil"
+                      src={pengurus.image}
+                      className="mx-auto object-cover rounded-full h-20 w-20"
+                    />
+                  </a>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div className="flex flex-col items-center justify-around space-y-24 md:space-y-0 md:flex-row mt-11">
-        <div className="relative p-4">
-            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
-                <a href="#" className="relative block">
-                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
-                </a>
-            </div>
-            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
-                <div className="text-center">
-                    <p className="text-2xl text-gray-800 dark:text-white">
-                        KETUA I
-                    </p>
-                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
-                        H.MARGONO, S.Pd,Jas
-                    </p>
-                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                        Kepek, Pengasih, Kulon Progo
-                    </p>
+                <div className="mt-2 text-center flex flex-col">
+                  <span className="text-lg font-medium text-white ">
+                    {pengurus.name}
+                  </span>
+                  <span className="text-xs text-gray-400">
+                    {pengurus.role}
+                  </span>
                 </div>
+              </div>
             </div>
+          ))}
         </div>
-        <div className="relative p-4">
-            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
-                <a href="#" className="relative block">
-                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
-                </a>
-            </div>
-            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
-                <div className="text-center">
-                    <p className="text-2xl text-gray-800 dark:text-white">
-                        KETUA II
-                    </p>
-                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
-                        Drs. SUJIRAN
-                    </p>
-                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                    Kepek, Pengasih, Kulon Progo
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        <div className="relative p-4">
-            <div className="absolute mb-4 text-center transform translate-x-1/2 -top-16 right-1/2">
-                <a href="#" className="relative block">
-                    <img alt="profil" src={Koni} className="mx-auto object-cover rounded-lg h-40 w-40  border-2 border-red-500 dark:border-gray-800"/>
-                </a>
-            </div>
-            <div className="px-8 py-4 pt-24 bg-white rounded-lg shadow dark:bg-gray-800 border-2 border-red-500">
-                <div className="text-center">
-                    <p className="text-2xl text-gray-800 dark:text-white">
-                        KETUA III
-                    </p>
-                    <p className="text-xl font-light text-gray-500 dark:text-gray-200">
-                    ANUNG MARGANTO,SH,MM
-                    </p>
-                    <p className="py-4 mx-auto font-light text-gray-500 text-md w-60 dark:text-gray-400">
-                    Wonosidi Lor, Wates, Kulon Progo
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</>
-);
+      </div>
+    </>
+  );
 }
 
 export default Pengurus;
