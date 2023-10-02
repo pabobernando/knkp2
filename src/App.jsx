@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage'
 import Sambutan from './pages/Sambutan'
 import CMS from './pages/Cms'
 import Galery from './pages/Galery'
+import DetailNew from './pages/DetailNew'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/Sambutan' element={<Sambutan />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
         <Route path='/Galery' element={<Galery />}></Route>
+        <Route path="/DetailNews" element={<DetailNew />}></Route>
       </Routes>
     </Router>
   )
