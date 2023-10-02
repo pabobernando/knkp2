@@ -53,7 +53,7 @@ function DataAtlit() {
       Authorization: `Bearer ${token}`,
     };
     const atlit = selectedAthele;
-    fetch(`http://103.193.176.29:3000:3000/api/v1/atlit/${atlit.id}`, {
+    fetch(`http://103.193.176.29:3000/api/v1/atlit/${atlit.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

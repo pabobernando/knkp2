@@ -21,7 +21,7 @@ function Navbar() {
             onClick={toggleMobileMenu}
             className="flex items-center px-3 py-1 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-red-600"
           >
-            <span className="text-black">=</span>
+            <span className="text-white">=</span>
           </button>
         </div>
         <div
@@ -56,6 +56,15 @@ function Navbar() {
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Berita
+            </a>
+            <a
+              onClick={() => {
+                navigate('/Galery');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
+            >
+              Galery
             </a>
             <a
               onClick={() => {

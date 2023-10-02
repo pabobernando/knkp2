@@ -10,6 +10,7 @@ import DataSarpras from './pages/DataSarpras'
 import LoginPage from './pages/LoginPage'
 import Sambutan from './pages/Sambutan'
 import CMS from './pages/Cms'
+import Galery from './pages/Galery'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/LoginPage' element={<LoginPage />}></Route>
         <Route path='/Sambutan' element={<Sambutan />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
+        <Route path='/Galery' element={<Galery />}></Route>
       </Routes>
     </Router>
   )
