@@ -29,7 +29,7 @@ function App() {
         <Route path='/Sambutan' element={<Sambutan />}></Route>
         <Route path='/CMS' element={<CMS />}></Route>
         <Route path='/Galery' element={<Galery />}></Route>
-        <Route path="/DetailNews" element={<DetailNew />}></Route>
+        <Route path="/Detail/:id" element={<DetailNew />}></Route>
       </Routes>
     </Router>
   )
