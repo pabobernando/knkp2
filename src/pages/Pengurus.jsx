@@ -1,86 +1,22 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar'
-import Koni from '../assets/polos.png'
-import Uwong from '../assets/polos.png'
+import { pengurusData } from '../store/pengurusData';
 
 function Pengurus() {
   // Data pengurus (ganti dengan data yang sesuai)
-  const pengurusData = [
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Uwong,
-    },
-    
-    // Tambahkan data pengurus lainnya sesuai kebutuhan
-  ];
+  
 
   return (
     <>
       <Navbar />
-      <div className="p-8 bg-gray-900 rounded-lg shadow h-screen">
+      <div className="p-8 bg-gray-900 shadow">
         <p className="text-3xl font-bold text-center text-white">
           Pengurus
         </p>
         <p className="mb-12 text-xl font-normal text-center text-gray-300 ">
           KONI KULON PROGO
         </p>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {pengurusData.map((pengurus, index) => (
             <div key={index} className="p-4">
               <div className="flex-col flex justify-center items-center">
