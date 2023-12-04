@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoKoni from '../assets/koni.png';
 
@@ -8,6 +8,33 @@ function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  useEffect(() => {
+    let deferredPrompt;
+
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallButtonClick = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    }
   };
 
   return (
@@ -74,6 +101,14 @@ function Navbar() {
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Dashboard
+            </a>
+            <a
+              onClick={
+                handleInstallButtonClick
+              }
+              className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
+            >
+              Download App
             </a>
           </div>
           <div>

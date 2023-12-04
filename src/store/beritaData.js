@@ -1,7 +1,7 @@
 import Gulat from '../assets/gulat.jpeg'
 import Panahan from '../assets/panahan.jpeg'
 import SepakBola from '../assets/sepakbola.jpeg'
-import Lari from '../assets/lari.jpeg'
+import Rakerkab from '../assets/rakerkab.jpeg'
 import Gateball from '../assets/gateball.jpeg'
 import Panjat from '../assets/panjat.jpeg'
 import Pabo from '../assets/pabo.png'
@@ -10,14 +10,14 @@ import Pabo from '../assets/pabo.png'
 export const beritaData = [
     {
       id: 1,
-      imgSrc: Lari,
-      title: 'Atletik PORKAB VI',
-      description: 'Kontingen Kapanewon Kokap menjadi Juara umum cabang olahraga (cabor) atletik Pekan Olahraga Kabupaten (Porkab) Kulonprogo VI-2023',
+      imgSrc: Rakerkab,
+      title: 'RAKERKAB KONI KULONPROGO',
+      description: 'Dua cabang olahraga (cabor) disetujui dan disahkan menjadi anggota Komite Olahraga Nasional Indonesia (KONI) Kabupaten Kulonprogo',
       category: 'PORKAB VI',
       authorImg: Pabo,
       author:'Pabo Bernando',
       date:'04 - Oktober - 2023',
-      content: 'Kontingen Kapanewon Kokap menjadi Juara umum cabang olahraga (cabor) atletik Pekan Olahraga Kabupaten (Porkab) Kulonprogo VI-2023 dengan menyabet 5 medali emas, 2 perak dan 2 perunggu.Pada lomba yang berlangsung di lintasan atletik Stadion Cangkring Wates, Minggu (24/9), Kokap merebut 5 emas yang diraih Galih Priambodo bertanding di nomor lari 100 m dan 200 m putra, Candra Rofingun (400 m putra), Syahrul Prayogo (tolak peluru putra) dan Shafa Aulia (1.500 m putra).Kapanewon Panjatan di peringkat dua dengan 4 emas, 3 perak, 6 perunggu. Empat emas Panjatan diraih Riski Ahmad Fauzi (lompat jauh putra), Fabio Rino Wahyudi (lempar lembing putra), Diana Silviana (100 m putri dan lompat jauh putri).Galur merebut 2 emas, 4 perak, 2 perunggu. Dua emas Galur diraih Guntur Pradana (1.500 m putra) dan Gilang Kunanti (tolak peluru putri). Wates mendapat 2 emas, 4 perak. Dua emas Wates diraih Darin Kuzaima Aulia (200 m putri) Afiqoh (400 m putri). Girimulyo merebut 1 emas yang diraih Fika Puspita (lempar lembing putri).Sementara di cabor futsal putra yang berlangsung di Dyo futsal Wates, Pengasih meraih medali emas. Perak diraih Sentolo dan perunggu diraih Nanggulan. Sedangkan di cabor tenis meja beregu putra, emas direbut Pengasih, perak diraih Sentolo dan perunggu diraih Lendah. Emas beregu putri disabet Temon, perak diraih Pengasih, perunggu diraih Panjatan',
+      content: 'Dua cabang olahraga (cabor) disetujui dan disahkan menjadi anggota Komite Olahraga Nasional Indonesia (KONI) Kabupaten Kulonprogo dalam Rapat Kerja Kabupaten (Rakerkab) yang diselenggarakan di Hotel King Wates, Sabtu (2/12) siang.Raker dibuka Asisten Pemerintahan dan Kesra Pemkab Kulonprogo Drs Jazil Ambar Wasan dan dihadiri Wakil Ketua DPRD Kulonprogo H Ponimin SE MM, Ketua Umum KONI DIY Prof Dr Djoko Pekik Irianto MKes AIFO, Ketua KONI Kabupaten/Kota se-DIY serta ketua cabor dan badan fungsional anggota KONI Kulonprogo.Ketua KONI Kulonprogo, Kusdira BA menyampaikan, raker yang dihadiri 42 ketua cabor dan 2 badan fungsional ini membahas laporan pertanggungjawaban (LPJ) dan program kerja KONI Kulonprogo tahun 2024, persiapan cabor menghadapi Pekan Olahraga Daerah (Porda) DIY 2025 di Kabupaten Gunungkidul, pengesahan dua cabor untuk menjadi anggota KONI Kulonprogo .Dalam raker ini, anggota yang hadir menyetujui dan mengesahkan dua cabor yang telah menyampaikan pemaparan dalam raker KONI Kulonprogo tahun 2022, yakni Persatuan Sambo Indonesia (Persambi) dan Wushu Indonesia (WI), jelasnya.Ketua KONI DIY, Prof Dr Djoko Pekik Irianto MKes AIFO berharap Rakerkab KONI ini tidak hanya menjadi ajang silaturahmi, tapi lebih dari itu dapat sebagai media untuk mengevaluasi dan merencanakan langkah-langkah baru dalam mengatasi berbagai persoalan bagi kemajuan olahraga di Kulonprogo',
     },
     {
       id: 2,

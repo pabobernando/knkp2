@@ -15,6 +15,12 @@ import Porkab14 from '../assets/porkab11.jpeg'
 import Porkab15 from '../assets/porkab12.jpeg'
 import Porkab16 from '../assets/catur.jpeg'
 import Porkab17 from '../assets/futsal.jpeg'
+import Rakerkab from '../assets/rakerkab.jpeg'
+import Rakerkab2 from '../assets/rakerkab2.jpeg'
+import Rakerkab3 from '../assets/rakerkab3.jpeg'
+import Rakerkab4 from '../assets/rakerkab4.jpeg'
+import Pbsi from '../assets/pbsi.jpeg'
+import Pbsi2 from '../assets/pbsi2.jpeg'
 
 
 export const products = [
@@ -129,5 +135,47 @@ export const products = [
         event: 'PORKAB',
         imageSrc: Porkab16,
         imageAlt: 'Porkab Kulon Progo',
+      },
+      {
+        id: 17,
+        name: 'img-rakerkab-1',
+        event: 'RAKERKAB',
+        imageSrc: Rakerkab,
+        imageAlt: 'Rakerkab-1',
+      },
+      {
+        id: 18,
+        name: 'img-rakerkab-1',
+        event: 'RAKERKAB',
+        imageSrc: Rakerkab2,
+        imageAlt: 'Rakerkab-3',
+      },
+      {
+        id: 19,
+        name: 'img-rakerkab-1',
+        event: 'RAKERKAB',
+        imageSrc: Rakerkab3,
+        imageAlt: 'Rakerkab-3',
+      },
+      {
+        id: 20,
+        name: 'img-rakerkab-1',
+        event: 'RAKERKAB',
+        imageSrc: Rakerkab4,
+        imageAlt: 'Rakerkab-4',
+      },
+      {
+        id: 21,
+        name: 'img-rakerkab-1',
+        event: 'PBSI',
+        imageSrc: Pbsi,
+        imageAlt: 'Pbsi-1',
+      },
+      {
+        id: 22,
+        name: 'img-rakerkab-1',
+        event: 'PBSI',
+        imageSrc: Pbsi2,
+        imageAlt: 'Pbsi-1',
       },
   ]
