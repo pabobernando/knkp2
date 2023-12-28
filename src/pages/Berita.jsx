@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import { beritaData } from '../store/beritaData';
-// import NavbarAndroid from '../components/NavbarAndroid';
+import NavbarAndroid from '../components/NavbarAndroid';
 
 function Berita() {
   return (
@@ -32,7 +32,7 @@ function Berita() {
                     {berita.description}
                   </p>
                   <div className="flex items-center mt-4">
-                    <a href="#" class="relative block">
+                    <a href="#" className="relative block">
                       <img alt="profil" src={berita.authorImg} className="mx-auto object-cover rounded-full h-10 w-10" />
                     </a>
                     <div className="flex flex-col justify-between ml-4 text-sm">
@@ -50,7 +50,7 @@ function Berita() {
           ))}
         </div>
       </div>
-      {/* <NavbarAndroid /> */}
+      <NavbarAndroid />
     </div>
   )
 }

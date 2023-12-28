@@ -9,8 +9,11 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      },
       manifest: {
-        // Atur properti manifest PWA di sini
         name: 'Koni Kulon Progo',
         short_name: 'Koni Kulon Progo',
         start_url: '/',
