@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoKoni from '../assets/koni.png';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -41,15 +42,17 @@ function Navbar() {
     <div className="drop-shadow-md bg-gray-900">
       <nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
         <div className="flex items-center flex-shrink-0 text-red-500 mr-6">
+          <Link to="/">
           <span className="font-bold text-xl tracking-tight">konikulonprogo.com</span>
+          </Link>
         </div>
         <div className="block lg:hidden">
-          <button
+          {/* <button
             onClick={toggleMobileMenu}
             className="flex items-center px-3 py-1 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-red-600"
           >
             <span className="text-white">=</span>
-          </button>
+          </button> */}
         </div>
         <div
           className={`${

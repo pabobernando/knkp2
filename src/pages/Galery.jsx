@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar"
 import { products } from "../store/galeryData";
+import NavbarAndroid from "../components/NavbarAndroid";
 
 
 const productPage = 8
@@ -61,6 +62,7 @@ const productPage = 8
           </nav>
         </div>
       </div>
+      <NavbarAndroid />
     </div>
     )
   }

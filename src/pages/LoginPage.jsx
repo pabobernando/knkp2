@@ -26,7 +26,7 @@ function LoginPage() {
   return (
     <div className='bg-gray-900'>
 
-<div className="flex flex-wrap w-full">
+<div className="flex flex-wrap w-full h-screen">
     <div className="flex flex-col w-full md:w-1/2">
     <div className="flex  pt-12 md:justify-start md:pl-12 md:-mb-24">
   <a onClick={() => navigate('/')} className="p-4 text-xl font-bold text-white bg-red-800 cursor-pointer">

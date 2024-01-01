@@ -27,7 +27,7 @@ const DetailNew = () => {
           <div className="px-6 py-4">
             <Link
               to="/Berita"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
+              className="bg-red-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
             >
               Kembali ke Berita
             </Link>

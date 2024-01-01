@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import Cta from '../components/Cta'
 import VisiMisi from '../components/VisiMisi'
 import Statistic from '../components/Statistic'
+import NavbarAndroid from '../components/NavbarAndroid'
 
 function Home() {
 
@@ -19,6 +20,7 @@ function Home() {
     <Statistic />
     <VisiMisi />
     <Footer />
+    <NavbarAndroid />
     </>
     
   )

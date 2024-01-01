@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar'
 import { pengurusData } from '../store/pengurusData';
+import NavbarAndroid from '../components/NavbarAndroid';
 
 function Pengurus() {
   // Data pengurus (ganti dengan data yang sesuai)
@@ -30,7 +31,7 @@ function Pengurus() {
                   </a>
                 </div>
                 <div className="mt-2 text-center flex flex-col">
-                  <span className="text-lg font-medium text-white ">
+                  <span className="text-sm font-medium text-white ">
                     {pengurus.name}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -42,6 +43,7 @@ function Pengurus() {
           ))}
         </div>
       </div>
+      <NavbarAndroid />
     </>
   );
 }
