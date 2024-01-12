@@ -27,7 +27,7 @@ function DataWasit() {
       const headers = {
         Authorization: `Bearer ${token}`
       };
-      fetch(`http://103.193.176.29:3000/api/v1/wasit?${new URLSearchParams({
+      fetch(`https://api.konikulonprogo.com/api/v1/wasit?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -53,7 +53,7 @@ function DataWasit() {
         'Authorization': `Bearer ${token}`,
       };
       const wasit = selectedWasit
-      fetch(`http://103.193.176.29:3000/api/v1/wasit/${wasit.id}`, {
+      fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function DataWasit() {
       const headers = {
         'Authorization': `Bearer ${token}`
       };
-      fetch('http://103.193.176.29:3000/api/v1/wasit', {
+      fetch('https://api.konikulonprogo.com/api/v1/wasit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function DataWasit() {
         Authorization: `Bearer ${token}`,
       };
       const wasit = selectedWasit;
-      fetch(`http://103.193.176.29:3000/api/v1/wasit/${wasit.id}`, {
+      fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ function DataWasit() {
     }, []);
 
     const fetchPageCount = () => {
-      fetch('http://103.193.176.29:3000/api/v1/count')
+      fetch('https://api.konikulonprogo.com/api/v1/count')
         .then(response => response.json())
         .then(data => {
           const pembulatanPage = Math.ceil(data.wasit / 10); // membulatkan angka ke atas
@@ -179,7 +179,7 @@ function DataWasit() {
       };
       try {
         const response = await fetch(
-          "http://103.193.176.29:3000/api/v1/wasit/download",
+          "https://api.konikulonprogo.com/api/v1/wasit/download",
           {
             method: "GET",
             headers: {

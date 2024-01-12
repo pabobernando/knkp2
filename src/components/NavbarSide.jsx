@@ -7,7 +7,7 @@ function NavbarSide() {
 
     const handleLogout = async () => {
         try {
-            await fetch('http://103.193.176.29:3000/api/v1/logout', {
+            await fetch('https://api.konikulonprogo.com/api/v1/logout', {
               method: 'POST',
               credentials: 'include',
               headers: {
