@@ -5,6 +5,8 @@ import Rakerkab from '../assets/rakerkab.jpeg'
 import Gateball from '../assets/gateball.jpeg'
 import Panjat from '../assets/panjat.jpeg'
 import Pabo from '../assets/pabo.png'
+import Kempo from '../assets/kempo.jpeg'
+import Anung from '../assets/7.jpeg'
 
 
 export const beritaData = [
@@ -73,5 +75,16 @@ export const beritaData = [
       author:'Pabo Bernando',
       date:'04 - Oktober - 2023',
       content: 'Yanuar Agil Saputra asal Kapanewon Pengasih berhasil merebut medali emas cabang olahraga (cabor) gulat kelas 54 kg gaya bebas putra Pekan Olahraga Kabupaten (Porkab) Kulonprogo 2023 yang berlangsung di Aula MAN 2 Kulonprogo, Minggu (24/9).Yanuar di laga final mengalahkan Rafly Fadhilah Thoriq (Wates) yang harus puas memperoleh perak. Medali perunggu diraih Robi Alfaris Samsudin. Emas kelas 57 kg bebas putra disabet Aldi Dani (Pengasih). Perak diraih Bima Sholehansyah (Lendah) dan perunggu diraih Raihan Al Shabir (Wates).Kelas 65 kg bebas putra emas direbut Prakasa Insanu Rizqi (Nanggulan), perak Tisa Prasetyo (Sentolo), perunggu Syukur Setyoaji (Wates). Kelas 70 kg bebas putra emas diraih Iqbal Hadi Jaya (Temon), perak Waladi (Pengasih), perunggu Suko Dwi Prasetya (Wates). Kelas 125 kg bebas putra emas diraih Arif Saputra (Pengasih), perak Yogi Adi Saputra (Pengasih), perunggu Anggit Kurniawan (Galur).Kelas 55 kg grego romawi putra, emas direbut Yanuar Agil Saputra (Pengasih), perak Bima Sholehansyah (Lendah), perunggu Raihan Al Shabir (Wates). Kelas 60 kg grego romawi putra, emas diraih Aldi Dani (Pengasih), perak  Rafly Fadhilah Thoriq (Wates), perunggu Robi Alfaris Samsudin (Pengasih). Kelas 63 kg grego romawi putra emas diraih Syukur Setyoaji (Wates), perak Ricky Aji Prasetya (Panjatan), perunggu Nafis Ahmad (Lendah).Kelas 67 kg grego romawi putra emas diraih Prakasa Insanu Rizki (Nanggulan), perak Tisa Prasetyo (Nanggulan), perunggu Azka Aqlus Sadid (Nanggulan). Kelas 77 kg grego romawi putra emas diraih Iqbal Hadi Jaya (Temon), perak Waladi (Pengasih), perunggu Suko Dwi Prasetya (Wates).Kelas 130 kg grego romawi putra emas disabet Yogi Adi Saputra (Pengasih), perak Anggit Kurniawan (Galur), perunggu Arif Saputra (Pengasih). Kelas 53 kg bebas putri emas Asti Surani (Wates), perak Indriana (Lendah), perunggu Salwa Aidinda (Pengasih). Kelas 62 kg bebas putri emas Widiyanti (Sentolo), perak Zendy Satya (Samigaluh), perunggu Devi Diana (Nanggulan)',
+    },
+    {
+      id: 7,
+      imgSrc: Kempo,
+      title: 'Kejuaraan Kempo Antar-Pelajar Digelar di Kulonprogo',
+      description: 'Persaudaraan Kempo Indonesia (Perkemi) Kulonprogo menggelar Kejuaraan Shorinji Kempo antar pelajar se-Kulonprogo.',
+      category: 'KEMPO',
+      authorImg: Anung,
+      author:'Anung Marganto',
+      date:'09 - Februari - 2024',
+      content: 'Persaudaraan Kempo Indonesia (Perkemi) Kulonprogo menggelar Kejuaraan Shorinji Kempo antar pelajar se-Kulonprogo. Acara ini diselenggarakan di Aula Kalurahan Srikayangan, Kamis (8/2/2024).Kepala Dinas Pendidikan Pemuda dan Olahraga (Dikpora) Kulonprogo, Arif Prastowo, dalam sambutannya mengungkapkan apresiasinya atas terselenggaranya Kejuaraan Shorinji Kempo antar pelajar se-Kulonprogo.“Di sini menjadi tonggak akan lahirnya prestasi para kenshi-kenshi Kulonprogo. Prestasi itu bisa lahir dari mana saja termasuk dalam kejuaraan ini,” ungkap Arif.      Kejuaraan Kempo antarpelajar ini diharapkan menjadi ajang meraih prestasi setinggi-tingginya, karena lompatan prestasi sangat mungkin diraih. “Jika saat ini kalian berlaga di tingkat pelajar kabupaten ketika tekun berlatih maka prestasi  tingkat pelajar DIY, Porda DIY bahkan tingkat nasional akan bisa kalian raih,” ujarnya.“Jadilah atlet berprestasi bukan hanya untuk kalian saja akan tetapi pelatih, keluarga ataupun orang tua kalian. Terima kasih banyak untuk seluruh orang tua yang telah dengan tekun mendampingi atlet-atlet pelajar ini untuk mencapai prestasi tertinggi,” tambahnya.Ketua Perkemi DIY, Suprobo, menambahkan Kempo Kulonprogo telah melahirkan atlet-atlet berprestasi bukan hanya tingkat DIY akan tetapi tingkat nasional.Dalam setiap gelaran Porda DIY selalu menyumbangkan medali emas, demikian juga di tingkat nasional dalam ajang PON juga berhasil menyumbang medali.“Ini membuktikan pembinaan Kempo di Kulonprogo sangat bagus dan berkesinambungan. Kenshi-kenshi dari tingkat SD sampai SLTA cukup banyak sehingga dengan event kejuaraan ini dapat dibina untuk mengikuti event yang lebih tinggi, ”kata Suprobo.Wakil Ketua III KONI Kulonprogo, Anung Marganto, sangat mengapresiasi adanya Kejuaraan Shorinji Kempo antar-pelajar se-Kulonprogo.',
     },
   ];
