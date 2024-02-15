@@ -68,14 +68,6 @@ const DetailNew = () => {
                 </p>
               </div>
             </div>
-            <dl className="mt-10 grid grid-cols-2 gap-8 border-t border-gray-900/10 pt-10 sm:grid-cols-4">
-              {stats.map((stat, statIdx) => (
-                <div key={statIdx}>
-                  <dt className="text-sm font-semibold leading-6 text-gray-400">{stat.label}</dt>
-                  <dd className="mt-2 text-3xl font-bold leading-10 tracking-tight text-gray-400">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
             <div className="mt-10 flex">
               <Link to="/" className="text-base font-semibold leading-7 text-red-500">
                 Kembali ke beranda <span aria-hidden="true">&rarr;</span>
