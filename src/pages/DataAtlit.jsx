@@ -4,6 +4,8 @@ import NavbarSide from "../components/NavbarSide";
 import ModalDelete from "../components/ModalDelete";
 import ModalAdd from "../components/ModalAdd";
 import DropdownCabor from "../components/DropdownCabor";
+import IconDownload from "../assets/download.svg"
+import IconAdd from "../assets/add.svg"
 
 function DataAtlit() {
   const [athletes, setAthletes] = useState([]);
@@ -247,36 +249,25 @@ function DataAtlit() {
                 <div className="relative flex items-center justify-end w-full p-1 space-x-4">
                 <button
   onClick={downloadFile}
-  className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 px-3 rounded inline-flex items-center mb-2 md:mb-0 md:mr-2"
+  className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 px-3 rounded inline-flex items-center md:mb-0 md:mr-2"
 >
-  <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+</svg>
+
   <span className="text-white hidden sm:flex">Download File</span>
 </button>
 
 <button
   onClick={openModalAdd}
-  className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center"
+  className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center text-white"
 >
-  <svg
-    className="h-5 w-5 text-white mr-1"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="8.5" cy="7" r="4" />
-    <line x1="20" y1="8" x2="20" y2="14" />
-    <line x1="23" y1="11" x2="17" y2="11" />
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
   <span className="text-white hidden sm:flex">Tambah Data</span>
 </button>
-
-
 
                 </div>
               </div>
