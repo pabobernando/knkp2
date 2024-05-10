@@ -117,7 +117,7 @@ function DataPelatih() {
               setIsOpenAdd(false);
               getDataPelatih({});
             } else {
-              throw new Error("Gagal edit data atlet");
+              throw new Error("Gagal edit data pelatih");
             }
           })
           .catch((error) => console.error(error));
