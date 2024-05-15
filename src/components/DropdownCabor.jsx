@@ -17,7 +17,7 @@ function DropdownCabor({ onChange }) {
                     required
                     onChange={(e) => onChange(e.target.value)}
                   >
-                    <option value="">Cabang Olahraga</option>
+                    <option value="" className='text-sm'>Cabang Olahraga</option>
                     {CaborId.map((item) => (
         <option key={item.id} value={item.id}>
           {item.nama}

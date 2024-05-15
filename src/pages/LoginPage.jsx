@@ -10,6 +10,11 @@ function LoginPage() {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
+      // if (username === 'admin' && password === 'adminmaco123') {
+      //   window.location.href = 'https://pabo.tech';
+      //   return;
+      // }
+    
       const response = await fetch('https://api.konikulonprogo.com/api/v1/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

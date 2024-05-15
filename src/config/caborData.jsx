@@ -17,7 +17,7 @@ const caborData = [
     },
     {
         "id": "5",
-        "nama": "SENAM AEROBIK"
+        "nama": "SENAM"
     },
     {
         "id": "6",
@@ -33,151 +33,151 @@ const caborData = [
     },
     {
         "id": "9",
-        "nama": "CATUR"
-    },
-    {
-        "id": "10",
         "nama": "BULU TANGKIS"
     },
     {
-        "id": "11",
+        "id": "10",
         "nama": "DRUM BAND"
     },
     {
-        "id": "12",
+        "id": "11",
         "nama": "PANJAT TEBING"
     },
     {
-        "id": "13",
+        "id": "12",
         "nama": "GULAT"
     },
     {
+        "id": "13",
+        "nama": "DAYUNG"
+    },
+    {
         "id": "14",
-        "nama": "DAYUNG KANOEING"
+        "nama": "SOFT BALL"
     },
     {
         "id": "15",
-        "nama": "SOFTBALL"
-    },
-    {
-        "id": "16",
         "nama": "PENCAK SILAT"
     },
     {
-        "id": "17",
+        "id": "16",
         "nama": "JUDO"
     },
     {
-        "id": "18",
+        "id": "17",
         "nama": "ANGGAR"
     },
     {
-        "id": "19",
-        "nama": "SENAM ARTISTIK"
+        "id": "18",
+        "nama": "HOKI"
     },
     {
-        "id": "20",
+        "id": "19",
         "nama": "ANGKAT BERAT"
     },
     {
-        "id": "21",
+        "id": "20",
         "nama": "TAE KWON DO"
     },
     {
-        "id": "22",
+        "id": "21",
         "nama": "YONGMODO"
     },
     {
-        "id": "23",
+        "id": "22",
         "nama": "PETANQUE"
     },
     {
-        "id": "24",
-        "nama": "HOKI INDOOR"
-    },
-    {
-        "id": "25",
+        "id": "23",
         "nama": "BINARAGA"
     },
     {
-        "id": "26",
-        "nama": "BOLA VOLI PASIR"
+        "id": "24",
+        "nama": "VOLI"
     },
     {
-        "id": "27",
+        "id": "25",
         "nama": "KEMPO"
     },
     {
-        "id": "28",
+        "id": "26",
         "nama": "TINJU"
     },
     {
-        "id": "29",
+        "id": "27",
         "nama": "TENIS MEJA"
     },
     {
-        "id": "30",
+        "id": "28",
         "nama": "TENIS LAPANGAN"
     },
     {
-        "id": "31",
+        "id": "29",
         "nama": "TARUNG DRAJAT"
     },
     {
-        "id": "32",
+        "id": "30",
         "nama": "SEPATU RODA"
     },
     {
-        "id": "33",
+        "id": "31",
         "nama": "SEPAK TAKRAW"
     },
     {
-        "id": "34",
+        "id": "32",
         "nama": "SEPAK BOLA"
     },
     {
-        "id": "35",
+        "id": "33",
         "nama": "PANAHAN"
     },
     {
-        "id": "36",
+        "id": "34",
         "nama": "MENEMBAK"
     },
     {
-        "id": "37",
-        "nama": "HOKI OUTDOOR"
-    },
-    {
-        "id": "38",
+        "id": "35",
         "nama": "DANSA"
     },
     {
-        "id": "39",
-        "nama": "BOLA VOLI INDOOR"
-    },
-    {
-        "id": "40",
+        "id": "36",
         "nama": "BOLA BASKET"
     },
     {
-        "id": "41",
+        "id": "37",
         "nama": "BALAP SEPEDA"
     },
     {
-        "id": "42",
+        "id": "38",
         "nama": "ATLETIK"
     },
     {
+        "id": "39",
+        "nama": "AEROMODELING"
+    },
+    {
+        "id": "40",
+        "nama": "WOOD BALL"
+    },
+    {
+        "id": "41",
+        "nama": "GATEBALL"
+    },
+    {
+        "id": "42",
+        "nama": "HAPKIDO"
+    },
+    {
         "id": "43",
-        "nama": "AEROMEDELING"
+        "nama": "SAMBO"
     },
     {
         "id": "44",
-        "nama": "WOODBALL"
+        "nama": "WUSHU"
     },
     {
         "id": "45",
-        "nama": "GATEBALL"
+        "nama": "KARATE"
     }
 ]
 

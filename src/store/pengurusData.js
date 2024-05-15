@@ -1,6 +1,3 @@
-
-
-
 import Koni from '../assets/polos.png'
 import Uwong from '../assets/polos.png'
 import Koni1 from '../assets/1.jpeg'
@@ -89,7 +86,7 @@ export const pengurusData = [
       image: Koni26,
     },
     {
-      name: 'Ferdinand Kuahati',
+      name: 'Raden Bastian Norma Ernawan SE,.ST.',
       role: 'Bidang Pembinaan Organisasi',
       image: Koni27,
     },
