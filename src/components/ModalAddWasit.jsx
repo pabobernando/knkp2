@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import caborData from '../config/caborData'
 
-function ModalAddWasit( {isOpen, onOk, onClose, initialValue = undefined} ) {
-    const [formValue, setFormValue] = useState({
+const initialState = {
         nik: '',
         nama: '',
         alamat: '',
@@ -12,14 +10,18 @@ function ModalAddWasit( {isOpen, onOk, onClose, initialValue = undefined} ) {
         prestasi: '',
         keterangan: '',
         caborId: 0
-    })
+}
 
+function ModalAddWasit( {isOpen, onOk, onClose, mode, initialValue = undefined} ) {
+    const [formValue, setFormValue] = useState(initialState)
     const CaborId = caborData
     useEffect(() => {
-      if (initialValue) {
+      if (mode === 'edit' && initialValue) {
           setFormValue(initialValue)
+      } else {
+          setFormValue(initialState)
       }
-  }, [initialValue])
+  }, [mode])
 
     function updateForm(field, value) {
         const cForm = Object.assign({}, formValue)
@@ -129,7 +131,7 @@ function ModalAddWasit( {isOpen, onOk, onClose, initialValue = undefined} ) {
                     required
                     onChange={(event) => updateForm('gender', event.target.value)}
                   >
-                    <option value="">Jenis Kelamain</option>
+                    <option value="">Jenis Kelamin</option>
                     <option value="PUTRA">PUTRA</option>
                     <option value="PUTRI">PUTRI</option>
                   </select>

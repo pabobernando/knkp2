@@ -10,16 +10,28 @@ function DataSarpras() {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenAdd, setIsOpenAdd] = useState(false)
-    const [selectedSarpras, setSelectedSarpras] = useState()
+    const [selectedSarpras, setSelectedSarpras] = useState(null)
     const [page, setPage] = useState(0)
     const [halaman, setHalaman] = useState()
     const [pageCount, setPageCount] = useState(0)
+    const [modalMode, setModalMode] = useState('add')
 
-    const openModal = (sarpras) => {
-      console.log(sarpras);
+    const openModalAdd = (sarpras) => {
+      setModalMode('add')
+      setIsOpenAdd(true);
       setSelectedSarpras(sarpras)
-      setIsOpen(true);
     };
+
+    const openModalEdit = (sarpras) => {
+      setModalMode('edit');
+      setIsOpenAdd(true);
+      setSelectedSarpras(sarpras)
+  };
+  
+    const openModalDelete = (sarpras) => {
+      setSelectedSarpras(sarpras);
+      setIsOpen(true);
+    }
 
     const getDataSarpras = ({ page = 0, limit = 10, cabor_id = '' }) => {
       const token = localStorage.getItem('token');
@@ -122,21 +134,11 @@ function DataSarpras() {
           })
           .catch((error) => console.error(error));
         }
-    
-    const openModalAdd = () => {
-      setIsOpenAdd(true)
-      console.log("modal bukak")
-    }
 
     const closeModal = () => {
       setIsOpen(false);
       setIsOpenAdd(false)
     };
-
-    const closeModalAdd = () => {
-      setIsOpenAdd(false)
-      console.log("modal nutup")
-    }
     
     useEffect(() => {
       getDataSarpras({})
@@ -156,12 +158,6 @@ function DataSarpras() {
           console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
         })
         .catch(error => console.error(error));
-    };
-
-    const handleButtonClick = () => {
-      setHalaman(pageCount)
-      // gunakan nilai pageCount pada saat button di klik
-      console.log('Page count:', pageCount);
     };
 
     const handleOk = (form) => {
@@ -204,8 +200,17 @@ function DataSarpras() {
   return (
     
 <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
-    <ModalDelete onClose={closeModal} onOk={handleDelete} isOpen={isOpen} dataName={selectedSarpras?.nama} />
-    <ModalAdd onClose={closeModalAdd} onOk={handleOk} isOpen={isOpenAdd} initialValue={selectedSarpras} />
+    <ModalDelete onClose={closeModal} 
+    onOk={handleDelete}
+    isOpen={isOpen}
+    dataName={selectedSarpras?.nama} />
+    <ModalAdd 
+    onClose={() => setIsOpenAdd(false)}
+    onOk={handleOk}
+    isOpen={isOpenAdd}
+    initialValue={selectedSarpras}
+    mode={modalMode} 
+    />
     <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
             <NavbarSide />
@@ -226,7 +231,10 @@ function DataSarpras() {
 </svg>
   <span className='text-white hidden sm:flex'>Download File</span>
 </button>
-<button onClick={openModalAdd} className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
+<button onClick={() => {
+  openModalAdd()
+}} 
+className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-white">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 </svg>
@@ -260,7 +268,7 @@ function DataSarpras() {
                 <div className='flex justify-end items-center'>
                 <button onClick={() => {
                   setSelectedSarpras(sarpras)
-                  openModalAdd()
+                  openModalEdit(sarpras)
                 }} className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
               <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +283,7 @@ function DataSarpras() {
 
                         </button>
                         <button
-                              onClick={() => openModal(sarpras)}
+                              onClick={() => openModalDelete(sarpras)}
                               className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                             >
                               <svg className="h-4 w-4 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="3 6 5 6 21 6" />  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" /></svg>

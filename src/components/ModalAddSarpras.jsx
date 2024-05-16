@@ -1,29 +1,31 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import caborData from '../config/caborData'
 
-function ModalAddSarpras( {isOpen, onOk, onClose, initialValue = undefined} ) {
-    const [formValue, setFormValue] = useState({
+const initialState = {
         nama: '',
         keterangan: '',
         tahun: '',
         caborId: 0
-    })
+}
 
-    const CaborId = caborData
-    useEffect(() => {
-      if (initialValue) {
-          setFormValue(initialValue)
-      }
-  }, [initialValue])
-
-    function updateForm(field, value) {
-        const cForm = Object.assign({}, formValue)
-        setFormValue({
-            ...cForm,
-            [field]: value
-        })
+function ModalAddSarpras( {isOpen, onOk, onClose, mode, initialValue = undefined} ) {
+  const [formValue, setFormValue] = useState(initialState)
+  const CaborId = caborData
+  useEffect(() => {
+    if (mode === 'edit' && initialValue) {
+        setFormValue(initialValue)
+    } else {
+        setFormValue(initialState)
     }
+}, [mode])
+
+  function updateForm(field, value) {
+      const cForm = Object.assign({}, formValue)
+      setFormValue({
+          ...cForm,
+          [field]: value
+      })
+  }
 
   return isOpen && (
     <div>

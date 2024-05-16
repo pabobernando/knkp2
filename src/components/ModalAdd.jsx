@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import caborData from '../config/caborData'
 
-function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
-    const [formValue, setFormValue] = useState({
-        nik: '',
-        nama: '',
-        alamat: '',
-        ttl: '',
-        telephone: '',
-        prestasi: '',
-        caborId: 0
-    })
+const initialState = {
+  nik: '',
+  nama: '',
+  alamat: '',
+  ttl: '',
+  telephone: '',
+  prestasi: '',
+  caborId: 0
+}
 
+function ModalAdd( {isOpen, onOk, onClose, mode, initialValue = undefined} ) {
+    const [formValue, setFormValue] = useState(initialState)
     const CaborId = caborData
     useEffect(() => {
-      if (initialValue) {
+      if (mode === 'edit' && initialValue) {
           setFormValue(initialValue)
+      } else {
+          setFormValue(initialState)
       }
-  }, [initialValue])
+  }, [mode])
 
     function updateForm(field, value) {
         const cForm = Object.assign({}, formValue)
@@ -41,9 +43,9 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm leading-5">
-              <span className="px-2 text-gray-500 bg-white">
-                Tambah Data Atlit
-              </span>
+            <span className="px-2 text-gray-500 bg-white">
+                {mode === 'add' ? 'Tambah Data Atlit' : 'Edit Data Atlit'}
+            </span>
             </div>
           </div>
           <div className="mt-6">
@@ -128,7 +130,7 @@ function ModalAdd( {isOpen, onOk, onClose, initialValue = undefined} ) {
                     required
                     onChange={(event) => updateForm('gender', event.target.value)}
                   >
-                    <option value="">Jenis Kelamain</option>
+                    <option value="">Jenis Kelamin</option>
                     <option value="PUTRA">PUTRA</option>
                     <option value="PUTRI">PUTRI</option>
                   </select>

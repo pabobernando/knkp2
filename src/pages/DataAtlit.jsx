@@ -4,24 +4,34 @@ import NavbarSide from "../components/NavbarSide";
 import ModalDelete from "../components/ModalDelete";
 import ModalAdd from "../components/ModalAdd";
 import DropdownCabor from "../components/DropdownCabor";
-import IconDownload from "../assets/download.svg"
-import IconAdd from "../assets/add.svg"
 
 function DataAtlit() {
   const [athletes, setAthletes] = useState([]);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAdd, setIsOpenAdd] = useState(false);
-  const [selectedAthele, setSelectedAthele] = useState();
+  const [selectedAthele, setSelectedAthele] = useState(null);
   const [page, setPage] = useState(0);
   const [halaman, setHalaman] = useState();
   const [pageCount, setPageCount] = useState(0);
+  const [modalMode, setModalMode] = useState('add')
+  
+  const openModalAdd = (atlit) => {
+    setModalMode('add')
+    setIsOpenAdd(true);
+    setSelectedAthele(atlit)
+  };
 
-  const openModal = (atlit) => {
-    console.log(atlit);
+  const openModalEdit = (atlit) => {
+    setModalMode('edit');
+    setIsOpenAdd(true);
+    setSelectedAthele(atlit)
+};
+
+  const openModalDelete = (atlit) => {
     setSelectedAthele(atlit);
     setIsOpen(true);
-  };
+  }
 
   const getDataAtlit = ({ page = 0, limit = 10, cabor_id = "" }) => {
     const token = localStorage.getItem("token");
@@ -125,19 +135,9 @@ function DataAtlit() {
       .catch((error) => console.error(error));
   };
 
-  const openModalAdd = () => {
-    setIsOpenAdd(true);
-    console.log("modal bukak");
-  };
-
   const closeModal = () => {
     setIsOpen(false);
     setIsOpenAdd(false);
-  };
-
-  const closeModalAdd = () => {
-    setIsOpenAdd(false);
-    console.log("modal nutup");
   };
 
   useEffect(() => {
@@ -159,19 +159,12 @@ function DataAtlit() {
         })
         .catch(error => console.error(error));
     };
-  
-    const handleButtonClick = () => {
-      setHalaman(pageCount)
-      // gunakan nilai pageCount pada saat button di klik
-      console.log('Page count:', pageCount);
-    };
     
     const handleOk = (form) => {
       if (form.id) {
         handleEdit(form);
       } else {
         handleAdd(form);
-        console.log("tes")
       }
     }
 
@@ -213,10 +206,11 @@ function DataAtlit() {
         dataName={selectedAthele?.nama}
       />
       <ModalAdd
-        onClose={closeModalAdd}
+        onClose={() => setIsOpenAdd(false)}
         onOk={handleOk}
         isOpen={isOpenAdd}
         initialValue={selectedAthele}
+        mode={modalMode}
       />
       <div className="flex items-start justify-between">
         <div className="relative hidden h-screen shadow-lg lg:block w-80">
@@ -245,7 +239,9 @@ function DataAtlit() {
 </button>
 
 <button
-  onClick={openModalAdd}
+  onClick={() => {
+    openModalAdd();
+  }}
   className="bg-blue-500 hover:bg-blue-700 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center text-white"
 >
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -360,7 +356,7 @@ function DataAtlit() {
                             <button
                               onClick={() => {
                                 setSelectedAthele(athlete);
-                                openModalAdd();
+                                openModalEdit(athlete);
                               }}
                               className="mr-2 inline-flex items-center justify-center h-7 w-7 rounded-full bg-blue-500 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                             >
@@ -376,7 +372,7 @@ function DataAtlit() {
                               </svg>
                             </button>
                             <button
-                              onClick={() => openModal(athlete)}
+                              onClick={() => openModalDelete(athlete)}
                               className="inline-flex items-center justify-center h-7 w-7 rounded-full bg-red-500 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                             >
                               <svg className="h-4 w-4 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <polyline points="3 6 5 6 21 6" />  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />  <line x1="10" y1="11" x2="10" y2="17" />  <line x1="14" y1="11" x2="14" y2="17" /></svg>

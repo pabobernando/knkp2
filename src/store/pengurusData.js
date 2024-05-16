@@ -1,169 +1,199 @@
 import Koni from '../assets/polos.png'
 import Uwong from '../assets/polos.png'
-import Koni1 from '../assets/1.jpeg'
-import Koni2 from '../assets/2.jpeg'
-import Koni3 from '../assets/3.jpeg'
-import Koni4 from '../assets/4.jpeg'
-import Koni5 from '../assets/5.jpeg'
-import Koni6 from '../assets/6.jpeg'
-import Koni7 from '../assets/7.jpeg'
-import Koni8 from '../assets/8.jpeg'
-import Koni9 from '../assets/9.jpeg'
-import Koni10 from '../assets/10.jpeg'
-import Koni11 from '../assets/11.jpeg'
-import Koni12 from '../assets/12.jpeg'
-import Koni13 from '../assets/13.jpeg'
-import Koni14 from '../assets/14.jpeg'
-import Koni15 from '../assets/15.jpeg'
-import Koni16 from '../assets/16.jpeg'
-import Koni17 from '../assets/17.jpeg'
-import Koni18 from '../assets/18.jpeg'
-import Koni19 from '../assets/19.jpeg'
-import Koni20 from '../assets/20.jpeg'
-import Koni21 from '../assets/21.jpeg'
-import Koni22 from '../assets/22.jpeg'
-import Koni23 from '../assets/23.jpeg'
-import Koni24 from '../assets/24.jpeg'
-import Koni25 from '../assets/25.jpeg'
-import Koni26 from '../assets/26.jpeg'
-import Koni27 from '../assets/27.jpeg'
+import BambangS from '../assets/1.jpeg'
+import Barkah from '../assets/2.jpeg'
+import Agnes from '../assets/3.jpeg'
+import Parinem from '../assets/4.jpeg'
+import Barjo from '../assets/5.jpeg'
+import Margono from '../assets/6.jpeg'
+import AnungM from '../assets/7.jpeg'
+import Sukiman from '../assets/8.jpeg'
+import Nurhadiyanto from '../assets/nurhadiyanto.jpeg'
+import Pabo from '../assets/10.jpeg'
+import Tirto from '../assets/11.jpeg'
+import ApriliaD from '../assets/12.jpeg'
+import Sukismadi from '../assets/13.jpeg'
+import Subardi from '../assets/14.jpeg'
+import HendriU from '../assets/15.jpeg'
+import Kusdira from '../assets/16.jpeg'
+import Parjiyono from '../assets/17.jpeg'
+import Rina from '../assets/18.jpeg'
+import SitiS from '../assets/19.jpeg'
+import Marhaban from '../assets/20.jpeg'
+import HeruS from '../assets/21.jpeg'
+import Sujiran from '../assets/22.jpeg'
+import Kuswadi from '../assets/23.jpeg'
+import Jumantoro from '../assets/24.jpeg'
+import Romphis from '../assets/25.jpeg'
+import Sriyono from '../assets/26.jpeg'
+import Bastian from '../assets/bastian.jpeg'
 
 
 export const pengurusData = [
   {
     name: 'Kusdira, BA',
-    role: 'Ketua Umum Koni Kulon Progo',
-    image: Koni16,
+    role: 'Ketua Umum',
+    image: Kusdira,
   },
   {
     name: 'H. Margono, S.Pd, Jas',
     role: 'Wakil Ketua Umum I',
-    image: Koni6,
+    image: Margono,
   },
   {
     name: 'Drs. Sujiran',
     role: 'Wakil Ketua Koni II',
-    image: Koni22,
+    image: Sujiran,
   },
   {
     name: 'Anung Marganto, SH., MM.',
     role: 'Wakil Ketua Umum III',
-    image: Koni7,
+    image: AnungM,
   },
   {
     name: 'Heru Sarjana, S.Pd.',
     role: 'Sekretaris Umum',
-    image: Koni21,
+    image: HeruS,
   },
   {
     name: 'Subardi, S.Pd',
     role: 'Wakil Sekretaris Umum',
-    image: Koni14,
+    image: Subardi,
   },
   {
     name: 'H. Sukiman, S.Pd.',
     role: 'Bendahara I',
-    image: Koni8,
+    image: Sukiman,
   },
   {
     name: 'Parinem, S.Pd',
     role: 'Bendahara II',
-    image: Koni4,
+    image: Parinem,
   },
     {
       name: 'Bambang Sutrisno, S.Sos, M.Si',
       role: 'Badan Audit Internal',
-      image: Koni1,
+      image: BambangS,
     },
     {
       name: 'Barkah Hari Wibowo, SE',
       role: 'Badan Audit Internal',
-      image: Koni2,
+      image: Barkah,
     },
     {
       name: 'Sriyono, S.Pd',
       role: 'Bidang Pembinaan Organisasi',
-      image: Koni26,
+      image: Sriyono,
     },
     {
-      name: 'Raden Bastian Norma Ernawan SE,.ST.',
+      name: 'Drs. Nurhadiyanto,M.Acc',
       role: 'Bidang Pembinaan Organisasi',
-      image: Koni27,
+      image: Nurhadiyanto,
     },
     {
       name: 'Hendri Utomo, SH',
       role: 'Bidang Hukum',
-      image: Koni15,
+      image: HendriU,
+    },
+    {
+      name: 'Muhammad Umar Maksum, SH',
+      role: 'Bidang Hukum',
+      image: Uwong,
+    },
+    {
+      name: 'Nurtanto',
+      role: 'Bidang Pembinaan Prestasi',
+      image: Uwong,
     },
     {
       name: 'Sukismadi, S.Pd',
-      role: 'Bidang BINPRES',
-      image: Koni13,
+      role: 'Bidang Pembinaan Prestasi',
+      image: Sukismadi,
     },
     {
       name: 'Tirto Mulyono',
-      role: 'Bidang BINPRES',
-      image: Koni11,
+      role: 'Bidang Pembinaan Prestasi',
+      image: Tirto,
+    },
+    {
+      name: 'Raden Bastian Norma Ernawan SE,.ST.',
+      role: 'Bidang Pembinaan Prestasi',
+      image: Bastian,
     },
     {
       name: 'Marhaban',
       role: 'Bidang Pendidikan Pelatihan dan Penataran',
-      image: Koni20,
+      image: Marhaban,
     },
     {
       name: 'Andreas Subarjo',
       role: 'Bidang Pendidikan Pelatihan dan Penataran',
-      image: Koni5,
+      image: Barjo,
+    },
+    {
+      name: 'Dra. Sukarni',
+      role: 'Bidang IPTEK dan LITBANG Olahraga',
+      image: Uwong,
     },
     {
       name: 'Romphis Oka Dwi Jaya, S.Pd',
       role: 'Bidang IPTEK dan LITBANG Olahraga',
-      image: Koni25,
+      image: Romphis,
     },
     {
       name: 'Jumantoro, SE',
       role: 'Bidang Rencana Program Anggaran',
-      image: Koni24,
+      image: Jumantoro,
     },
     {
       name: 'H. Kuswadi, ST',
       role: 'Bidang Rencana Program Anggaran',
-      image: Koni23,
+      image: Kuswadi,
     },
     {
       name: 'Agnes Kristini, S.Pd, Jas',
       role: 'Bidang Sarpras',
-      image: Koni3,
+      image: Agnes,
     },
     {
       name: 'Parjiyono',
       role: 'Bidang SARPRAS',
-      image: Koni17,
+      image: Parjiyono,
     },
     {
       name: 'Siti Suyatimah',
       role: 'Bidang SDM',
-      image: Koni19,
+      image: SitiS,
     },
     {
-      name: 'Drs. Raden Molyartono',
-      role: 'Bidang SDM',
-      image: Koni9,
+      name: 'Surojo, SE',
+      role: 'Bidang Kerjasama Promosi dan Marketing',
+      image: Uwong,
+    },
+    {
+      name: 'H. Pandaya, S.Pd, M.Pd',
+      role: 'Bidang Kerjasama Promosi dan Marketing',
+      image: Uwong,
+    },
+    {
+      name: 'M. Dani Ardiyanto, SH',
+      role: 'Bidang Media dan Hubungan Masyarakat',
+      image: Uwong,
     },
     {
       name: 'Aprilia Dewantoro',
-      role: 'Bidang HUMAS',
-      image: Koni12,
+      role: 'Bidang Media dan Hubungan Masyarakat',
+      image: ApriliaD,
     },
     {
       name: 'Dra. Rinawati, M.Pd',
       role: 'Bidang Pengumpulan dan Pengolahan Data',
-      image: Koni18,
+      image: Rina,
     },
     {
       name: 'Pabo Bernando',
       role: 'Web Developer',
-      image: Koni10,
+      image: Pabo,
     },
     
   ];
