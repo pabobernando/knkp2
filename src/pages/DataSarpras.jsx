@@ -175,7 +175,7 @@ function DataSarpras() {
       };
       try {
         const response = await fetch(
-          "https://api.konikulonprogo.com:3000/api/v1/sarpras/download",
+          "https://api.konikulonprogo.com/api/v1/sarpras/download",
           {
             method: "GET",
             headers: {
