@@ -13,7 +13,7 @@ function CMS() {
   }, []);
 
   const fetchArticles = async () => {
-    const response = await fetch("https://api.konikulonprogo.com/api/v1/article");
+    const response = await fetch("http://localhost:3000/api/v1/article");
     const data = await response.json();
     setArticles(data);
   };
@@ -26,7 +26,7 @@ function CMS() {
 
   const handleNewArticleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("https://api.konikulonprogo.com/api/v1/article", {
+    const response = await fetch("http://localhost:3000/api/v1/article", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newArticle),
@@ -57,7 +57,7 @@ function CMS() {
   const handleEditArticleSubmit = async (event) => {
     event.preventDefault();
     console.log("Selected article:", selectedArticle); // add this line to log the selectedArticle state
-    await fetch(`https://api.konikulonprogo.com/api/v1/article/${selectedArticle._id}`, {
+    await fetch(`http://localhost:3000/api/v1/article/${selectedArticle._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(selectedArticle),
@@ -67,7 +67,7 @@ function CMS() {
   };
 
   const handleDeleteClick = async () => {
-    await fetch(`https://api.konikulonprogo.com/api/v1/article/${selectedArticle._id}`, {
+    await fetch(`http://localhost:3000/api/v1/article/${selectedArticle._id}`, {
       method: "DELETE",
     });
     setSelectedArticle({});

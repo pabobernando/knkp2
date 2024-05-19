@@ -38,7 +38,7 @@ function DataSarpras() {
       const headers = {
         Authorization: `Bearer ${token}`
       };
-      fetch(`https://api.konikulonprogo.com/api/v1/sarpras?${new URLSearchParams({
+      fetch(`http://localhost:3000/api/v1/sarpras?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -65,7 +65,7 @@ function DataSarpras() {
         Authorization: `Bearer ${token}`
       };
       const sarpras = selectedSarpras
-      fetch(`https://api.konikulonprogo.com/api/v1/sarpras/${sarpras.id}`, {
+      fetch(`http://localhost:3000/api/v1/sarpras/${sarpras.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ function DataSarpras() {
            const headers = {
              Authorization: `Bearer ${token}`
            };
-           fetch('https://api.konikulonprogo.com/api/v1/sarpras', {
+           fetch('http://localhost:3000/api/v1/sarpras', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ function DataSarpras() {
             Authorization: `Bearer ${token}`
           };
           const sarpras = selectedSarpras;
-          fetch(`https://api.konikulonprogo.com/api/v1/sarpras/${sarpras.id}`, {
+          fetch(`http://localhost:3000/api/v1/sarpras/${sarpras.id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ function DataSarpras() {
     }, []);
 
     const fetchPageCount = () => {
-      fetch('https://api.konikulonprogo.com/api/v1/count')
+      fetch('http://localhost:3000/api/v1/count')
         .then(response => response.json())
         .then(data => {
           const pembulatanPage = Math.ceil(data.sarpras / 10); // membulatkan angka ke atas
@@ -175,7 +175,7 @@ function DataSarpras() {
       };
       try {
         const response = await fetch(
-          "https://api.konikulonprogo.com/api/v1/sarpras/download",
+          "http://localhost:3000/api/v1/sarpras/download",
           {
             method: "GET",
             headers: {

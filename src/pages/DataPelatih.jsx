@@ -39,7 +39,7 @@ function DataPelatih() {
         Authorization: `Bearer ${token}`
       };
       fetch(
-        `https://api.konikulonprogo.com/api/v1/pelatih?${new URLSearchParams({
+        `http://localhost:3000/api/v1/pelatih?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -65,7 +65,7 @@ function DataPelatih() {
         Authorization: `Bearer ${token}`
       };
       const pelatih = selectedCoache;
-      fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
+      fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ function DataPelatih() {
            const headers = {
              Authorization: `Bearer ${token}`
            };
-           fetch('https://api.konikulonprogo.com/api/v1/pelatih', {
+           fetch('http://localhost:3000/api/v1/pelatih', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ function DataPelatih() {
             Authorization: `Bearer ${token}`
           };
           const pelatih = selectedCoache;
-          fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
+          fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -150,12 +150,12 @@ function DataPelatih() {
     }, []);
 
     const fetchPageCount = () => {
-      fetch('https://api.konikulonprogo.com/api/v1/count')
+      fetch('http://localhost:3000/api/v1/count')
         .then(response => response.json())
         .then(data => {
-          const pembulatanPage = Math.ceil(data.pelatih / 10); // membulatkan angka ke atas
+          const pembulatanPage = Math.ceil(data.pelatih / 10); 
           setPageCount(pembulatanPage);
-          console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
+          console.log(pageCount) //
         })
         .catch(error => console.error(error));
     };
@@ -175,7 +175,7 @@ function DataPelatih() {
       };
       try {
         const response = await fetch(
-          "https://api.konikulonprogo.com/api/v1/pelatih/download",
+          "http://localhost:3000/api/v1/pelatih/download",
           {
             method: "GET",
             headers: {
