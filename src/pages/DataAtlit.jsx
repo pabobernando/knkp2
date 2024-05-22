@@ -39,7 +39,7 @@ function DataAtlit() {
       Authorization: `Bearer ${token}`,
     };
     fetch(
-      `http://localhost:3000/api/v1/atlit?${new URLSearchParams({
+      `https://api.konikulonprogo.com/api/v1/atlit?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -65,7 +65,7 @@ function DataAtlit() {
       Authorization: `Bearer ${token}`,
     };
     const atlit = selectedAthele;
-    fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/atlit/${atlit.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ function DataAtlit() {
     const headers = {
       Authorization: `Bearer ${token}`,
     };
-    fetch("http://localhost:3000/api/v1/atlit", {
+    fetch("https://api.konikulonprogo.com/api/v1/atlit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function DataAtlit() {
       Authorization: `Bearer ${token}`,
     };
     const atlit = selectedAthele;
-    fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/atlit/${atlit.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -150,7 +150,7 @@ function DataAtlit() {
   }, []);
 
     const fetchPageCount = () => {
-      fetch('http://localhost:3000/api/v1/count')
+      fetch('https://api.konikulonprogo.com/api/v1/count')
         .then(response => response.json())
         .then(data => {
           const pembulatanPage = Math.ceil(data.atlit / 10); // membulatkan angka ke atas
@@ -175,7 +175,7 @@ function DataAtlit() {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/atlit/download",
+        "https://api.konikulonprogo.com/api/v1/atlit/download",
         {
           method: "GET",
           headers: {

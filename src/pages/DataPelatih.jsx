@@ -39,7 +39,7 @@ function DataPelatih() {
         Authorization: `Bearer ${token}`
       };
       fetch(
-        `http://localhost:3000/api/v1/pelatih?${new URLSearchParams({
+        `https://api.konikulonprogo.com/api/v1/pelatih?${new URLSearchParams({
         page,
         limit,
         cabor_id,
@@ -65,7 +65,7 @@ function DataPelatih() {
         Authorization: `Bearer ${token}`
       };
       const pelatih = selectedCoache;
-      fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+      fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ function DataPelatih() {
            const headers = {
              Authorization: `Bearer ${token}`
            };
-           fetch('http://localhost:3000/api/v1/pelatih', {
+           fetch('https://api.konikulonprogo.com/api/v1/pelatih', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ function DataPelatih() {
             Authorization: `Bearer ${token}`
           };
           const pelatih = selectedCoache;
-          fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+          fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ function DataPelatih() {
     }, []);
 
     const fetchPageCount = () => {
-      fetch('http://localhost:3000/api/v1/count')
+      fetch('https://api.konikulonprogo.com/api/v1/count')
         .then(response => response.json())
         .then(data => {
           const pembulatanPage = Math.ceil(data.pelatih / 10); 
@@ -175,7 +175,7 @@ function DataPelatih() {
       };
       try {
         const response = await fetch(
-          "http://localhost:3000/api/v1/pelatih/download",
+          "https://api.konikulonprogo.com/api/v1/pelatih/download",
           {
             method: "GET",
             headers: {
