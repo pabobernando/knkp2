@@ -1,71 +1,71 @@
 const caborData = [
     {
         "id": "1",
-        "nama": "BILYARD"
+        "nama": "POBSI"
     },
     {
         "id": "2",
-        "nama": "CATUR"
+        "nama": "PERCASI"
     },
     {
         "id": "3",
-        "nama": "ANGKAT BESI"
+        "nama": "PABSI"
     },
     {
         "id": "4",
-        "nama": "BRIDGE"
+        "nama": "GABSI"
     },
     {
         "id": "5",
-        "nama": "SENAM"
+        "nama": "PERSANI"
     },
     {
         "id": "6",
-        "nama": "GOLF"
+        "nama": "PGI"
     },
     {
         "id": "7",
-        "nama": "RENANG"
+        "nama": "PRSI"
     },
     {
         "id": "8",
-        "nama": "RUGBI"
+        "nama": "PRUI"
     },
     {
         "id": "9",
-        "nama": "BULU TANGKIS"
+        "nama": "PBSI"
     },
     {
         "id": "10",
-        "nama": "DRUM BAND"
+        "nama": "PDBI"
     },
     {
         "id": "11",
-        "nama": "PANJAT TEBING"
+        "nama": "FPTI"
     },
     {
         "id": "12",
-        "nama": "GULAT"
+        "nama": "PGSI"
     },
     {
         "id": "13",
-        "nama": "DAYUNG"
+        "nama": "PODSI"
     },
     {
         "id": "14",
-        "nama": "SOFT BALL"
+        "nama": "PERBASASI"
     },
     {
         "id": "15",
-        "nama": "PENCAK SILAT"
+        "nama": "IPSI"
     },
     {
         "id": "16",
-        "nama": "JUDO"
+        "nama": "PJSI"
     },
     {
         "id": "17",
-        "nama": "ANGGAR"
+        "nama": "IKASI"
     },
     {
         "id": "18",
@@ -73,11 +73,11 @@ const caborData = [
     },
     {
         "id": "19",
-        "nama": "ANGKAT BERAT"
+        "nama": "PABERSI"
     },
     {
         "id": "20",
-        "nama": "TAE KWON DO"
+        "nama": "TI"
     },
     {
         "id": "21",
@@ -85,11 +85,11 @@ const caborData = [
     },
     {
         "id": "22",
-        "nama": "PETANQUE"
+        "nama": "FOPI"
     },
     {
         "id": "23",
-        "nama": "BINARAGA"
+        "nama": "PBFI"
     },
     {
         "id": "24",
@@ -97,71 +97,71 @@ const caborData = [
     },
     {
         "id": "25",
-        "nama": "KEMPO"
+        "nama": "PERKEMI"
     },
     {
         "id": "26",
-        "nama": "TINJU"
+        "nama": "PERTINA"
     },
     {
         "id": "27",
-        "nama": "TENIS MEJA"
+        "nama": "PTMSI"
     },
     {
         "id": "28",
-        "nama": "TENIS LAPANGAN"
+        "nama": "PELTI"
     },
     {
         "id": "29",
-        "nama": "TARUNG DRAJAT"
+        "nama": "KODRAT"
     },
     {
         "id": "30",
-        "nama": "SEPATU RODA"
+        "nama": "PERSEROSI"
     },
     {
         "id": "31",
-        "nama": "SEPAK TAKRAW"
+        "nama": "PSTI"
     },
     {
         "id": "32",
-        "nama": "SEPAK BOLA"
+        "nama": "PSSI"
     },
     {
         "id": "33",
-        "nama": "PANAHAN"
+        "nama": "PERPANI"
     },
     {
         "id": "34",
-        "nama": "MENEMBAK"
+        "nama": "PERBAKIN"
     },
     {
         "id": "35",
-        "nama": "DANSA"
+        "nama": "IODI"
     },
     {
         "id": "36",
-        "nama": "BOLA BASKET"
+        "nama": "PERBASI"
     },
     {
         "id": "37",
-        "nama": "BALAP SEPEDA"
+        "nama": "ISSI"
     },
     {
         "id": "38",
-        "nama": "ATLETIK"
+        "nama": "PASI"
     },
     {
         "id": "39",
-        "nama": "AEROMODELING"
+        "nama": "FASI"
     },
     {
         "id": "40",
-        "nama": "WOOD BALL"
+        "nama": "IWBA"
     },
     {
         "id": "41",
-        "nama": "GATEBALL"
+        "nama": "PERGATSI"
     },
     {
         "id": "42",
@@ -177,7 +177,7 @@ const caborData = [
     },
     {
         "id": "45",
-        "nama": "KARATE"
+        "nama": "FORKI"
     }
 ]
 

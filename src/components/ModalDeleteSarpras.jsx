@@ -2,7 +2,7 @@ import React from 'react'
 
 function ModalDeleteSarpras({ isOpen, onClose, onOk, dataName }) {
     return isOpen && (
-      <div className=''>
+      <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-70'>
           <div className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
       <div className="w-full h-full text-center">
           <div className="flex flex-col justify-between h-full">

@@ -22,7 +22,11 @@ function LoginPage() {
       });
       if (response.ok && response.status === 200) {
         const json = await response.json()
+        console.log('iki token e', json.token)
         window.localStorage.setItem('token', json.token)
+        setTimeout(() => {
+          window.localStorage.removeItem('token', json.token);
+        }, 60 * 60 * 1000);
         navigate('/DataAtlit')
       } else {
         alert("Username atau password salah !");
@@ -38,7 +42,6 @@ function LoginPage() {
     Home
   </a>
 </div>
-
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
             <div className='mx-auto'><img src={LogoKoni} style={{width: "200px" ,height:"200px"}} /></div>
             <p className='text-center text-gray-300 mt-5 text-2xl'>Selamat datang di halaman login kami. Silakan masukkan informasi login Anda untuk melanjutkan.</p>
