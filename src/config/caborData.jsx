@@ -93,7 +93,7 @@ const caborData = [
     },
     {
         "id": "24",
-        "nama": "VOLI"
+        "nama": "PBVSI"
     },
     {
         "id": "25",
