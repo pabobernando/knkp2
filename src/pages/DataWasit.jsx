@@ -270,7 +270,7 @@ function DataWasit() {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.telephone}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.gender}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.keterangan}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.prestasi}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-ellipsis overflow-hidden max-w-md">{wasit.prestasi}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{wasit.cabor.nama}</td>
               <td className='"px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                 <div className='flex justify-items-end items-center'>

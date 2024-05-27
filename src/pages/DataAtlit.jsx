@@ -155,7 +155,7 @@ function DataAtlit() {
         .then(data => {
           const pembulatanPage = Math.ceil(data.atlit / 10); // membulatkan angka ke atas
           setPageCount(pembulatanPage);
-          console.log(pageCount) // simpan nilai pembulatanPage ke dalam state
+          console.log(pageCount)
         })
         .catch(error => console.error(error));
     };

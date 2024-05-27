@@ -21,7 +21,7 @@ function ModalAddWasit( {isOpen, onOk, onClose, mode, initialValue = undefined} 
       } else {
           setFormValue(initialState)
       }
-  }, [mode])
+  }, [mode, initialValue])
 
     function updateForm(field, value) {
         const cForm = Object.assign({}, formValue)
@@ -32,13 +32,13 @@ function ModalAddWasit( {isOpen, onOk, onClose, mode, initialValue = undefined} 
     }
 
   return isOpen && (
-    <div>
+    <div className="fixed inset-0 flex items-center z-40 justify-center bg-black bg-opacity-70">
         <div className="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
           <div className="w-full text-end">
           <button onClick={onClose} className="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-1/7 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full mt-2 mr-2">X</button>
           </div>
       <form onSubmit={onOk}>
-        <div className="px-4 py-8 sm:px-10">
+        <div className="block px-4 py-2 sm:px-10">
           <div className="relative mt-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300"></div>
@@ -183,7 +183,7 @@ function ModalAddWasit( {isOpen, onOk, onClose, mode, initialValue = undefined} 
                 </div>
               </div>
               <div>
-                <span className="block w-full rounded-md shadow-sm">
+                <span className="block w-full rounded-md shadow-sm ">
                   <button
                     onClick={(event) => {
                         event.preventDefault() 
@@ -199,12 +199,7 @@ function ModalAddWasit( {isOpen, onOk, onClose, mode, initialValue = undefined} 
             </div>
           </div>
         </div>
-        <div className="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
-          <p className="text-xs leading-5 text-gray-500">
-            - Koni Kulon Progo -
-          </p>
-          
-        </div>
+       
       </form>
     </div>
     </div>

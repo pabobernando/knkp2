@@ -216,12 +216,11 @@ function DataPelatih() {
             <NavbarSide />
         </div>
         <div className="flex flex-col w-full md:space-y-4">
-            
             <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
                 <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
                     DATA PELATIH
                 </h1>
-                <header className="z-40 flex items-center justify-between w-full h-16">
+                <header className="z-10 flex items-center justify-between w-full h-16">
                 <DropdownCabor onChange={(idCabor) =>  getDataPelatih({ cabor_id: idCabor })} />
                 <div className="block ml-6 lg:hidden">
                 </div>
@@ -272,7 +271,7 @@ function DataPelatih() {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.ttl}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.telephone}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.gender}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.prestasi}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-ellipsis overflow-hidden max-w-md">{coach.prestasi}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.keterangan}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{coach.cabor.nama}</td>
               <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
