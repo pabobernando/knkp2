@@ -1,0 +1,10 @@
+{
+    "apps": [
+        {
+            "name" : "konikulonprogo-fe",
+            "script": "npm",
+            "args": ["run", "serve"]
+        }
+        
+    ]
+}
