@@ -1,7 +1,7 @@
 import Gulat from '../assets/gulat.jpeg'
 import Panahan from '../assets/panahan.jpeg'
 import SepakBola from '../assets/sepakbola.jpeg'
-import Rakerkab from '../assets/rakerkab.jpeg'
+import HutKoni from '../assets/hutkonidiy.jpeg'
 import Gateball from '../assets/gateball.jpeg'
 import Panjat from '../assets/panjat.jpeg'
 import Pabo from '../assets/pabo.png'
@@ -12,16 +12,16 @@ import Anung from '../assets/7.jpeg'
 export const beritaData = [
     {
       id: 1,
-      imgSrc: Rakerkab,
-      title: 'RAKERKAB KONI KULONPROGO',
-      description: 'Dua cabang olahraga (cabor) disetujui dan disahkan menjadi anggota Komite Olahraga Nasional Indonesia (KONI) Kabupaten Kulonprogo',
-      category: 'RAKERKAB',
-      authorImg: Pabo,
-      author:'Pabo Bernando',
-      date:'04 - Oktober - 2023',
-      content1: 'Dua cabang olahraga (cabor) disetujui dan disahkan menjadi anggota Komite Olahraga Nasional Indonesia (KONI) Kabupaten Kulonprogo dalam Rapat Kerja Kabupaten (Rakerkab) yang diselenggarakan di Hotel King Wates, Sabtu (2/12) siang.Raker dibuka Asisten Pemerintahan dan Kesra Pemkab Kulonprogo Drs Jazil Ambar Wasan dan dihadiri Wakil Ketua DPRD Kulonprogo H Ponimin SE MM, Ketua Umum KONI DIY Prof Dr Djoko Pekik Irianto MKes AIFO, Ketua KONI Kabupaten/Kota se-DIY serta ketua cabor dan badan fungsional anggota KONI Kulonprogo.',
-      content2: 'Ketua KONI Kulonprogo, Kusdira BA menyampaikan, raker yang dihadiri 42 ketua cabor dan 2 badan fungsional ini membahas laporan pertanggungjawaban (LPJ) dan program kerja KONI Kulonprogo tahun 2024, persiapan cabor menghadapi Pekan Olahraga Daerah (Porda) DIY 2025 di Kabupaten Gunungkidul, pengesahan dua cabor untuk menjadi anggota KONI Kulonprogo .',
-      content3: 'Dalam raker ini, anggota yang hadir menyetujui dan mengesahkan dua cabor yang telah menyampaikan pemaparan dalam raker KONI Kulonprogo tahun 2022, yakni Persatuan Sambo Indonesia (Persambi) dan Wushu Indonesia (WI), jelasnya.Ketua KONI DIY, Prof Dr Djoko Pekik Irianto MKes AIFO berharap Rakerkab KONI ini tidak hanya menjadi ajang silaturahmi, tapi lebih dari itu dapat sebagai media untuk mengevaluasi dan merencanakan langkah-langkah baru dalam mengatasi berbagai persoalan bagi kemajuan olahraga di Kulonprogo'
+      imgSrc: HutKoni,
+      title: 'Gunungkidul Juara I Tenis POR Hari Jadi ke-57 KONI DIY',
+      description: 'Ini bukan menang-kalah namun bagaimana kita bisa bermain secara sportif.',
+      category: 'Hut Koni DIY',
+      authorImg: Anung,
+      author:'Anung Marganto',
+      date:'02 - Juni - 2024',
+      content1: 'Wabup Sleman Danang Maharsa sekaligus Ketua Pengkab Pelti Sleman memberikan sambutan di GOR Sleman, Kamis (30/5/2024). (foto: anung marganto) Pengurus Komite Olahraga Nasional Indonesia (KONI) se-Daerah Istimewa Yogyakarta (DIY) baik tingkat provinsi maupun kabupaten kota perlu menggalang sinergitas, soliditas dan solidaritas antarpengurus. Ini dimaksudkan agar mendapatkan prestasi maksimal dan membanggakan. Saya meyakini cabang olahraga (cabor) di DIY akan maju dan berprestasi apabila pengurusnya dalam hal ini KONI dapat solid serta satu tujuan untuk olahraga DIY yang berprestasi maksimal,”ungkap Danang Maharsa, Wakil Bupati Sleman, saat membuka Pekan Olahraga (POR) memperingati Hari Jadi ke-57 KONI DIY pada cabang olahraga tenis lapangan, Kamis (30/5/2024), di Lapangan Tenis Pemkab Sleman.',
+      content2: 'Pertandingan cabor tenis lapangan ini diikuti pengurus KONI dari lima kabupaten/kota se-DIY plus pengurus KONI DIY. Kabupaten Sleman sebagai tuan rumah. Selain mengapresiasi dan mengucapkan selamat atas penyelenggaraan POR KONI DIY khususnya cabang tenis, Danang juga berharap soliditas, solidaritas dan tali silaturahmi seluruh pengurus KONI se-DIY dapat terjaga untuk menyatukan visi misi dengan tujuan memajukan olahraga DIY agar semakin berprestasi. Ajang silaturahmi Dia menegaskan upaya ini tidak mudah dan perlu kerja keras seluruh stakeholder olahraga. Dia juga mengucapkan terima kasih sudah mempercayakan Sleman sebagai venue (tertua di Sleman) penyelenggaraan POR KONI DIY. Ketua KONI DIY Djoko Pekik Irianto mengatakan penyelenggaraan POR KONI DIY untuk memeriahkan Hari Jadi ke-57 KONI DIY. Peserta agar bertanding secara sportif dan mematuhi keputusan wasit. Ini bukan tentang menang-kalah namun bagaimana kita bisa bermain secara sportif sekaligus menjaga kebugaran tubuh dan jadi ajang silaturahmi seluruh pengurus KONI dari lima kabupaten kota se-DIY, ujar Djoko.',
+      content3: 'Hasil pertandingan, Juara I direbut KONI Gunungkidul setelah mengalahkan KONI Sleman dengan skor 2:0. Juara II KONI Sleman, Juara III bersama KONI Kulonprogo dan KONI Bantul. Tanpa diperkuat petenis Abdul Alim, Sleman kewalahan membendung permainan tim KONI Gunungkidul. Pada pertandingan penyisihan KONI Kulonprogo yang diperkuat Sukismadi/ Anung Marganto menang telak 3:0 melawan KONI DIY.  Pada partai penyisihan lainnya KONI Kota Yogyakarta dua kali tumbang sehingga gagal melaju babak selanjutnya. Hadir dalam kesempatan tersebut Ketua Umum KONI Kulonprogo, Kusdira, Ketua Umum KONI Gunungkidul Irfan Ratnadi,  Ketua Umum KONI Sleman Joko Hastaryo, Waketum I KONI DIY Teguh Raharja dan perwakilan dari KONI Kota Yogyakarta serta KONI Bantul.'
     },
     {
       id: 2,

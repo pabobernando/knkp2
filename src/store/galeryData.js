@@ -21,6 +21,11 @@ import Rakerkab3 from '../assets/rakerkab3.jpeg'
 import Rakerkab4 from '../assets/rakerkab4.jpeg'
 import Pbsi from '../assets/pbsi.jpeg'
 import Pbsi2 from '../assets/pbsi2.jpeg'
+import HutKoni1 from '../assets/hutkonidiy.jpeg'
+import HutKoni2 from '../assets/hutkonidiy2.jpeg'
+import HutKoni3 from '../assets/hutkonidiy3.jpeg'
+import HutKoni4 from '../assets/hutkonidiy4.jpeg'
+import HutKoni5 from '../assets/hutkonidiy5.jpeg'
 
 
 export const products = [
@@ -177,5 +182,40 @@ export const products = [
         event: 'PBSI',
         imageSrc: Pbsi2,
         imageAlt: 'Pbsi-1',
+      },
+      {
+        id: 23,
+        name: 'img-hutkoniDIY-1',
+        event: 'HUT KONI DIY 57',
+        imageSrc: HutKoni1,
+        imageAlt: 'Hut-Koni-DIY57',
+      },
+      {
+        id: 24,
+        name: 'img-hutkoniDIY-2',
+        event: 'HUT KONI DIY 57',
+        imageSrc: HutKoni2,
+        imageAlt: 'Hut-Koni-DIY57',
+      },
+      {
+        id: 25,
+        name: 'img-hutkoniDIY-3',
+        event: 'HUT KONI DIY 57',
+        imageSrc: HutKoni3,
+        imageAlt: 'Hut-Koni-DIY57',
+      },
+      {
+        id: 26,
+        name: 'img-hutkoniDIY-4',
+        event: 'HUT KONI DIY 57',
+        imageSrc: HutKoni4,
+        imageAlt: 'Hut-Koni-DIY57',
+      },
+      {
+        id: 27,
+        name: 'img-hutkoniDIY-5',
+        event: 'HUT KONI DIY 57',
+        imageSrc: HutKoni5,
+        imageAlt: 'Hut-Koni-DIY57',
       },
   ]

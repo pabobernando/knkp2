@@ -7,9 +7,8 @@ function NavbarSide() {
     const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
-        const userRole = localStorage.getItem('role'); // Misalnya, kamu bisa menyimpan peran pengguna di localStorage.
+        const userRole = localStorage.getItem('role');
         const token = localStorage.getItem('token')
-        // Jika peran pengguna adalah admin, atur isAdmin menjadi true.
         if (userRole && token === 'ADMIN') {
             setIsAdmin(true);
         } else {

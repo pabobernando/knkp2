@@ -10,10 +10,6 @@ function LoginPage() {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
-      // if (username === 'admin' && password === 'adminmaco123') {
-      //   window.location.href = 'https://pabo.tech';
-      //   return;
-      // }
     
       const response = await fetch('https://api.konikulonprogo.com/api/v1/login', {
         method: 'POST',
@@ -22,7 +18,7 @@ function LoginPage() {
       });
       if (response.ok && response.status === 200) {
         const json = await response.json()
-        console.log('iki token e', json.token)
+        // console.log('iki token e', json.token)
         window.localStorage.setItem('token', json.token)
         setTimeout(() => {
           window.localStorage.removeItem('token', json.token);
