@@ -380,7 +380,7 @@ function DataPelatih() {
                             <img
                               className="h-11 w-11 rounded-full mr-4"
                               src={`data:image/jpeg;base64,${coach.image}`}
-                              alt=""
+                              alt="img wasit"
                             />
                             <div className="flex flex-col">
                               <span>{coach.nik}</span>
