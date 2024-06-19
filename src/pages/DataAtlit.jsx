@@ -75,12 +75,10 @@ function DataAtlit() {
     })
       .then((response) => {
         if (response.ok) {
-          // nek lancar
           const updatedAthletes = athletes.filter((a) => a.id !== atlit.id);
           setAthletes(updatedAthletes);
           setIsOpen(false);
         } else {
-          // nek semisal err
           throw new Error("Gagal menghapus data atlet");
         }
       })
@@ -89,6 +87,7 @@ function DataAtlit() {
 
   const handleAdd = (form) => {
     const token = localStorage.getItem("token");
+    console.log(token);
     const headers = {
       Authorization: `Bearer ${token}`,
     };
@@ -119,6 +118,7 @@ function DataAtlit() {
       Authorization: `Bearer ${token}`,
     };
     const formData = { ...form, image: uploadedImage };
+    console.log("iki form edit sek dikirim", formData);
     const atlit = selectedAthele;
     fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
       method: "PUT",
@@ -234,7 +234,7 @@ function DataAtlit() {
                 <div className="relative flex items-center justify-end w-full p-1 space-x-4">
                   <button
                     onClick={downloadFile}
-                    className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 px-3 rounded inline-flex items-center md:mb-0 md:mr-2"
+                    className="bg-gray-400 hover:bg-gray-600 text-white font-bold py-1 px-3 rounded inline-flex items-center md:mb-0 md:mr-2"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

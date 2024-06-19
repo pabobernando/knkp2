@@ -83,14 +83,6 @@ function ModalAdd({
     isOpen && (
       <div className="fixed inset-0 flex items-center z-40 justify-center bg-black bg-opacity-70">
         <div className="bg-white rounded-lg shadow sm:max-w-md sm:w-full sm:mx-auto sm:overflow-hidden">
-          <div className="w-full text-end">
-            <button
-              onClick={handleClose}
-              className="py-2 px-4 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-1/7 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-full mt-2 mr-2"
-            >
-              X
-            </button>
-          </div>
           <form onSubmit={handleSubmit}>
             <div className="block px-4 py-2 sm:px-10">
               <div className="relative mt-6">
@@ -250,15 +242,19 @@ function ModalAdd({
                       </select>
                     </div>
                   </div>
-                  <div>
-                    <span className="block w-full rounded-md shadow-sm">
-                      <button
-                        type="submit"
-                        className="py-2 px-4 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-                      >
-                        Submit
-                      </button>
-                    </span>
+                  <div className="flex w-full space-x-2 rounded-md shadow-sm my-5">
+                    <button
+                      onClick={handleClose}
+                      className="py-2 px-4 bg-white border border-black hover:bg-gray-500 hover:text-white focus:ring-black focus:ring-offset-black text-black w-1/2 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-1/2 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </div>
               </div>
