@@ -1,17 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { beritaData } from '../store/beritaData';
-const stats = [
-  { label: 'Founded', value: '2021' },
-  { label: 'Employees', value: '37' },
-  { label: 'Countries', value: '12' },
-  { label: 'Raised', value: '$25M' },
-]
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const DetailNew = () => {
+  const [dataBerita, setDataBerita] = useState([]);
   const { id } = useParams();
-  const news = beritaData.find((item) => item.id === parseInt(id));
+  const news = dataBerita.find((item) => item.id === parseInt(id));
+
+  const getDataBerita = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/v1/berita?page=0&limit=10"
+      );
+      if (!response.ok) {
+        throw new Error("Error");
+      }
+      const data = await response.json();
+      console.log("detail", data);
+      setDataBerita(data); // Set dataBerita dengan array data yang diambil
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getDataBerita();
+  }, []);
 
   if (!news) {
     return <div>News not found</div>;
@@ -25,7 +39,7 @@ const DetailNew = () => {
             <div className="relative overflow-hidden rounded-3xl bg-gray-900 px-6 pb-9 pt-64 shadow-2xl sm:px-12 lg:max-w-lg lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
               <img
                 className="absolute inset-0 h-full w-full object-cover"
-                src={news.imgSrc}
+                src={`data:image/jpeg;base64,${news.image}`}
                 alt={news.title}
               />
               <figure className="relative isolate">
@@ -41,35 +55,30 @@ const DetailNew = () => {
                   />
                   <use href="#0ef284b8-28c2-426e-9442-8655d393522e" x={86} />
                 </svg>
-                <blockquote className="mt-6 text-xl font-semibold leading-8 text-white">
-                </blockquote>
-                {/* <figcaption className="mt-6 text-sm leading-6 text-gray-300">
-                  <strong className="font-semibold text-black">{news.title}</strong>
-                </figcaption> */}
+                <blockquote className="mt-6 text-xl font-semibold leading-8 text-white"></blockquote>
               </figure>
             </div>
           </div>
           <div>
             <div className="text-base leading-7 text-gray-700 lg:max-w-lg">
-              <p className="text-base font-semibold leading-7 text-red-500">{news.category}</p>
-              <p className="text-base font-semibold leading-7 text-red-500">{news.date}</p>
+              <p className="text-base font-semibold leading-7 text-red-500">
+                {news.category}
+              </p>
+              <p className="text-base font-semibold leading-7 text-red-500">
+                {news.date}
+              </p>
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
-              {news.title}
+                {news.title}
               </h1>
               <div className="max-w-xl">
-                <p className="mt-6 text-gray-500">
-                {news.content1}
-                </p>
-                <p className="mt-8 text-gray-500">
-                {news.content2}
-                </p>
-                <p className="mt-8 text-gray-500">
-                {news.content3}
-                </p>
+                <p className="mt-6 text-gray-500">{news.content}</p>
               </div>
             </div>
             <div className="mt-10 flex">
-              <Link to="/" className="text-base font-semibold leading-7 text-red-500">
+              <Link
+                to="/"
+                className="text-base font-semibold leading-7 text-red-500"
+              >
                 Kembali ke beranda <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
@@ -77,7 +86,6 @@ const DetailNew = () => {
         </div>
       </div>
     </div>
-
   );
 };
 

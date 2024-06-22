@@ -12,6 +12,7 @@ import Sambutan from "./pages/Sambutan";
 import CMS from "./pages/Cms";
 import Galery from "./pages/Galery";
 import DetailNew from "./pages/DetailNew";
+import CreateNews from "./pages/CreateNews";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/CMS" element={<CMS />}></Route>
         <Route path="/Galery" element={<Galery />}></Route>
         <Route path="/Detail/:id" element={<DetailNew />}></Route>
+        <Route path="/CreateNews" element={<CreateNews />}></Route>
       </Routes>
     </Router>
   );

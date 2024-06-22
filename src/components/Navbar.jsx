@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import LogoKoni from '../assets/koni.png';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import LogoKoni from "../assets/koni.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -19,10 +19,13 @@ function Navbar() {
       deferredPrompt = event;
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -30,8 +33,8 @@ function Navbar() {
     if (deferredPrompt) {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
         }
         deferredPrompt = null;
       });
@@ -43,7 +46,9 @@ function Navbar() {
       <nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
         <div className="flex items-center flex-shrink-0 text-red-500 mr-6">
           <Link to="/">
-          <span className="font-bold text-xl tracking-tight">konikulonprogo.com</span>
+            <span className="font-bold text-xl tracking-tight">
+              konikulonprogo.com
+            </span>
           </Link>
         </div>
         <div className="block lg:hidden">
@@ -56,13 +61,13 @@ function Navbar() {
         </div>
         <div
           className={`${
-            isMobileMenuOpen ? 'block' : 'hidden'
+            isMobileMenuOpen ? "block" : "hidden"
           } w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
         >
           <div className="text-sm lg:flex-grow">
             <a
               onClick={() => {
-                navigate('/');
+                navigate("/");
                 setIsMobileMenuOpen(false);
               }}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
@@ -71,7 +76,7 @@ function Navbar() {
             </a>
             <a
               onClick={() => {
-                navigate('/Pengurus');
+                navigate("/Pengurus");
                 setIsMobileMenuOpen(false);
               }}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
@@ -80,7 +85,7 @@ function Navbar() {
             </a>
             <a
               onClick={() => {
-                navigate('/Berita');
+                navigate("/Berita");
                 setIsMobileMenuOpen(false);
               }}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
@@ -89,7 +94,7 @@ function Navbar() {
             </a>
             <a
               onClick={() => {
-                navigate('/Galery');
+                navigate("/Galery");
                 setIsMobileMenuOpen(false);
               }}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
@@ -98,7 +103,7 @@ function Navbar() {
             </a>
             <a
               onClick={() => {
-                navigate('/DataAtlit');
+                navigate("/DataAtlit");
                 setIsMobileMenuOpen(false);
               }}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
@@ -106,16 +111,18 @@ function Navbar() {
               Dashboard
             </a>
             <a
-              onClick={
-                handleInstallButtonClick
-              }
+              onClick={handleInstallButtonClick}
               className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-gray-300 hover:cursor-pointer mr-4"
             >
               Download App
             </a>
           </div>
           <div>
-            <img src={LogoKoni} className="w-11 h-11 hidden lg:block " alt="KONI Logo" />
+            <img
+              src={LogoKoni}
+              className="w-11 h-11 hidden lg:block "
+              alt="KONI Logo"
+            />
           </div>
         </div>
       </nav>
