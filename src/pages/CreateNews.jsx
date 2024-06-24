@@ -30,6 +30,7 @@ function CreateNews() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form data to be submitted:", formData);
     try {
       const response = await fetch("http://localhost:3000/api/v1/berita", {
         method: "POST",
@@ -38,6 +39,7 @@ function CreateNews() {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         body: JSON.stringify(formData),
+        credentials: "include",
       });
       if (response.ok) {
         alert("Berita berhasil dibuat!");
@@ -47,7 +49,7 @@ function CreateNews() {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Terjadi kesalahan saat membuat berita");
+      alert("Error to POST data");
     }
   };
 
@@ -77,6 +79,7 @@ function CreateNews() {
         /^data:image\/\w+;base64,/,
         ""
       );
+      console.log(base64Image);
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: base64Image,
@@ -107,6 +110,23 @@ function CreateNews() {
               placeholder="Enter the news title"
               required
             />
+            <div>
+              <label
+                htmlFor="post_date"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Post Date
+              </label>
+              <input
+                type="date"
+                id="post_date"
+                name="post_date"
+                value={formData.post_date}
+                onChange={handleChange}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
           </div>
           <div>
             <label
@@ -116,7 +136,43 @@ function CreateNews() {
               Content
             </label>
             <textarea
-              id="content"
+              id="content1"
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              rows="6"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter the news content"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label
+              htmlFor="content"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Content
+            </label>
+            <textarea
+              id="content2"
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              rows="6"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter the news content"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label
+              htmlFor="content"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Content
+            </label>
+            <textarea
+              id="content3"
               name="content"
               value={formData.content}
               onChange={handleChange}

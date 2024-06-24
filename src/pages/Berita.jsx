@@ -11,6 +11,7 @@ function Berita() {
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const getDataBerita = async () => {
     try {
@@ -56,7 +57,7 @@ function Berita() {
         }, 60 * 60 * 1000);
         console.log("Login successful:", json);
         setShowModal(false);
-        navigate("/createNews");
+        setIsLoggedIn(true);
       } else {
         alert("Failed to login. Please check your credentials and try again.");
       }
@@ -66,6 +67,12 @@ function Berita() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
     getDataBerita();
   }, []);
 
@@ -86,6 +93,16 @@ function Berita() {
             >
               Login Admin
             </button>
+            {isLoggedIn && (
+              <button
+                className="ml-6 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+                onClick={() => {
+                  navigate("/createNews");
+                }}
+              >
+                Create News
+              </button>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3">
@@ -104,9 +121,22 @@ function Berita() {
                   <p className="font-medium text-red-500 text-md">
                     {berita.category}
                   </p>
-                  <p className="mb-2 text-xl font-medium text-white">
-                    {berita.title}
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="mb-2 text-xl font-medium text-white">
+                      {berita.title}
+                    </p>
+                    {isLoggedIn && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate(`/editNews/${berita.id}`);
+                        }}
+                        className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700"
+                      >
+                        Edit
+                      </button>
+                    )}
+                  </div>
                   <p className="font-light text-gray-300 text-md">
                     {berita.content}
                   </p>

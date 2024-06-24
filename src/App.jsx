@@ -13,6 +13,7 @@ import CMS from "./pages/Cms";
 import Galery from "./pages/Galery";
 import DetailNew from "./pages/DetailNew";
 import CreateNews from "./pages/CreateNews";
+import EditNews from "./pages/EditNews";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Galery" element={<Galery />}></Route>
         <Route path="/Detail/:id" element={<DetailNew />}></Route>
         <Route path="/CreateNews" element={<CreateNews />}></Route>
+        <Route path="/EditNews/:id" element={<EditNews />}></Route>
       </Routes>
     </Router>
   );
