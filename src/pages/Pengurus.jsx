@@ -1,19 +1,14 @@
-import { useState } from 'react';
-import Navbar from '../components/Navbar'
-import { pengurusData } from '../store/pengurusData';
-import NavbarAndroid from '../components/NavbarAndroid';
+import { useState } from "react";
+import Navbar from "../components/Navbar";
+import { pengurusData } from "../store/pengurusData";
+import NavbarAndroid from "../components/NavbarAndroid";
 
 function Pengurus() {
-  // Data pengurus (ganti dengan data yang sesuai)
-  
-
   return (
     <>
       <Navbar />
       <div className="p-8 bg-gray-900 shadow">
-        <p className="text-3xl font-bold text-center text-white">
-          Pengurus
-        </p>
+        <p className="text-3xl font-bold text-center text-white">Pengurus</p>
         <p className="mb-12 text-xl font-normal text-center text-gray-300 ">
           KONI KULON PROGO
         </p>
@@ -34,9 +29,7 @@ function Pengurus() {
                   <span className="text-sm font-medium text-white ">
                     {pengurus.name}
                   </span>
-                  <span className="text-xs text-gray-400">
-                    {pengurus.role}
-                  </span>
+                  <span className="text-xs text-gray-400">{pengurus.role}</span>
                 </div>
               </div>
             </div>
