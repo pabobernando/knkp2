@@ -45,7 +45,7 @@ function DataWasit() {
     };
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/wasit?page=${page}&limit=10`,
+        `https://api.konikulonprogo.com/api/v1/wasit?page=${page}&limit=10`,
         { headers }
       );
       if (!response.ok) throw new Error("Network response was not ok");
@@ -57,10 +57,10 @@ function DataWasit() {
     }
   };
 
-  const nextPage = (page) => {
-    setPage(page);
-    getDataWasit({ page, limit: 10 });
-    console.log("page", page);
+  const nextPage = (newPage) => {
+    if (newPage >= 0 && newPage < pageCount) {
+      setPage(newPage);
+    }
   };
 
   const handleDelete = () => {
@@ -69,7 +69,7 @@ function DataWasit() {
       Authorization: `Bearer ${token}`,
     };
     const wasit = selectedWasit;
-    fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ function DataWasit() {
       lampiran: uploadedLampiran,
     };
     console.log("iki form e sek dikirim :", formData);
-    fetch("http://localhost:3000/api/v1/wasit", {
+    fetch("https://api.konikulonprogo.com/api/v1/wasit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -110,7 +110,7 @@ function DataWasit() {
       .then((response) => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataWasit({});
+          getDataWasit(page);
         } else {
           throw new Error("Gagal menambahkan data wasit");
         }
@@ -130,7 +130,7 @@ function DataWasit() {
     };
     console.log("iki form e sek dikirim :", formData);
     const wasit = selectedWasit;
-    fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -141,7 +141,7 @@ function DataWasit() {
       .then((response) => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataWasit({});
+          getDataWasit(page);
         } else {
           throw new Error("Gagal edit data wasit");
         }
@@ -161,7 +161,7 @@ function DataWasit() {
       navigate("/LoginPage");
     }
     fetchPageCount();
-  }, []);
+  }, [page]);
 
   const fetchPageCount = () => {
     fetch("https://api.konikulonprogo.com/api/v1/count")
@@ -189,7 +189,7 @@ function DataWasit() {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/wasit/download",
+        "https://api.konikulonprogo.com/api/v1/wasit/download",
         {
           method: "GET",
           headers: {
@@ -492,10 +492,10 @@ function DataWasit() {
                   <div className="text-center">
                     <button
                       className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
-                        page === halaman ? "bg-black cursor-not-allowed" : ""
+                        page === pageCount ? "bg-black cursor-not-allowed" : ""
                       }`}
                       onClick={() => nextPage(page + 1)}
-                      disabled={page === pageCount}
+                      disabled={page === pageCount - 1}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

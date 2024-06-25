@@ -42,7 +42,7 @@ function DataAtlit() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/atlit?page=${page}&limit=10`,
+        `https://api.konikulonprogo.com/api/v1/atlit?page=${page}&limit=10`,
         { headers }
       );
       if (!response.ok) throw new Error("Network response was not ok");
@@ -54,19 +54,13 @@ function DataAtlit() {
     }
   };
 
-  const nextPage = (page) => {
-    setPage(page);
-    getDataAtlit({ page, limit: 10 });
-    console.log("page", page);
-  };
-
   const handleDelete = () => {
     const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
     };
     const atlit = selectedAthele;
-    fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/atlit/${atlit.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +87,7 @@ function DataAtlit() {
     };
     const formData = { ...form, image: uploadedImage };
     console.log("iki form e sek dikirim :", formData);
-    fetch("http://localhost:3000/api/v1/atlit", {
+    fetch("https://api.konikulonprogo.com/api/v1/atlit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +98,7 @@ function DataAtlit() {
       .then((response) => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataAtlit({});
+          getDataAtlit(page);
         } else {
           throw new Error("Gagal menambahkan data atlet");
         }
@@ -120,7 +114,7 @@ function DataAtlit() {
     const formData = { ...form, image: uploadedImage };
     console.log("iki form edit sek dikirim", formData);
     const atlit = selectedAthele;
-    fetch(`http://localhost:3000/api/v1/atlit/${atlit.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/atlit/${atlit.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -131,7 +125,7 @@ function DataAtlit() {
       .then((response) => {
         if (response.ok) {
           setIsOpenAdd(false);
-          getDataAtlit({});
+          getDataAtlit(page);
         } else {
           throw new Error("Gagal edit data atlet");
         }
@@ -145,16 +139,16 @@ function DataAtlit() {
   };
 
   useEffect(() => {
-    getDataAtlit({});
+    getDataAtlit(page);
     const token = window.localStorage.getItem("token");
     if (!token) {
       navigate("/LoginPage");
     }
     fetchPageCount();
-  }, []);
+  }, [page]);
 
   const fetchPageCount = () => {
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         const pembulatanPage = Math.ceil(data.atlit / 10);
@@ -162,6 +156,12 @@ function DataAtlit() {
         console.log(pageCount);
       })
       .catch((error) => console.error(error));
+  };
+
+  const nextPage = (newPage) => {
+    if (newPage >= 0 && newPage < pageCount) {
+      setPage(newPage);
+    }
   };
 
   const handleOk = (form) => {
@@ -179,7 +179,7 @@ function DataAtlit() {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/atlit/download",
+        "https://api.konikulonprogo.com/api/v1/atlit/download",
         {
           method: "GET",
           headers: {
@@ -444,10 +444,10 @@ function DataAtlit() {
                   <div className="text-center">
                     <button
                       className={`text-gray-700 bg-white hover:border border-red-700 font-bold py-2 px-4 rounded-full ${
-                        page === halaman ? "bg-black cursor-not-allowed" : ""
+                        page === pageCount ? "bg-black cursor-not-allowed" : ""
                       }`}
                       onClick={() => nextPage(page + 1)}
-                      disabled={page === pageCount}
+                      disabled={page === pageCount - 1}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

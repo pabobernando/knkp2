@@ -6,7 +6,7 @@ function Statistic() {
   const [jumlahWasit, setJumlahWasit] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         setJumlahAtlit(data.atlit);
@@ -15,7 +15,7 @@ function Statistic() {
         console.error("Error fetching data:", error);
       });
 
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         setJumlahPelatih(data.pelatih);
@@ -24,7 +24,7 @@ function Statistic() {
         console.error("Error fetching data:", error);
       });
 
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         setJumlahWasit(data.wasit);

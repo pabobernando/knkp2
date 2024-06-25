@@ -10,7 +10,7 @@ const DetailNew = () => {
   const getDataBerita = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/berita?page=0&limit=10"
+        "https://api.konikulonprogo.com/api/v1/berita?page=0&limit=10"
       );
       if (!response.ok) {
         throw new Error("Error");
