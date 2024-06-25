@@ -7,9 +7,15 @@ function CreateNews() {
     title: "",
     content: "",
     author: "KONI Kulon Progo",
+    description: "",
     avatar: "",
     post_date: "",
     image: "",
+  });
+  const [contentData, setContentData] = useState({
+    content1: "",
+    content2: "",
+    content3: "",
   });
 
   useEffect(() => {
@@ -22,28 +28,35 @@ function CreateNews() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name.startsWith("content")) {
+      setContentData({
+        ...contentData,
+        [name]: value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data to be submitted:", formData);
+    const combinedContent = `${contentData.content1}|||${contentData.content2}|||${contentData.content3}`;
+    const formDataToSubmit = { ...formData, content: combinedContent };
+
+    console.log("Form data to be submitted:", formDataToSubmit);
     try {
-      const response = await fetch(
-        "https://api.konikulonprogo.com/api/v1/berita",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(formData),
-          credentials: "include",
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/v1/berita", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(formDataToSubmit),
+        credentials: "include",
+      });
       if (response.ok) {
         alert("Berita berhasil dibuat!");
         navigate("/berita");
@@ -113,6 +126,22 @@ function CreateNews() {
               placeholder="Enter the news title"
               required
             />
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Description
+            </label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter the news title"
+              required
+            />
             <div>
               <label
                 htmlFor="post_date"
@@ -140,8 +169,8 @@ function CreateNews() {
             </label>
             <textarea
               id="content1"
-              name="content"
-              value={formData.content}
+              name="content1"
+              value={contentData.content1}
               onChange={handleChange}
               rows="6"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -151,15 +180,15 @@ function CreateNews() {
           </div>
           <div>
             <label
-              htmlFor="content"
+              htmlFor="content2"
               className="block text-sm font-medium text-gray-700"
             >
               Content
             </label>
             <textarea
               id="content2"
-              name="content"
-              value={formData.content}
+              name="content2"
+              value={contentData.content2}
               onChange={handleChange}
               rows="6"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -169,15 +198,15 @@ function CreateNews() {
           </div>
           <div>
             <label
-              htmlFor="content"
+              htmlFor="content3"
               className="block text-sm font-medium text-gray-700"
             >
               Content
             </label>
             <textarea
               id="content3"
-              name="content"
-              value={formData.content}
+              name="content3"
+              value={contentData.content3}
               onChange={handleChange}
               rows="6"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

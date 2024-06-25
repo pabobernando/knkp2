@@ -6,27 +6,11 @@ function Statistic() {
   const [jumlahWasit, setJumlahWasit] = useState();
 
   useEffect(() => {
-    fetch("https://api.konikulonprogo.com/api/v1/count")
+    fetch("http://localhost:3000/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         setJumlahAtlit(data.atlit);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-
-    fetch("https://api.konikulonprogo.com/api/v1/count")
-      .then((response) => response.json())
-      .then((data) => {
         setJumlahPelatih(data.pelatih);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-
-    fetch("https://api.konikulonprogo.com/api/v1/count")
-      .then((response) => response.json())
-      .then((data) => {
         setJumlahWasit(data.wasit);
       })
       .catch((error) => {

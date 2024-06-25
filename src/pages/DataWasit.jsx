@@ -45,7 +45,7 @@ function DataWasit() {
     };
     try {
       const response = await fetch(
-        `https://api.konikulonprogo.com/api/v1/wasit?page=${page}&limit=10`,
+        `http://localhost:3000/api/v1/wasit?page=${page}&limit=10`,
         { headers }
       );
       if (!response.ok) throw new Error("Network response was not ok");
@@ -69,7 +69,7 @@ function DataWasit() {
       Authorization: `Bearer ${token}`,
     };
     const wasit = selectedWasit;
-    fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
+    fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ function DataWasit() {
       lampiran: uploadedLampiran,
     };
     console.log("iki form e sek dikirim :", formData);
-    fetch("https://api.konikulonprogo.com/api/v1/wasit", {
+    fetch("http://localhost:3000/api/v1/wasit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -130,7 +130,7 @@ function DataWasit() {
     };
     console.log("iki form e sek dikirim :", formData);
     const wasit = selectedWasit;
-    fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
+    fetch(`http://localhost:3000/api/v1/wasit/${wasit.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -164,7 +164,7 @@ function DataWasit() {
   }, [page]);
 
   const fetchPageCount = () => {
-    fetch("https://api.konikulonprogo.com/api/v1/count")
+    fetch("http://localhost:3000/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         const pembulatanPage = Math.ceil(data.wasit / 10); // membulatkan angka ke atas
@@ -189,7 +189,7 @@ function DataWasit() {
     };
     try {
       const response = await fetch(
-        "https://api.konikulonprogo.com/api/v1/wasit/download",
+        "http://localhost:3000/api/v1/wasit/download",
         {
           method: "GET",
           headers: {

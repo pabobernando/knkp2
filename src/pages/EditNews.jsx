@@ -20,7 +20,7 @@ function EditNews() {
         }
 
         const response = await fetch(
-          `https://api.konikulonprogo.com/api/v1/berita/${id}`,
+          `http://localhost:3000/api/v1/berita/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ function EditNews() {
       console.log("Send Data :", { title, content, avatar, image });
 
       const response = await fetch(
-        `https://api.konikulonprogo.com/api/v1/berita/${id}`,
+        `http://localhost:3000/api/v1/berita/${id}`,
         {
           method: "PUT",
           headers: {

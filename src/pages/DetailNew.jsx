@@ -10,14 +10,14 @@ const DetailNew = () => {
   const getDataBerita = async () => {
     try {
       const response = await fetch(
-        "https://api.konikulonprogo.com/api/v1/berita?page=0&limit=10"
+        "http://localhost:3000/api/v1/berita?page=0&limit=10"
       );
       if (!response.ok) {
         throw new Error("Error");
       }
       const data = await response.json();
       console.log("detail", data);
-      setDataBerita(data); // Set dataBerita dengan array data yang diambil
+      setDataBerita(data);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
@@ -30,6 +30,8 @@ const DetailNew = () => {
   if (!news) {
     return <div>News not found</div>;
   }
+
+  const paragraphs = news.content.split("|||");
 
   return (
     <div className="bg-gray-900 py-24 sm:py-32">
@@ -71,7 +73,11 @@ const DetailNew = () => {
                 {news.title}
               </h1>
               <div className="max-w-xl">
-                <p className="mt-6 text-gray-500">{news.content}</p>
+                {paragraphs.map((paragraph, index) => (
+                  <p key={index} className="mt-6 text-gray-500">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </div>
             <div className="mt-10 flex">

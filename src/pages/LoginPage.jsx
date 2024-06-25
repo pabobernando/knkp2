@@ -11,14 +11,11 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(
-      "https://api.konikulonprogo.com/api/v1/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      }
-    );
+    const response = await fetch("http://localhost:3000/api/v1/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
     if (response.ok && response.status === 200) {
       const json = await response.json();
       // console.log('iki token e', json.token)

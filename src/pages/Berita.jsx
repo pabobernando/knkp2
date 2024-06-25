@@ -16,7 +16,7 @@ function Berita() {
   const getDataBerita = async () => {
     try {
       const response = await fetch(
-        "https://api.konikulonprogo.com/api/v1/berita?page=0&limit=10"
+        "http://localhost:3000/api/v1/berita?page=0&limit=10"
       );
       if (!response.ok) {
         throw new Error("Error");
@@ -41,16 +41,13 @@ function Berita() {
     event.preventDefault();
 
     try {
-      const response = await fetch(
-        "https://api.konikulonprogo.com/api/v1/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
       if (response.ok && response.status === 200) {
         const json = await response.json();
@@ -124,7 +121,7 @@ function Berita() {
                 />
                 <div className="w-full p-4 bg-gray-800">
                   <p className="font-medium text-red-500 text-md">
-                    {berita.category}
+                    {berita.description}
                   </p>
                   <div className="flex items-center justify-between">
                     <p className="mb-2 text-xl font-medium text-white">
