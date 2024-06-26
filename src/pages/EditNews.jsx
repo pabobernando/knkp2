@@ -7,7 +7,12 @@ function EditNews() {
   const [avatar, setAvatar] = useState(null);
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [description, setDescription] = useState("");
+  const [content, setContent] = useState({
+    content1: "",
+    content2: "",
+    content3: "",
+  });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -35,7 +40,12 @@ function EditNews() {
         const data = await response.json();
         setNewsData(data);
         setTitle(data.title);
-        setContent(data.content);
+        setDescription(data.deskription);
+        setContent({
+          content1: data.content1 || "",
+          content2: data.content2 || "",
+          content3: data.content3 || "",
+        });
         setAvatar(data.avatar);
         setImage(data.image);
       } catch (error) {
@@ -49,12 +59,20 @@ function EditNews() {
 
   const handleSave = async (event) => {
     event.preventDefault();
+    const combinedContent = `${content.content1}|||${content.content2}|||${content.content3}`;
+    const formData = {
+      title,
+      description,
+      content: combinedContent,
+      avatar,
+      image,
+    };
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No token found");
       }
-      console.log("Send Data :", { title, content, avatar, image });
+      console.log("Send Data :", formData);
 
       const response = await fetch(
         `http://localhost:3000/api/v1/berita/${id}`,
@@ -64,7 +82,7 @@ function EditNews() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ title, content, avatar, image }),
+          body: JSON.stringify(formData),
         }
       );
 
@@ -140,18 +158,43 @@ function EditNews() {
             />
           </div>
           <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+          <div>
             <label>Content</label>
             <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              value={content.content1}
+              onChange={(e) =>
+                setContent({ ...content, content1: e.target.value })
+              }
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             ></textarea>
           </div>
           <div>
-            <label></label>
+            <label>Content</label>
             <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              value={content.content2}
+              onChange={(e) =>
+                setContent({ ...content, content2: e.target.value })
+              }
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            ></textarea>
+          </div>
+          <div>
+            <label>Content</label>
+            <textarea
+              value={content.content3}
+              onChange={(e) =>
+                setContent({ ...content, content3: e.target.value })
+              }
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             ></textarea>
           </div>

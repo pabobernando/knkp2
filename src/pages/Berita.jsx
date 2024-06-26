@@ -120,9 +120,6 @@ function Berita() {
                   className="object-cover w-full max-h-40"
                 />
                 <div className="w-full p-4 bg-gray-800">
-                  <p className="font-medium text-red-500 text-md">
-                    {berita.description}
-                  </p>
                   <div className="flex items-center justify-between">
                     <p className="mb-2 text-xl font-medium text-white">
                       {berita.title}
@@ -139,9 +136,7 @@ function Berita() {
                       </button>
                     )}
                   </div>
-                  <p className="font-light text-gray-300 text-md">
-                    {berita.content}
-                  </p>
+                  <p className=" text-gray-400 text-sm">{berita.description}</p>
                   <div className="flex items-center mt-4">
                     <a href="#" className="relative block">
                       <img

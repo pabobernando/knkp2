@@ -63,15 +63,15 @@ const DetailNew = () => {
           </div>
           <div>
             <div className="text-base leading-7 text-gray-700 lg:max-w-lg">
-              <p className="text-base font-semibold leading-7 text-red-500">
-                {news.category}
-              </p>
-              <p className="text-base font-semibold leading-7 text-red-500">
-                {news.date}
+              <p className="text-base font-semibold leading-7 text-gray-300">
+                {news.post_date}
               </p>
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
                 {news.title}
               </h1>
+              <p className="text-base font-semibold leading-7 text-red-500">
+                {news.description}
+              </p>
               <div className="max-w-xl">
                 {paragraphs.map((paragraph, index) => (
                   <p key={index} className="mt-6 text-gray-500">
