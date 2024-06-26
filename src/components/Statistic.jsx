@@ -6,7 +6,7 @@ function Statistic() {
   const [jumlahWasit, setJumlahWasit] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         setJumlahAtlit(data.atlit);

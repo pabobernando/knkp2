@@ -45,7 +45,7 @@ function DataPelatih() {
     };
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/pelatih?page=${page}&limit=10`,
+        `https://api.konikulonprogo.com/api/v1/pelatih?page=${page}&limit=10`,
         { headers }
       );
       if (!response.ok) throw new Error("Network response was not ok");
@@ -63,7 +63,7 @@ function DataPelatih() {
       Authorization: `Bearer ${token}`,
     };
     const pelatih = selectedCoache;
-    fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ function DataPelatih() {
       lampiran: uploadedLampiran,
     };
     console.log("iki form e sek dikirim :", formData);
-    fetch("http://localhost:3000/api/v1/pelatih", {
+    fetch("https://api.konikulonprogo.com/api/v1/pelatih", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,7 +124,7 @@ function DataPelatih() {
     };
     console.log("iki form e sek dikirim :", formData);
     const pelatih = selectedCoache;
-    fetch(`http://localhost:3000/api/v1/pelatih/${pelatih.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -158,7 +158,7 @@ function DataPelatih() {
   }, [page]);
 
   const fetchPageCount = () => {
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         const pembulatanPage = Math.ceil(data.pelatih / 10);
@@ -189,7 +189,7 @@ function DataPelatih() {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/pelatih/download",
+        "https://api.konikulonprogo.com/api/v1/pelatih/download",
         {
           method: "GET",
           headers: {

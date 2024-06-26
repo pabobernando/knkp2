@@ -25,7 +25,7 @@ function EditNews() {
         }
 
         const response = await fetch(
-          `http://localhost:3000/api/v1/berita/${id}`,
+          `https://api.konikulonprogo.com/api/v1/berita/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ function EditNews() {
       console.log("Send Data :", formData);
 
       const response = await fetch(
-        `http://localhost:3000/api/v1/berita/${id}`,
+        `https://api.konikulonprogo.com/api/v1/berita/${id}`,
         {
           method: "PUT",
           headers: {

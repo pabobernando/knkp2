@@ -45,7 +45,7 @@ function DataSarpras() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/sarpras?page=${page}&limit=10`,
+        `https://api.konikulonprogo.com/api/v1/sarpras?page=${page}&limit=10`,
         { headers }
       );
       if (!response.ok) throw new Error("Network response was not ok");
@@ -63,7 +63,7 @@ function DataSarpras() {
       Authorization: `Bearer ${token}`,
     };
     const sarpras = selectedSarpras;
-    fetch(`http://localhost:3000/api/v1/sarpras/${sarpras.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/sarpras/${sarpras.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function DataSarpras() {
     };
     const formData = { ...form, image: uploadedImage };
     console.log("iki form e sek dikirim :", formData);
-    fetch("http://localhost:3000/api/v1/sarpras", {
+    fetch("https://api.konikulonprogo.com/api/v1/sarpras", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ function DataSarpras() {
     const formData = { ...form, image: uploadedImage };
     console.log("iki form edit sek dikirim", formData);
     const sarpras = selectedSarpras;
-    fetch(`http://localhost:3000/api/v1/sarpras/${sarpras.id}`, {
+    fetch(`https://api.konikulonprogo.com/api/v1/sarpras/${sarpras.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -153,7 +153,7 @@ function DataSarpras() {
   }, [page]);
 
   const fetchPageCount = () => {
-    fetch("http://localhost:3000/api/v1/count")
+    fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
         const pembulatanPage = Math.ceil(data.sarpras / 10); // membulatkan angka ke atas
@@ -184,7 +184,7 @@ function DataSarpras() {
     };
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/sarpras/download",
+        "https://api.konikulonprogo.com/api/v1/sarpras/download",
         {
           method: "GET",
           headers: {

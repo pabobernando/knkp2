@@ -48,15 +48,18 @@ function CreateNews() {
 
     console.log("Form data to be submitted:", formDataToSubmit);
     try {
-      const response = await fetch("http://localhost:3000/api/v1/berita", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(formDataToSubmit),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://api.konikulonprogo.com/api/v1/berita",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(formDataToSubmit),
+          credentials: "include",
+        }
+      );
       if (response.ok) {
         alert("Berita berhasil dibuat!");
         navigate("/berita");

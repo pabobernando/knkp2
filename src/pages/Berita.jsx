@@ -16,7 +16,7 @@ function Berita() {
   const getDataBerita = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/berita?page=0&limit=10"
+        "https://api.konikulonprogo.com/api/v1/berita?page=0&limit=10"
       );
       if (!response.ok) {
         throw new Error("Error");
@@ -41,13 +41,16 @@ function Berita() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        "https://api.konikulonprogo.com/api/v1/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       if (response.ok && response.status === 200) {
         const json = await response.json();
