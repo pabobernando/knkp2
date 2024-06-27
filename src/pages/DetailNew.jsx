@@ -69,9 +69,6 @@ const DetailNew = () => {
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
                 {news.title}
               </h1>
-              <p className="text-base font-semibold leading-7 text-red-500">
-                {news.description}
-              </p>
               <div className="max-w-xl">
                 {paragraphs.map((paragraph, index) => (
                   <p key={index} className="mt-6 text-gray-500">

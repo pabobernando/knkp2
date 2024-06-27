@@ -1,199 +1,172 @@
-import Koni from '../assets/polos.png'
-import Uwong from '../assets/polos.png'
-import BambangS from '../assets/1.jpeg'
-import Barkah from '../assets/2.jpeg'
-import Agnes from '../assets/3.jpeg'
-import Parinem from '../assets/4.jpeg'
-import Barjo from '../assets/5.jpeg'
-import Margono from '../assets/6.jpeg'
-import AnungM from '../assets/7.jpeg'
-import Sukiman from '../assets/8.jpeg'
-import Nurhadiyanto from '../assets/nurhadiyanto.jpeg'
-import Pabo from '../assets/10.jpeg'
-import Tirto from '../assets/11.jpeg'
-import ApriliaD from '../assets/12.jpeg'
-import Sukismadi from '../assets/13.jpeg'
-import Subardi from '../assets/14.jpeg'
-import HendriU from '../assets/15.jpeg'
-import Kusdira from '../assets/16.jpeg'
-import Parjiyono from '../assets/17.jpeg'
-import Rina from '../assets/18.jpeg'
-import SitiS from '../assets/19.jpeg'
-import Marhaban from '../assets/20.jpeg'
-import HeruS from '../assets/21.jpeg'
-import Sujiran from '../assets/22.jpeg'
-import Kuswadi from '../assets/23.jpeg'
-import Jumantoro from '../assets/24.jpeg'
-import Romphis from '../assets/25.jpeg'
-import Sriyono from '../assets/26.jpeg'
-import Bastian from '../assets/bastian.jpeg'
-
+import Koni from "../assets/polos.png";
+import Uwong from "../assets/polos.png";
+import Nurhadiyanto from "../assets/nurhadiyanto.jpeg";
+import Bastian from "../assets/bastian.jpeg";
 
 export const pengurusData = [
   {
-    name: 'Kusdira, BA',
-    role: 'Ketua Umum',
-    image: Kusdira,
+    name: "Kusdira, BA",
+    role: "Ketua Umum",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/16.jpeg`,
   },
   {
-    name: 'H. Margono, S.Pd, Jas',
-    role: 'Wakil Ketua Umum I',
-    image: Margono,
+    name: "H. Margono, S.Pd, Jas",
+    role: "Wakil Ketua Umum I",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/6.jpeg`,
   },
   {
-    name: 'Drs. Sujiran',
-    role: 'Wakil Ketua Koni II',
-    image: Sujiran,
+    name: "Drs. Sujiran",
+    role: "Wakil Ketua Koni II",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/22.jpeg`,
   },
   {
-    name: 'Anung Marganto, SH., MM.',
-    role: 'Wakil Ketua Umum III',
-    image: AnungM,
+    name: "Anung Marganto, SH., MM.",
+    role: "Wakil Ketua Umum III",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/7.jpeg`,
   },
   {
-    name: 'Heru Sarjana, S.Pd.',
-    role: 'Sekretaris Umum',
-    image: HeruS,
+    name: "Heru Sarjana, S.Pd.",
+    role: "Sekretaris Umum",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/21.jpeg`,
   },
   {
-    name: 'Subardi, S.Pd',
-    role: 'Wakil Sekretaris Umum',
-    image: Subardi,
+    name: "Subardi, S.Pd",
+    role: "Wakil Sekretaris Umum",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/14.jpeg`,
   },
   {
-    name: 'H. Sukiman, S.Pd.',
-    role: 'Bendahara I',
-    image: Sukiman,
+    name: "H. Sukiman, S.Pd.",
+    role: "Bendahara I",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/8.jpeg`,
   },
   {
-    name: 'Parinem, S.Pd',
-    role: 'Bendahara II',
-    image: Parinem,
+    name: "Parinem, S.Pd",
+    role: "Bendahara II",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/4.jpeg`,
   },
-    {
-      name: 'Bambang Sutrisno, S.Sos, M.Si',
-      role: 'Badan Audit Internal',
-      image: BambangS,
-    },
-    {
-      name: 'Barkah Hari Wibowo, SE',
-      role: 'Badan Audit Internal',
-      image: Barkah,
-    },
-    {
-      name: 'Sriyono, S.Pd',
-      role: 'Bidang Pembinaan Organisasi',
-      image: Sriyono,
-    },
-    {
-      name: 'Drs. Nurhadiyanto,M.Acc',
-      role: 'Bidang Pembinaan Organisasi',
-      image: Nurhadiyanto,
-    },
-    {
-      name: 'Hendri Utomo, SH',
-      role: 'Bidang Hukum',
-      image: HendriU,
-    },
-    {
-      name: 'Muhammad Umar Maksum, SH',
-      role: 'Bidang Hukum',
-      image: Uwong,
-    },
-    {
-      name: 'Nurtanto',
-      role: 'Bidang Pembinaan Prestasi',
-      image: Uwong,
-    },
-    {
-      name: 'Sukismadi, S.Pd',
-      role: 'Bidang Pembinaan Prestasi',
-      image: Sukismadi,
-    },
-    {
-      name: 'Tirto Mulyono',
-      role: 'Bidang Pembinaan Prestasi',
-      image: Tirto,
-    },
-    {
-      name: 'Raden Bastian Norma Ernawan SE,.ST.',
-      role: 'Bidang Pembinaan Prestasi',
-      image: Bastian,
-    },
-    {
-      name: 'Marhaban',
-      role: 'Bidang Pendidikan Pelatihan dan Penataran',
-      image: Marhaban,
-    },
-    {
-      name: 'Andreas Subarjo',
-      role: 'Bidang Pendidikan Pelatihan dan Penataran',
-      image: Barjo,
-    },
-    {
-      name: 'Dra. Sukarni',
-      role: 'Bidang IPTEK dan LITBANG Olahraga',
-      image: Uwong,
-    },
-    {
-      name: 'Romphis Oka Dwi Jaya, S.Pd',
-      role: 'Bidang IPTEK dan LITBANG Olahraga',
-      image: Romphis,
-    },
-    {
-      name: 'Jumantoro, SE',
-      role: 'Bidang Rencana Program Anggaran',
-      image: Jumantoro,
-    },
-    {
-      name: 'H. Kuswadi, ST',
-      role: 'Bidang Rencana Program Anggaran',
-      image: Kuswadi,
-    },
-    {
-      name: 'Agnes Kristini, S.Pd, Jas',
-      role: 'Bidang Sarpras',
-      image: Agnes,
-    },
-    {
-      name: 'Parjiyono',
-      role: 'Bidang SARPRAS',
-      image: Parjiyono,
-    },
-    {
-      name: 'Siti Suyatimah',
-      role: 'Bidang SDM',
-      image: SitiS,
-    },
-    {
-      name: 'Surojo, SE',
-      role: 'Bidang Kerjasama Promosi dan Marketing',
-      image: Uwong,
-    },
-    {
-      name: 'H. Pandaya, S.Pd, M.Pd',
-      role: 'Bidang Kerjasama Promosi dan Marketing',
-      image: Uwong,
-    },
-    {
-      name: 'M. Dani Ardiyanto, SH',
-      role: 'Bidang Media dan Hubungan Masyarakat',
-      image: Uwong,
-    },
-    {
-      name: 'Aprilia Dewantoro',
-      role: 'Bidang Media dan Hubungan Masyarakat',
-      image: ApriliaD,
-    },
-    {
-      name: 'Dra. Rinawati, M.Pd',
-      role: 'Bidang Pengumpulan dan Pengolahan Data',
-      image: Rina,
-    },
-    {
-      name: 'Pabo Bernando',
-      role: 'Web Developer',
-      image: Pabo,
-    },
-    
-  ];
+  {
+    name: "Bambang Sutrisno, S.Sos, M.Si",
+    role: "Badan Audit Internal",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/1.jpeg`,
+  },
+  {
+    name: "Barkah Hari Wibowo, SE",
+    role: "Badan Audit Internal",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/2.jpeg`,
+  },
+  {
+    name: "Sriyono, S.Pd",
+    role: "Bidang Pembinaan Organisasi",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/26.jpeg`,
+  },
+  {
+    name: "Drs. Nurhadiyanto,M.Acc",
+    role: "Bidang Pembinaan Organisasi",
+    image: Nurhadiyanto,
+  },
+  {
+    name: "Hendri Utomo, SH",
+    role: "Bidang Hukum",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/15.jpeg`,
+  },
+  {
+    name: "Muhammad Umar Maksum, SH",
+    role: "Bidang Hukum",
+    image: Uwong,
+  },
+  {
+    name: "Nurtanto",
+    role: "Bidang Pembinaan Prestasi",
+    image: Uwong,
+  },
+  {
+    name: "Sukismadi, S.Pd",
+    role: "Bidang Pembinaan Prestasi",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/13.jpeg`,
+  },
+  {
+    name: "Tirto Mulyono",
+    role: "Bidang Pembinaan Prestasi",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/13.jpeg`,
+  },
+  {
+    name: "Raden Bastian Norma Ernawan SE,.ST.",
+    role: "Bidang Pembinaan Prestasi",
+    image: Bastian,
+  },
+  {
+    name: "Marhaban",
+    role: "Bidang Pendidikan Pelatihan dan Penataran",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/20.jpeg`,
+  },
+  {
+    name: "Andreas Subarjo",
+    role: "Bidang Pendidikan Pelatihan dan Penataran",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/5.jpeg`,
+  },
+  {
+    name: "Dra. Sukarni",
+    role: "Bidang IPTEK dan LITBANG Olahraga",
+    image: Uwong,
+  },
+  {
+    name: "Romphis Oka Dwi Jaya, S.Pd",
+    role: "Bidang IPTEK dan LITBANG Olahraga",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/25.jpeg`,
+  },
+  {
+    name: "Jumantoro, SE",
+    role: "Bidang Rencana Program Anggaran",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/24.jpeg`,
+  },
+  {
+    name: "H. Kuswadi, ST",
+    role: "Bidang Rencana Program Anggaran",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/23.jpeg`,
+  },
+  {
+    name: "Agnes Kristini, S.Pd, Jas",
+    role: "Bidang Sarpras",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/3.jpeg`,
+  },
+  {
+    name: "Parjiyono",
+    role: "Bidang SARPRAS",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/17.jpeg`,
+  },
+  {
+    name: "Siti Suyatimah",
+    role: "Bidang SDM",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/19.jpeg`,
+  },
+  {
+    name: "Surojo, SE",
+    role: "Bidang Kerjasama Promosi dan Marketing",
+    image: Uwong,
+  },
+  {
+    name: "H. Pandaya, S.Pd, M.Pd",
+    role: "Bidang Kerjasama Promosi dan Marketing",
+    image: Uwong,
+  },
+  {
+    name: "M. Dani Ardiyanto, SH",
+    role: "Bidang Media dan Hubungan Masyarakat",
+    image: Uwong,
+  },
+  {
+    name: "Aprilia Dewantoro",
+    role: "Bidang Media dan Hubungan Masyarakat",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/12.jpeg`,
+  },
+  {
+    name: "Dra. Rinawati, M.Pd",
+    role: "Bidang Pengumpulan dan Pengolahan Data",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/18.jpeg`,
+  },
+  {
+    name: "Pabo Bernando",
+    role: "Web Developer",
+    image: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/10.jpeg`,
+  },
+];

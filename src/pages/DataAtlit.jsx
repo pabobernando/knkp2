@@ -12,10 +12,10 @@ function DataAtlit() {
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   const [selectedAthele, setSelectedAthele] = useState(null);
   const [page, setPage] = useState(0);
-  const [halaman, setHalaman] = useState();
   const [pageCount, setPageCount] = useState(0);
   const [modalMode, setModalMode] = useState("add");
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const openModalAdd = (atlit) => {
     setModalMode("add");
@@ -203,6 +203,12 @@ function DataAtlit() {
 
   return (
     <main className="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <button
+        onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+        className="lg:hidden text-white"
+      >
+        ☰
+      </button>
       <ModalDelete
         onClose={closeModal}
         onOk={handleDelete}
@@ -218,14 +224,19 @@ function DataAtlit() {
         setUploadedImage={setUploadedImage}
       />
       <div className="flex items-start justify-between">
-        <div className="relative hidden h-screen shadow-lg lg:block w-80">
+        <div
+          className={`relative h-screen shadow-lg w-80 ${
+            isMobileNavOpen ? "block" : "hidden"
+          } lg:block`}
+        >
           <NavbarSide />
         </div>
         <div className="flex flex-col w-full md:space-y-4">
           <div className="h-screen px-4 pb-24 overflow-auto md:px-6">
-            <h1 className="text-4xl font-bold text-red-800 dark:text-white ">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-800 dark:text-white">
               DATA ATLIT
             </h1>
+
             <header className="z-40 flex items-center justify-between w-full h-16">
               <DropdownCabor
                 onChange={(idCabor) => getDataAtlit({ cabor_id: idCabor })}
