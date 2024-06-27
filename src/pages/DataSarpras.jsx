@@ -49,7 +49,7 @@ function DataSarpras() {
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log("get data sarpras: ", data);
+      // console.log("get data sarpras: ", data);
       setSarprass(data);
     } catch (error) {
       console.error("Failed to fetch sarpras data:", error);
@@ -85,12 +85,12 @@ function DataSarpras() {
 
   const handleAdd = (form) => {
     const token = localStorage.getItem("token");
-    console.log(token);
+    // console.log(token);
     const headers = {
       Authorization: `Bearer ${token}`,
     };
     const formData = { ...form, image: uploadedImage };
-    console.log("iki form e sek dikirim :", formData);
+    // console.log("iki form e sek dikirim :", formData);
     fetch("https://api.konikulonprogo.com/api/v1/sarpras", {
       method: "POST",
       headers: {
@@ -116,7 +116,7 @@ function DataSarpras() {
       Authorization: `Bearer ${token}`,
     };
     const formData = { ...form, image: uploadedImage };
-    console.log("iki form edit sek dikirim", formData);
+    // console.log("iki form edit sek dikirim", formData);
     const sarpras = selectedSarpras;
     fetch(`https://api.konikulonprogo.com/api/v1/sarpras/${sarpras.id}`, {
       method: "PUT",
@@ -155,9 +155,9 @@ function DataSarpras() {
     fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
-        const pembulatanPage = Math.ceil(data.sarpras / 10); // membulatkan angka ke atas
+        const pembulatanPage = Math.ceil(data.sarpras / 10);
         setPageCount(pembulatanPage);
-        console.log(pageCount); // simpan nilai pembulatanPage ke dalam state
+        // console.log(pageCount);
       })
       .catch((error) => console.error(error));
   };

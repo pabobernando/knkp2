@@ -46,7 +46,7 @@ function CreateNews() {
     const combinedContent = `${contentData.content1}|||${contentData.content2}|||${contentData.content3}`;
     const formDataToSubmit = { ...formData, content: combinedContent };
 
-    console.log("Form data to be submitted:", formDataToSubmit);
+    // console.log("Form data to be submitted:", formDataToSubmit);
     try {
       const response = await fetch(
         "https://api.konikulonprogo.com/api/v1/berita",
@@ -98,7 +98,7 @@ function CreateNews() {
         /^data:image\/\w+;base64,/,
         ""
       );
-      console.log(base64Image);
+      // console.log(base64Image);
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: base64Image,

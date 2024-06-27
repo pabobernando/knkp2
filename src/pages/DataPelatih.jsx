@@ -49,7 +49,7 @@ function DataPelatih() {
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log("get data pelatih: ", data);
+      // console.log("get data pelatih: ", data);
       setCoachs(data);
     } catch (error) {
       console.error("Failed to fetch athlete data:", error);
@@ -91,7 +91,7 @@ function DataPelatih() {
       image: uploadedImage,
       lampiran: uploadedLampiran,
     };
-    console.log("iki form e sek dikirim :", formData);
+    // console.log("iki form e sek dikirim :", formData);
     fetch("https://api.konikulonprogo.com/api/v1/pelatih", {
       method: "POST",
       headers: {
@@ -121,7 +121,7 @@ function DataPelatih() {
       image: uploadedImage,
       lampiran: uploadedLampiran,
     };
-    console.log("iki form e sek dikirim :", formData);
+    // console.log("iki form e sek dikirim :", formData);
     const pelatih = selectedCoache;
     fetch(`https://api.konikulonprogo.com/api/v1/pelatih/${pelatih.id}`, {
       method: "PUT",
@@ -162,7 +162,7 @@ function DataPelatih() {
       .then((data) => {
         const pembulatanPage = Math.ceil(data.pelatih / 10);
         setPageCount(pembulatanPage);
-        console.log(pageCount); //
+        // console.log(pageCount);
       })
       .catch((error) => console.error(error));
   };

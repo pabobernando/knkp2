@@ -49,7 +49,7 @@ function DataWasit() {
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log("get data wasit: ", data);
+      // console.log("get data wasit: ", data);
       setWasits(data);
     } catch (error) {
       console.error("Failed to fetch athlete data:", error);
@@ -97,7 +97,7 @@ function DataWasit() {
       image: uploadedImage,
       lampiran: uploadedLampiran,
     };
-    console.log("iki form e sek dikirim :", formData);
+    // console.log("iki form e sek dikirim :", formData);
     fetch("https://api.konikulonprogo.com/api/v1/wasit", {
       method: "POST",
       headers: {
@@ -127,7 +127,7 @@ function DataWasit() {
       image: uploadedImage,
       lampiran: uploadedLampiran,
     };
-    console.log("iki form e sek dikirim :", formData);
+    // console.log("iki form e sek dikirim :", formData);
     const wasit = selectedWasit;
     fetch(`https://api.konikulonprogo.com/api/v1/wasit/${wasit.id}`, {
       method: "PUT",
@@ -166,9 +166,9 @@ function DataWasit() {
     fetch("https://api.konikulonprogo.com/api/v1/count")
       .then((response) => response.json())
       .then((data) => {
-        const pembulatanPage = Math.ceil(data.wasit / 10); // membulatkan angka ke atas
+        const pembulatanPage = Math.ceil(data.wasit / 10);
         setPageCount(pembulatanPage);
-        console.log(pageCount); // simpan nilai pembulatanPage ke dalam state
+        // console.log(pageCount);
       })
       .catch((error) => console.error(error));
   };

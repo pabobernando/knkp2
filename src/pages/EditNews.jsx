@@ -72,7 +72,7 @@ function EditNews() {
       if (!token) {
         throw new Error("No token found");
       }
-      console.log("Send Data :", formData);
+      // console.log("Send Data :", formData);
 
       const response = await fetch(
         `https://api.konikulonprogo.com/api/v1/berita/${id}`,
