@@ -1,8 +1,3 @@
-import Porkab13 from "../assets/porkab10.jpeg";
-import Porkab14 from "../assets/porkab11.jpeg";
-import Porkab15 from "../assets/porkab12.jpeg";
-import Porkab16 from "../assets/catur.jpeg";
-
 export const products = [
   {
     id: 1,
@@ -86,34 +81,6 @@ export const products = [
     name: "img-koni-12",
     event: "PORKAB",
     imageSrc: `https://pub-c95c5c19a766467e98a17366a50fbabc.r2.dev/porkab12.jpeg`,
-    imageAlt: "Porkab Kulon Progo",
-  },
-  {
-    id: 13,
-    name: "img-koni-13",
-    event: "PORKAB",
-    imageSrc: Porkab13,
-    imageAlt: "Porkab Kulon Progo",
-  },
-  {
-    id: 14,
-    name: "img-koni-14",
-    event: "PORKAB",
-    imageSrc: Porkab14,
-    imageAlt: "Porkab Kulon Progo",
-  },
-  {
-    id: 15,
-    name: "img-koni-15",
-    event: "PORKAB",
-    imageSrc: Porkab15,
-    imageAlt: "Porkab Kulon Progo",
-  },
-  {
-    id: 16,
-    name: "img-koni-16",
-    event: "PORKAB",
-    imageSrc: Porkab16,
     imageAlt: "Porkab Kulon Progo",
   },
   {
